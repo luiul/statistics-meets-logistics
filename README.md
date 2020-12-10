@@ -1,11 +1,3 @@
-# Statistics Meets Logistics - Python for Data Science and Machine Learning
-
-Categories: https://www.notion.so/Uni-6f742c040da1488181ef1078d9bac25c, https://www.notion.so/Priv-186a1091f6eb44aba651be4262aee091, https://www.notion.so/Prof-5875739d08f346a2a1807f06823d4ab4
-Comment: 3 ECTS Credits 
-Date Created: Nov 27, 2020 3:36 PM
-Prio: High
-Status: Active
-
 # Statistics Meets Logistics
 
 The [course](https://www.statistik.tu-dortmund.de/2791.html) and the [material](https://moodle.tu-dortmund.de/enrol/index.php?id=22199) provided by the lecturer are in German. The documentation is in English.
