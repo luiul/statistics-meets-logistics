@@ -50,6 +50,8 @@ Keep track of the history changes done to code > facilitate collaboration
 
 [Version Control (Git)](https://missing.csail.mit.edu/2020/version-control/)
 
+[gitignore.io](https://www.toptal.com/developers/gitignore)
+
 ## Basic Markdown
 
 [Basic Syntax | Markdown Guide](https://www.markdownguide.org/basic-syntax/)
@@ -102,6 +104,7 @@ If a variable is being highlighted by the IDE, this keyword is reserved for an o
     - list(iterable) is a list constructor.
     - Append: Adds its argument as a single element to the end of a list. The length of the list increases by one
     - extend(): Iterates over its argument and adding each element to the list and extending the list. The length of the list increases by number of elements in it’s argument
+    - There is distinct algebra defined for Lists, e.g. [1,2] * 2 = [1,2,1,2]
 - Dictionaries = hash tables in other languages. Dictionaries do not retain any order! Important function: update([other])
 - Truthy and Falsy values: Python treat the following values as False: `"", 0, 0.0, 0j, [], (), {}, False, None, instances which signal they are empty`
 - Tuples are immutable
@@ -225,7 +228,11 @@ Lots of built-in random functions
 
 ### Broadcasting and Slicing
 
-With NumPy arrays, we can broadcast a single value across a larger set of values. Slicing section of an array and setting it to a new variable only acts as a pointer to the original array (use the copy method to avoid this). 
+With NumPy arrays, we can broadcast a single value across a larger set of values. Slicing section of an array and setting it to a new variable only acts as a pointer to the original array (use the copy method to avoid this).
+
+Examples: [1,2]*2 = [1,2,1,2] versus np.array([1,2]*2) = array([2,4])
+
+[Broadcasting - NumPy v1.19 Manual](https://numpy.org/doc/stable/user/basics.broadcasting.html)
 
 [What is :: (double colon) in numpy like in myarray[0::3]?](https://stackoverflow.com/questions/7123888/what-is-double-colon-in-numpy-like-in-myarray03)
 
@@ -238,6 +245,65 @@ With NumPy arrays, we can broadcast a single value across a larger set of values
 
 # Pandas
 
+Important library for cleaning & organising data and exploratory data analysis. Open source library for data analysis. Uses extremely powerful table object called DataFrame (system) built off NumPy. 
+
+[Tutorials - pandas 0.23.1 documentation](https://pandas.pydata.org/pandas-docs/version/0.23.1/tutorials.html)
+
+[](https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf)
+
+Motivation: 
+
+- Tools for reading and writing data between many formats
+- Intelligently grad data based on indexing, logic, subsetting, etc.
+- Handle missing data
+- Adjust and restructure data
+
+Overview: 
+
+- Series and DataFrames
+- Conditional Filtering and Useful Methods
+- Missing Data
+- Group by Operations (Aggregating data)
+- Combining DataFrames (from different data sources)
+- Text Methods and Time Methods
+- Inputs and Outputs
+
+## Series
+
+Data structure that holds an array of information along with a named index (as opposed to numeric index). Similar to a map or dictionary.
+
+**Formal definition**: one-dimensional ndarray with axis labels. 
+
+Note that internally the data is still numerically organised. A Series has two columns for the user (and three columns internally). First column in the index, second column the data. 
+
+We can combine Series with a shared index to create a tabular data structure called a DataFrame. 
+
+- Since they're built off NumPy arrays we can perform broadcasted operations on them
+- If there are problems with the keys while performing broadcasted operations, Pandas returns NaN
+- Performing numeric computations with Panda objects, will convert the data into floating numbers. To avoid this we can round with np.round() or pd.round() or specify / hardcode the data type in the operations
+- We can name Series when creating them
+
+## DataFrames
+
+Table of columns and rows that can be easily restructured and filtered. We can combine Series that share the same index. Each individual column in the table is a Series and all the Series in the DataFrame share the same index
+
+**Formal definition**: group of Pandas Series objects that share the same index
+
+Basics: 
+
+- Create a DataFrame
+- Grab a column or multiple columns
+- Grab a row or multiple rows
+- Insert a new column or new row
+
+Each column represent a feature / variable and each row represents instance of a data point / entry
+
+Working with Rows
+
+df.loc['index'] similar to Excel's lookup function
+
+### Conditional Formating
+
 # Open Questions and Tasks
 
 ## Open Questions
@@ -246,11 +312,7 @@ With NumPy arrays, we can broadcast a single value across a larger set of values
 
 ## Backlog
 
-- Do crash course on Git
-- Upload files to Github
-- Start with statistical tools
 - Watch [collaboration in Git and Jupyter notebook](https://www.youtube.com/watch?v=J3k3HkVnd2c) for ideas
-- Pandas
 - Matplotlib
 - Seaborn
 - Crapstone
@@ -260,14 +322,25 @@ With NumPy arrays, we can broadcast a single value across a larger set of values
 
 ## In Progress
 
-- Numpy
+- Pandas
 
 ## Resolved
 
+- Do crash course on Git
+- Upload files to Github
 - Python Crash Course
 - Machine Learning Pathway
+- Numpy
+
+## Workflow
+
+- pull repo
+- work on project
+- update README
+- push repo
 
 # Misc
 
 - $PATH is stored in /etc/paths; open with sudo nano to modify
 - [Check if word in in a string](https://stackoverflow.com/questions/5319922/python-check-if-word-is-in-a-string)
+- [https://stackoverflow.com/questions/237128/why-does-python-code-use-len-function-instead-of-a-length-method](https://stackoverflow.com/questions/237128/why-does-python-code-use-len-function-instead-of-a-length-method)
