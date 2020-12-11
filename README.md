@@ -106,7 +106,7 @@ If a variable is being highlighted by the IDE, this keyword is reserved for an o
 - Truthy and Falsy values: Python treat the following values as False: `"", 0, 0.0, 0j, [], (), {}, False, None, instances which signal they are empty`
 - Tuples are immutable
 - Sets: unordered collection of unique elements
-- Range `range()`: iterate though elements of range 0, ... , arg or create a list with the elements of the range
+- Range `range(arg)`: iterate though elements of range 0, ... , arg or create a list with the elements of the range
 - List comprehension: flatten loop to populate an empty list: `[f(i) for i in range(arg)]`
 - Flatten conditional statements: `var = value1 if statement 1 else value2`
 - Lambda expression / anonymous function: short function that are (usually) used only one time: `lambda input:output`. We use them along another outside function. To define a lambda expression remove `def` and `return` and write the function in one line
@@ -153,14 +153,14 @@ Question to Answer
 
 ## Pathway
 
-Real World > Collect & Store Data <> Data Analysis > Machine learning models > Real World
+Real World > Collect & Store Data <> **Data Analysis** > Machine learning models > Real World
 
 C**ollect & Store Data** (Role: Data Engineer):
 
 - Raw Data: data from physical sensors, surveys, simulation, experiments, data usage, etc.
 - Process & Store Data: SQL database, CSV files, Excel files, cloud storage, etc.
 
-Data Analysis (Role: Data Analyst or Data Scientist)
+**Data Analysis** (Role: Data Analyst or Data Scientist)
 
 - **Clean & Organize Data**: reorganize data, dealing with missing data, restructure data, etc.
 - Overlap with Collect & Store Data: reorganize data, dealing with missing data, restructure data, etc.
@@ -175,7 +175,7 @@ Machine Learning Models (Role: Data Scientist or Machine Learning Engineer)
 
 # NumPy
 
-NumPy is a Python library. Almost every data science library is built using NumPy.
+[NumPy](https://note.nkmk.me/en/python-numpy-ndarray-ndim-shape-size/#:~:text=len()%20is%20the%20built,only%20for%20one%2Ddimensional%20arrays.) is a Python library. Almost every data science library is built using NumPy.
 
 Goals: 
 
@@ -202,6 +202,41 @@ Create by:
 - Transforming standard list
 - Built-in functions
 - Generating random data
+
+### Random
+
+Lots of built-in random functions
+
+### Useful Attributes and Method Calls
+
+- np.arrange()
+- array.reshape()
+- array.max(), .min(), .argmax(), .argmin()
+- array.shape
+- array.dtype
+
+## Indexing and Selection
+
+- Grabbing single element
+- Grabbing a slice of elements
+- Broadcasting selections
+- Indexing and selection in 2-dim
+- Conditional Selection
+
+### Broadcasting and Slicing
+
+With NumPy arrays, we can broadcast a single value across a larger set of values. Slicing section of an array and setting it to a new variable only acts as a pointer to the original array (use the copy method to avoid this). 
+
+[What is :: (double colon) in numpy like in myarray[0::3]?](https://stackoverflow.com/questions/7123888/what-is-double-colon-in-numpy-like-in-myarray03)
+
+### Operations
+
+[Universal functions (ufunc) - NumPy v1.19 Manual](https://numpy.org/doc/stable/reference/ufuncs.html)
+
+- */0 gives a warning (not an error) and it outputs a result (limit of the operation or nan if the object is not defined)
+- consider axis logic when performing operations on arrays
+
+# Pandas
 
 # Open Questions and Tasks
 
