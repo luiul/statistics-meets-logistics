@@ -304,11 +304,62 @@ df.loc['index'] similar to Excel's lookup function
 
 ### Conditional Formating
 
+Typically in data analysis the datasets are large enough that we don't filter based on position, but instead based on a (column) condition. Conditional filtering allows us to select rows based on condition on a column. This lead to a discussion on organising out data. 
+
+Organising data: **columns are features** (attribute / property of every single instance / row), r**ows are instances of data**. This format is required for ML later on! 
+
+For df['column']>x, Pandas broadcast the comparison to every single instance in the column. Pandas returns a Series of boolean values. We broadcast this series across the entire array: df[df['column']>x] 
+
+Overview: 
+
+- Filter by single condition
+- Filter by multiple conditions (operators: & and |)
+- Check against multiple possible values (categorical values): is in method
+
+## Useful Methods
+
+[API reference - pandas 1.1.5 documentation](https://pandas.pydata.org/pandas-docs/stable/reference/index.html)
+
+Series and DataFrames have specialised methods of calls that are very useful. Check the API reference above if necessary. 
+
+### Apply Method a Single Column
+
+We can use the .apply() method call to apply any custom function to every row in a Series. We can use either one or multiple columns as input. We argument of .apply() is just the function number, we do not call the function! Apply function should return just a single value, as .apply() applies the function for each row in the series (single cell)
+
+### Apply Method on Multiple Columns
+
+Lambda expression are very useful when calling the apply method on multiple columns of the DataFrame. 
+
+Structure: 
+
+- select the columns we're going to be using in the function
+- call lambda in the DataFrame
+- pass the columns being used to the function
+- specify the axis
+
+This structure is expandable to N columns. There is an alternative to make this operation a faster and with a simples syntax: we vectorise the function using NumPy and we call the relevant columns as arguments. 
+
+[Applying function with multiple arguments to create a new pandas column](https://stackoverflow.com/questions/19914937/applying-function-with-multiple-arguments-to-create-a-new-pandas-column)
+
+[Using Numpy Vectorize on Functions that Return Vectors](https://stackoverflow.com/questions/3379301/using-numpy-vectorize-on-functions-that-return-vectors)
+
+### Describing and Sorting
+
+- describe method (transpose the DataFrame to make it more readable)
+- sort_values method
+- boolean series are usually used as filters
+
+[pandas idxmax: return all rows in case of ties](https://stackoverflow.com/questions/52588298/pandas-idxmax-return-all-rows-in-case-of-ties)
+
 # Open Questions and Tasks
 
 ## Open Questions
 
-- Can we model the process in the project as a Poisson process?
+- Was ist CQI?
+- Was is TA?
+- Was ist CI?
+- Was ist ID?
+- Ist die Variable 'distance' relevant für unsere Analyse?
 
 ## Backlog
 
@@ -344,3 +395,4 @@ df.loc['index'] similar to Excel's lookup function
 - $PATH is stored in /etc/paths; open with sudo nano to modify
 - [Check if word in in a string](https://stackoverflow.com/questions/5319922/python-check-if-word-is-in-a-string)
 - [https://stackoverflow.com/questions/237128/why-does-python-code-use-len-function-instead-of-a-length-method](https://stackoverflow.com/questions/237128/why-does-python-code-use-len-function-instead-of-a-length-method)
+- Can we model the process in the project as a Poisson process?
