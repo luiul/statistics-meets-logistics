@@ -1,12 +1,12 @@
 # Statistics Meets Logistics
 
-The [course](https://www.statistik.tu-dortmund.de/2791.html) and the [material](https://moodle.tu-dortmund.de/enrol/index.php?id=22199) provided by the lecturer are in German. The documentation is in English.
+The [course](https://www.statistik.tu-dortmund.de/2791.html) and the [material](https://moodle.tu-dortmund.de/enrol/index.php?id=22199) provided by the lecturer are in German. The documentation is in English. This repository documents our progress in preparation for the project and holds the project and its data. 
 
-## Description
+# 📖 Description
 
 In the course, students will learn about the application of statistical methods and basic machine learning procedures for the analysis of complex data in the field of logistics. This includes methods of descriptive statistics as well as various regression and classification procedures including neural networks. After the introduction of the methods, the students apply the acquired knowledge independently to work on logistical problems in various practical exercises. The software Python and relevant packages are used.
 
-# Background
+# 🌅 Background
 
 In this section we setup the relevant systems for the project and provide additional material not directly tied to the project.
 
@@ -91,7 +91,7 @@ There are two options:
 1. On the Anaconda Navigator: Environments tab > choose the environment > open application on the environment
 2. In the terminal: `conda active myEnv` (replace `myEnv` the name of your environment)
 
-# Python Crash Course
+# 🐍 Python Crash Course
 
 This is the section for the Python crash course. [Current Python documentation](https://docs.python.org/3/contents.html).
 
@@ -136,7 +136,7 @@ If a variable is being highlighted by the IDE, this keyword is reserved for an o
         - filter(None, data): filters out all values that are treated as false in a boolen setting. **Be careful** with 0, as they are treated as False in Python
     - reduce(): no longer a built in function. It can be found in the 'functools' module.
 
-# Machine Learning Pathway
+# 🤖 Machine Learning Pathway
 
 General idea of a pathway of using Machine Learning and Data Science for useful applications, e.g. create a data report or product. We'll try to distinguish between Data Engineer, Data Analyst, Data Scientist, and Machine Learning Researcher. 
 
@@ -176,7 +176,7 @@ Machine Learning Models (Role: Data Scientist or Machine Learning Engineer)
 - Unsupervised Learning: Discover hidden patterns in data
 - Create: service, dashboard, application, etc > data product (predict future outcomes or gain insight on data) > Affect some change in the real world
 
-# NumPy
+# 🥧 NumPy
 
 [NumPy](https://note.nkmk.me/en/python-numpy-ndarray-ndim-shape-size/#:~:text=len()%20is%20the%20built,only%20for%20one%2Ddimensional%20arrays.) is a Python library. Almost every data science library is built using NumPy.
 
@@ -243,7 +243,7 @@ Examples: [1,2]*2 = [1,2,1,2] versus np.array([1,2]*2) = array([2,4])
 - */0 gives a warning (not an error) and it outputs a result (limit of the operation or nan if the object is not defined)
 - consider axis logic when performing operations on arrays
 
-# Pandas
+# 🐼 Pandas
 
 Important library for cleaning & organising data and exploratory data analysis. Open source library for data analysis. Uses extremely powerful table object called DataFrame (system) built off NumPy. 
 
@@ -351,7 +351,7 @@ This structure is expandable to N columns. There is an alternative to make this 
 
 [pandas idxmax: return all rows in case of ties](https://stackoverflow.com/questions/52588298/pandas-idxmax-return-all-rows-in-case-of-ties)
 
-# Open Questions and Tasks
+# 🔧 Open Questions and Tasks
 
 ## Open Questions
 
@@ -390,7 +390,7 @@ This structure is expandable to N columns. There is an alternative to make this 
 - update README
 - push repo
 
-# Misc
+# 💡 Misc
 
 - $PATH is stored in /etc/paths; open with sudo nano to modify
 - [Check if word in in a string](https://stackoverflow.com/questions/5319922/python-check-if-word-is-in-a-string)
