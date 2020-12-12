@@ -1,6 +1,6 @@
 # Statistics Meets Logistics
 
-The [course](https://www.statistik.tu-dortmund.de/2791.html) and the [material](https://moodle.tu-dortmund.de/enrol/index.php?id=22199) provided by the lecturer are in German. The documentation is in English. This repository documents our progress in preparation for the project and holds the project and its data. 
+The [course](https://www.statistik.tu-dortmund.de/2791.html) and the [material](https://moodle.tu-dortmund.de/enrol/index.php?id=22199) provided by the lecturer are in German. The documentation is in English. This repository documents our preparation for the project and holds the project and its data. 
 
 # 📖 Description
 
@@ -99,7 +99,7 @@ This is the section for the Python crash course. [Current Python documentation](
 
 If a variable is being highlighted by the IDE, this keyword is reserved for an object!
 
-- String interpolation / [.format()](https://pyformat.info/) on string = a way to insert things into a string
+- String interpolation / [.format()](https://pyformat.info/) on string = a way to insert things into a string (see
 - List = arrays in other languages. In Python a list can contain objects of different types. Lists can be nested (useful with 2D object, e.g. a matrix). Important function:
     - list(iterable) is a list constructor.
     - Append: Adds its argument as a single element to the end of a list. The length of the list increases by one
@@ -351,6 +351,41 @@ This structure is expandable to N columns. There is an alternative to make this 
 
 [pandas idxmax: return all rows in case of ties](https://stackoverflow.com/questions/52588298/pandas-idxmax-return-all-rows-in-case-of-ties)
 
+## Missing Data
+
+Real world data will often be missing data. Many machine learning models and statistical methods can not work with missing data points > we need to decide what to do with the missing data. When reading missing values, Pandas displays them as NaN values. Newer versions of Pandas have specialised null values, e.g. pd.NaT (not a timestamp), to imply the missing value should be of a particular data type. 
+
+Options for Missing Data (depending on the situation): 
+
+- Keep it
+    - PROS:
+        - easiest to do
+        - does not manipulate or change the true data
+    - CONS:
+        - many methods do not support NaN
+        - often there are reasonable guesses
+- Remove it
+    - PROS:
+        - easy to do
+        - can be cased on rules
+    - CONS:
+        - potential to lose a lot of data or useful information
+        - limits trained model for future data
+- Replace it / Filling in the missing data
+    - PROS:
+        - potential to save a lot of data for use in training a model
+    - CONS
+        - hardest to do and somewhat arbitrary
+        - potential to lead to false conclusions
+
+Dropping a row makes sense when a lot of info is missing > it's good practice to calculate what percentage of data is being dropped 
+
+Dropping a column is a good choice if every row is missing that particular feature
+
+Fill in data if NaN was just a placeholder for another value ,e.g. NaN is a placeholder for a zero. Filling with interpolated or estimated value > much harder and requires reasonable assumptions 
+
+[ROADMAP: Consistent missing value handling with new NA scalar · Issue #28095 · pandas-dev/pandas](https://github.com/pandas-dev/pandas/issues/28095)
+
 # 🔧 Open Questions and Tasks
 
 ## Open Questions
@@ -374,6 +409,7 @@ This structure is expandable to N columns. There is an alternative to make this 
 ## In Progress
 
 - Pandas
+- Make an outline of the project
 
 ## Resolved
 
@@ -389,6 +425,14 @@ This structure is expandable to N columns. There is an alternative to make this 
 - work on project
 - update README
 - push repo
+
+# 📋 Outline of Project (WIP)
+
+- Create DataFrames
+- Apply Pandas knowledge to DataFrame
+    - Conditional filtering
+    - Useful Methods
+    - Check for missing data
 
 # 💡 Misc
 
