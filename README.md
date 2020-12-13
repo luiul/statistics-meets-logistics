@@ -44,6 +44,14 @@ Useful shortcuts in Jupyter notebook:
 
 [My favorite Jupyter notebook shortcuts](https://www.youtube.com/watch?v=FW2BF6jbHBk)
 
+## JupyterLab
+
+[JupyterLab](https://github.com/jupyterlab/jupyterlab) is the next-gen user interface for Project Jupyter offering all the familiar building blocks of the classic Jupyter Notebook (notebook, terminal, text editor, file browser, rich outputs, etc.) in a flexible and powerful user interface. JupyterLab will eventually replace the classic Jupyter Notebook.
+
+[Contributing to JupyterLab - JupyterLab 2.3.0a2 documentation](https://jupyterlab.readthedocs.io/en/stable/developer/contributing.html?highlight=virtual%20environment#installing-jupyterlab)
+
+[How to add conda environment to jupyter lab](https://stackoverflow.com/questions/53004311/how-to-add-conda-environment-to-jupyter-lab)
+
 ## Version Control with Git
 
 Keep track of the history changes done to code > facilitate collaboration
@@ -135,6 +143,8 @@ If a variable is being highlighted by the IDE, this keyword is reserved for an o
     - filter(statement, iterable): select subdata from data. It filters the data we do not need. The filter function will only return the data for which the statement / function is True
         - filter(None, data): filters out all values that are treated as false in a boolen setting. **Be careful** with 0, as they are treated as False in Python
     - reduce(): no longer a built in function. It can be found in the 'functools' module.
+
+[https://www.w3schools.com/python/ref_string_format.asp](https://www.w3schools.com/python/ref_string_format.asp)
 
 # 🤖 Machine Learning Pathway
 
@@ -382,9 +392,13 @@ Dropping a row makes sense when a lot of info is missing > it's good practice to
 
 Dropping a column is a good choice if every row is missing that particular feature
 
-Fill in data if NaN was just a placeholder for another value ,e.g. NaN is a placeholder for a zero. Filling with interpolated or estimated value > much harder and requires reasonable assumptions 
+Fill in data if NaN was just a placeholder for another value ,e.g. NaN is a placeholder for a zero. Filling with interpolated or estimated value > much harder and requires reasonable assumptions. We can fill in NaN values with an arbitrary value, the mean, or an (linearly) interpolated value. 
+
+Comparison on NaN-values are done with the 'is' keyword. 
 
 [ROADMAP: Consistent missing value handling with new NA scalar · Issue #28095 · pandas-dev/pandas](https://github.com/pandas-dev/pandas/issues/28095)
+
+[pandas.DataFrame.interpolate - pandas 1.1.5 documentation](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.interpolate.html)
 
 # 🔧 Open Questions and Tasks
 
@@ -410,6 +424,7 @@ Fill in data if NaN was just a placeholder for another value ,e.g. NaN is a plac
 
 - Pandas
 - Make an outline of the project
+- read [article](https://kiwidamien.github.io/save-jupyters-environment)
 
 ## Resolved
 
@@ -440,3 +455,7 @@ Fill in data if NaN was just a placeholder for another value ,e.g. NaN is a plac
 - [Check if word in in a string](https://stackoverflow.com/questions/5319922/python-check-if-word-is-in-a-string)
 - [https://stackoverflow.com/questions/237128/why-does-python-code-use-len-function-instead-of-a-length-method](https://stackoverflow.com/questions/237128/why-does-python-code-use-len-function-instead-of-a-length-method)
 - Can we model the process in the project as a Poisson process?
+- [https://www.kite.com/python/answers/how-to-display-float-values-in-a-pandas-dataframe-to-two-decimal-places-in-python](https://www.kite.com/python/answers/how-to-display-float-values-in-a-pandas-dataframe-to-two-decimal-places-in-python)
+- [https://stackoverflow.com/questions/12877189/float64-with-pandas-to-csv](https://stackoverflow.com/questions/12877189/float64-with-pandas-to-csv)
+- [https://docs.python.org/3/library/string.html#format-specification-mini-language](https://docs.python.org/3/library/string.html#format-specification-mini-language)
+- [https://www.w3schools.com/python/ref_string_format.asp](https://www.w3schools.com/python/ref_string_format.asp)
