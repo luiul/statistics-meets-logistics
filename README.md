@@ -101,13 +101,13 @@ There are two options:
 
 # 🐍 Python Crash Course
 
-This is the section for the Python crash course. [Current Python documentation](https://docs.python.org/3/contents.html).
+This is the section for the Python crash course. [Python documentation](https://docs.python.org/3/contents.html).
 
 ## Crash Course
 
 If a variable is being highlighted by the IDE, this keyword is reserved for an object!
 
-- String interpolation / [.format()](https://pyformat.info/) on string = a way to insert things into a string (see
+- String interpolation / [.format()](https://pyformat.info/) on string = a way to insert things into a string. More info on [format method](https://www.w3schools.com/python/ref_string_format.asp).
 - List = arrays in other languages. In Python a list can contain objects of different types. Lists can be nested (useful with 2D object, e.g. a matrix). Important function:
     - list(iterable) is a list constructor.
     - Append: Adds its argument as a single element to the end of a list. The length of the list increases by one
@@ -143,8 +143,6 @@ If a variable is being highlighted by the IDE, this keyword is reserved for an o
     - filter(statement, iterable): select subdata from data. It filters the data we do not need. The filter function will only return the data for which the statement / function is True
         - filter(None, data): filters out all values that are treated as false in a boolen setting. **Be careful** with 0, as they are treated as False in Python
     - reduce(): no longer a built in function. It can be found in the 'functools' module.
-
-[https://www.w3schools.com/python/ref_string_format.asp](https://www.w3schools.com/python/ref_string_format.asp)
 
 # 🤖 Machine Learning Pathway
 
@@ -255,7 +253,7 @@ Examples: [1,2]*2 = [1,2,1,2] versus np.array([1,2]*2) = array([2,4])
 
 # 🐼 Pandas
 
-Important library for cleaning & organising data and exploratory data analysis. Open source library for data analysis. Uses extremely powerful table object called DataFrame (system) built off NumPy. 
+Important library for cleaning & organising data and exploratory data analysis. Open source library for data analysis. Uses extremely powerful table object called DataFrame (system) built of NumPy. 
 
 [Tutorials - pandas 0.23.1 documentation](https://pandas.pydata.org/pandas-docs/version/0.23.1/tutorials.html)
 
@@ -363,8 +361,6 @@ This structure is expandable to N columns. There is an alternative to make this 
 
 ## Missing Data
 
-Real world data will often be missing data. Many machine learning models and statistical methods can not work with missing data points > we need to decide what to do with the missing data. When reading missing values, Pandas displays them as NaN values. Newer versions of Pandas have specialised null values, e.g. pd.NaT (not a timestamp), to imply the missing value should be of a particular data type. 
-
 Options for Missing Data (depending on the situation): 
 
 - Keep it
@@ -405,10 +401,16 @@ Comparison on NaN-values are done with the 'is' keyword.
 ## Open Questions
 
 - Was ist CQI?
+- Was ist lat? (delta sea level)
 - Was is TA?
 - Was ist CI?
 - Was ist ID?
+- Was ist measurement?
+    - Ann: ExperimentNr
+- Was ist ID?
+    - Ann: ID des Autos
 - Ist die Variable 'distance' relevant für unsere Analyse?
+- Wie sollen wir die geografische Info zusammenfassen?
 
 ## Backlog
 
@@ -451,11 +453,28 @@ Comparison on NaN-values are done with the 'is' keyword.
 
 # 💡 Misc
 
-- $PATH is stored in /etc/paths; open with sudo nano to modify
-- [Check if word in in a string](https://stackoverflow.com/questions/5319922/python-check-if-word-is-in-a-string)
-- [https://stackoverflow.com/questions/237128/why-does-python-code-use-len-function-instead-of-a-length-method](https://stackoverflow.com/questions/237128/why-does-python-code-use-len-function-instead-of-a-length-method)
-- Can we model the process in the project as a Poisson process?
-- [https://www.kite.com/python/answers/how-to-display-float-values-in-a-pandas-dataframe-to-two-decimal-places-in-python](https://www.kite.com/python/answers/how-to-display-float-values-in-a-pandas-dataframe-to-two-decimal-places-in-python)
-- [https://stackoverflow.com/questions/12877189/float64-with-pandas-to-csv](https://stackoverflow.com/questions/12877189/float64-with-pandas-to-csv)
-- [https://docs.python.org/3/library/string.html#format-specification-mini-language](https://docs.python.org/3/library/string.html#format-specification-mini-language)
-- [https://www.w3schools.com/python/ref_string_format.asp](https://www.w3schools.com/python/ref_string_format.asp)
+$PATH is stored in /etc/paths; open with sudo nano to modify 
+
+Can we model the process in the project as a Poisson process?
+
+`pd.options.display.float_format = "{:,.2f}".format` > `pd.set_option('float_format', '{:f}'.format)`  
+
+[Python - Check If Word Is In A String](https://stackoverflow.com/questions/5319922/python-check-if-word-is-in-a-string)
+
+[Why does Python code use len() function instead of a length method?](https://stackoverflow.com/questions/237128/why-does-python-code-use-len-function-instead-of-a-length-method)
+
+[Code Faster with Line-of-Code Completions, Cloudless Processing](https://www.kite.com/python/answers/how-to-display-float-values-in-a-pandas-dataframe-to-two-decimal-places-in-python)
+
+[string - Common string operations - Python 3.9.1 documentation](https://docs.python.org/3/library/string.html#format-specification-mini-language)
+
+[Python String format() Method](https://www.w3schools.com/python/ref_string_format.asp)
+
+[Dashboarding with Jupyter Notebooks, Voila and Widgets | SciPy 2019 | M. Breddels and M. Renou](https://www.youtube.com/watch?v=VtchVpoSdoQ)
+
+[Building Interactive Applications and Dashboards in the Jupyter Notebook](https://www.youtube.com/watch?v=i40d8-Hu4vM)
+
+[How do I print entire number in Python from describe() function?](https://stackoverflow.com/questions/41328633/how-do-i-print-entire-number-in-python-from-describe-function)
+
+[15. Floating Point Arithmetic: Issues and Limitations - Python 3.9.1 documentation](https://docs.python.org/3/tutorial/floatingpoint.html)
+
+[% (String Formatting Operator) - Python Reference (The Right Way) 0.1 documentation](https://python-reference.readthedocs.io/en/latest/docs/str/formatting.html)
