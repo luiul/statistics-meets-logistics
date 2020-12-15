@@ -396,37 +396,57 @@ Comparison on NaN-values are done with the 'is' keyword.
 
 [pandas.DataFrame.interpolate - pandas 1.1.5 documentation](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.interpolate.html)
 
+## GroupBy Operations
+
+A groupby() operation allows us to examine data on a **per category** basis > aggregate a continuous value per category. We need to choose a **categorical** column to call with groupby(), i.e. a columns with non-continous values. Note that the values can still be numerical, e.g. Class 1, ..., Class N or Production dates 1970, ..., YYYY. 
+
+We usually (1) call .groupby() (separation) and (2) aggregate the data by grouping / category (evaluation), e.g. sum(), mean(), count(). 
+
+Note that calling .groupby() by itself creates a *lazy* groupby object waiting to be evaluated by an aggregate method call.
+
+Common Options for Aggregate Method Calls:
+
+```
+mean(): Compute mean of groups
+sum(): Compute sum of group values
+size(): Compute group sizes
+count(): Compute count of group
+std(): Standard deviation of groups
+var(): Compute variance of groups
+sem(): Standard error of the mean of groups
+describe(): Generates descriptive statistics
+first(): Compute first of group values
+last(): Compute last of group values
+nth() : Take nth value, or a subset if n is a list
+min(): Compute min of group values
+max(): Compute max of group values
+```
+
+[GroupBy - pandas 1.1.5 documentation](https://pandas.pydata.org/docs/reference/groupby.html)
+
+Cross-Section: 
+
 # 🔧 Open Questions and Tasks
 
 ## Open Questions
 
-- Was ist CQI?
-- Was ist lat? (delta sea level)
-- Was is TA?
-- Was ist CI?
-- Was ist ID?
-- Was ist measurement?
-    - Ann: ExperimentNr
-- Was ist ID?
-    - Ann: ID des Autos
-- Ist die Variable 'distance' relevant für unsere Analyse?
-- Wie sollen wir die geografische Info zusammenfassen?
+- What are our categorical columns?
 
 ## Backlog
 
-- Watch [collaboration in Git and Jupyter notebook](https://www.youtube.com/watch?v=J3k3HkVnd2c) for ideas
 - Matplotlib
 - Seaborn
 - Crapstone
 - Linear Regression
 - Logistics Regression
 - Machine Learning
+- Revise the lecture before the presentation!
 
 ## In Progress
 
 - Pandas
 - Make an outline of the project
-- read [article](https://kiwidamien.github.io/save-jupyters-environment)
+- Decide what are the relevant categorial columns for the project
 
 ## Resolved
 
@@ -478,3 +498,5 @@ Can we model the process in the project as a Poisson process?
 [15. Floating Point Arithmetic: Issues and Limitations - Python 3.9.1 documentation](https://docs.python.org/3/tutorial/floatingpoint.html)
 
 [% (String Formatting Operator) - Python Reference (The Right Way) 0.1 documentation](https://python-reference.readthedocs.io/en/latest/docs/str/formatting.html)
+
+[How to save Jupyter's environment (and kernels)](https://kiwidamien.github.io/save-jupyters-environment)
