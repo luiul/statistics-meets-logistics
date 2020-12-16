@@ -424,13 +424,67 @@ max(): Compute max of group values
 
 [GroupBy - pandas 1.1.5 documentation](https://pandas.pydata.org/docs/reference/groupby.html)
 
-Cross-Section: 
+Note that we can specify what aggregate function to call on each column. 
+
+Grab based on Cross-Section: it is important to filter out DataFrame first, and then grouping the resulting DataFrame. Concatenation is simply "pasting" the two DataFrames together either based columns or rows (NaN will be filled in automatically)
+
+## Combining DataFrames
+
+[Merge, join, concatenate and compare - pandas 1.1.5 documentation](https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html)
+
+### Concatenate
+
+Data might exist in two separate sources and combining them might be necessary. The simplest combination is if both sources are already in the same format, then a concatenation through the pd.concat() call is all we need. 
+
+### Merge
+
+Merges are often shows as a Venn diagram 
+
+Inner Merge: often DataFrames are not in the exact order or format > we cannot simply concatenate them together > we need to merge the DataFrames (analogous to JOIN command in SQL)
+
+There .merge() method takes in a key argument labeled **how**; there are three main ways of merging tables using the how parameter: 
+
+1. Inner: the result will be the set of records that **match in both** tables
+2. Left or Right: all the values on left / right table will be present in the resulting table
+3. Outer: all values will be present in the resulting table
+
+The main idea behind the argument is to decide **how** to deal with information only present in one of the joined tables. First, we decide **on** what column to merge together. Important: 
+
+1. the on column should be a primary (unique) identifier (for the row) 
+2. the on column should be present in both tables being merge & represent the same thing in both
+
+Second, we decide how to merge the tables on the selected column. 
+
+We can also merge on an index instead of a column 
+
+## Text Methods for String Data
+
+[Working with text data - pandas 1.1.5 documentation](https://pandas.pydata.org/docs/user_guide/text.html)
+
+Often text data needs to be cleaned or manipulated for processing. While we can always use a custom apply() function for these tasks, Pandas comes with many built-in sting method calls.
+
+## Time Methods for Date and Time Data
+
+[Time series / date functionality - pandas 1.1.5 documentation](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#converting-to-timestamps)
+
+[datetime - Basic date and time types - Python 3.9.1 documentation](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes)
+
+[pandas.DataFrame.resample - pandas 1.1.5 documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.resample.html)
+
+[pandas.Series.dt - pandas 1.1.5 documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.dt.html)
+
+Python has a **datetime** (as well as date and time) object containing date and time information. Pandas allows us to extract information from a datetime object (with so called .dt methods) to use feature engineering (in machine learning). 
+
+For example, we may have recent timestamped sales data. We're trying to predict whether or not a customer is going to buy something based off historical trends. Pandas allows us to extract info from the timestamp, e.g. day of the week, weekend vs weekday, AM vs PM. Many ML models do not fully understand datetime objects, but they can understand more categorical data. 
+
+A common operation is resampling or grouping by when the actual time series has the time as the index (time index is a datetime object / timestamp column) 
 
 # 🔧 Open Questions and Tasks
 
 ## Open Questions
 
-- What are our categorical columns?
+- What are our categorical columns to group by?
+- Do we need to use datetime objects in our project?
 
 ## Backlog
 
@@ -441,6 +495,7 @@ Cross-Section:
 - Logistics Regression
 - Machine Learning
 - Revise the lecture before the presentation!
+- Convert rawTimesamp feature into a datetime object > useful later for feature engineering
 
 ## In Progress
 
