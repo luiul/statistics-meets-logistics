@@ -1,6 +1,6 @@
 # Statistics Meets Logistics
 
-The [course](https://www.statistik.tu-dortmund.de/2791.html) and the [material](https://moodle.tu-dortmund.de/enrol/index.php?id=22199) provided by the lecturer are in German. The documentation is in English. This repository documents our preparation for the project and holds the project and its data. 
+The [course](https://www.statistik.tu-dortmund.de/2791.html) and the [material](https://moodle.tu-dortmund.de/enrol/index.php?id=22199) provided by the lecturer are in German. The documentation is in English. This repository documents our preparation for the project and holds the project and its data.
 
 # 📖 Description
 
@@ -31,6 +31,8 @@ Community, documenation and events:
 [Anaconda Documentation - Anaconda documentation](https://docs.anaconda.com/)
 
 [Anaconda | Events](https://www.anaconda.com/events?utm_medium=webinar&utm_source=anaconda&utm_campaign=intro-to-individual)
+
+[Installing Python Packages from a Jupyter Notebook](https://jakevdp.github.io/blog/2017/12/05/installing-python-packages-from-jupyter/)
 
 ## Jupyter Notebook
 
@@ -347,6 +349,8 @@ Structure:
 
 This structure is expandable to N columns. There is an alternative to make this operation a faster and with a simples syntax: we vectorise the function using NumPy and we call the relevant columns as arguments. 
 
+[How do I select a subset of a DataFrame? - pandas 1.1.5 documentation](https://pandas.pydata.org/docs/getting_started/intro_tutorials/03_subset_data.html)
+
 [Applying function with multiple arguments to create a new pandas column](https://stackoverflow.com/questions/19914937/applying-function-with-multiple-arguments-to-create-a-new-pandas-column)
 
 [Using Numpy Vectorize on Functions that Return Vectors](https://stackoverflow.com/questions/3379301/using-numpy-vectorize-on-functions-that-return-vectors)
@@ -477,7 +481,60 @@ Python has a **datetime** (as well as date and time) object containing date and 
 
 For example, we may have recent timestamped sales data. We're trying to predict whether or not a customer is going to buy something based off historical trends. Pandas allows us to extract info from the timestamp, e.g. day of the week, weekend vs weekday, AM vs PM. Many ML models do not fully understand datetime objects, but they can understand more categorical data. 
 
-A common operation is resampling or grouping by when the actual time series has the time as the index (time index is a datetime object / timestamp column) 
+A common operation is resampling or grouping by when the actual time series has the time as the index (time index is a datetime object / timestamp column) . 
+
+## Input and Output
+
+[IO tools (text, CSV, HDF5, ...) - pandas 1.1.5 documentation](https://pandas.pydata.org/pandas-docs/stable/user_guide/io.html)
+
+Pandas can read in data from a wide variety of sources and has excellent online documentation. We may need passwords / permissions for certain data inputs, e.g. SQL database password.
+
+### CSV Files
+
+We need to know the exact directory location and correct file name
+
+### HTML Tables
+
+HTML tables: websites display tabular info through the use of HTML tables tags: <table> ... </table>. Pandas can automatically convert these HTML tables into a DataFrame. 
+
+Not every table in a website is available through HTML tables. Some websites may block your computer from scraping the HTML of the site through Pandas (> use Beautiful Soup for Web Scraping with Python). It may be more efficient to use an API if available. 
+
+### Excel files
+
+[Working with Excel Files in Python](https://www.python-excel.org/)
+
+Using Pandas with Excel requires additional libraries (openpyxl and xlrd). Pandas can only read and write in raw data, it is not able to read in macros, visualisation, or formulas created inside the spreadsheets. Pandas treats an Excel Workbook as a dictionary, with the key being the sheet name and the value being the DataFrame representing the sheet itself > the result is dictionary of DataFrames. 
+
+### SQL Databases
+
+[](https://docs.sqlalchemy.org/en/13/core/connections.html)
+
+[SQLAlchemy 1.4 Documentation](https://docs.sqlalchemy.org/en/13/dialects/)
+
+Pandas can read and write to various SQL engines through the use of a driver and the **sqlalchemy** python library: 
+
+1. Figure out what SQL Engine you're connecting to, e.g. PostgreSQL, MySQL, MS SQL Server
+2. Install the appropriate Python driver library, e.g. PostgreSQL > psycopg2, MySQL > pymysql, MS SQL Server > pyodbc
+3. Use the [sqlalchemy](https://docs.sqlalchemy.org/en/13/core/connections.html) library to connect to your SQL database with the driver
+4. Use the sqlalchemy driver connection with Pandas read_sql method. Pandas can read in entire tables as a DataFrame or actual parse a SQL query through the connection: SELECT * FROM table; 
+
+## Pivot Tables
+
+[Reshaping and pivot tables - pandas 1.1.5 documentation](https://pandas.pydata.org/docs/user_guide/reshaping.html)
+
+Pivot tables allow you to reorganise data, refactoring cells based on columns and a new index. A Data Frame with repeated values can be pivoted for a reorganisation and clarity. We choose columns to define the new index, columns, and values. Notice how the choices for index and column should have repeated values, i.e. len(column) > len(column.unique()). The values should be more or less unique. This method shows no new information, it is merely reorganised. 
+
+It does not make sense to pivot every DataFrame, all of the datasets used in this course will have no need for a pivot table operation to use with machine learning. 
+
+You should first go through this checklist **before** running a pivot(): 
+
+- What question are you trying to answer?
+- What would a DataFrame that answers the question look like? Does it need a pivot()?
+- What do you want the resulting pivot to look like?
+
+Usually a groupby() call is a better solution to these questions. 
+
+Pandas also comes with a pivot_table method that allows for an additional aggregation function to be called. This could alternatively be done with a groupby() method as well. 
 
 # 🔧 Open Questions and Tasks
 
@@ -495,13 +552,14 @@ A common operation is resampling or grouping by when the actual time series has 
 - Logistics Regression
 - Machine Learning
 - Revise the lecture before the presentation!
-- Convert rawTimesamp feature into a datetime object > useful later for feature engineering
+- Convert [rawTimesamp](https://stackoverflow.com/questions/19231871/convert-unix-time-to-readable-date-in-pandas-dataframe) feature into a datetime object > useful later for feature engineering (see [documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.to_datetime.html))
 
 ## In Progress
 
 - Pandas
 - Make an outline of the project
 - Decide what are the relevant categorial columns for the project
+- Make a [data column reference](https://www.notion.so/ac02bfefe61246918aabf0e6094f18c9) in HTML (see [data type](https://en.wikipedia.org/wiki/Data_type), [7 data types](https://towardsdatascience.com/7-data-types-a-better-way-to-think-about-data-types-for-machine-learning-939fae99a689); use Notion or [Tables Generator](https://www.tablesgenerator.com/html_tables))
 
 ## Resolved
 
