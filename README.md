@@ -109,7 +109,7 @@ This is the section for the Python crash course. [Python documentation](https://
 
 If a variable is being highlighted by the IDE, this keyword is reserved for an object!
 
-- String interpolation / [.format()](https://pyformat.info/) on string = a way to insert things into a string. More info on [format method](https://www.w3schools.com/python/ref_string_format.asp).
+- String interpolation / [.format()](https://pyformat.info/) on string = a way to insert things into a string. More info on [format method](https://www.w3schools.com/python/ref_string_format.asp). See improved [String Formatting Syntax Guide](https://realpython.com/python-f-strings/).
 - List = arrays in other languages. In Python a list can contain objects of different types. Lists can be nested (useful with 2D object, e.g. a matrix). Important function:
     - list(iterable) is a list constructor.
     - Append: Adds its argument as a single element to the end of a list. The length of the list increases by one
@@ -536,6 +536,25 @@ Usually a groupby() call is a better solution to these questions.
 
 Pandas also comes with a pivot_table method that allows for an additional aggregation function to be called. This could alternatively be done with a groupby() method as well. 
 
+## Notes from the Exercise
+
+- Important function to determine most common value in a Series `value_counts()` for Categorical values. For Numerical values use `sort_values()`method.
+- Use lambda functions and np.vectorize more!
+- Break the code into chunks if necessary, for example:
+
+```python
+h['kids'] = h['babies'] + h['children']
+# add the feature kids = babies + children
+positions = h['kids'].nlargest(5).index.values
+# kids:S->[0,10]; grad the relevant index positions in the feature (5 largest)
+h.iloc[positions][['name','adults','kids','babies','children']]
+# locate by index, print relevant columns
+```
+
+# 📈 Matplotlib
+
+Start here! 
+
 # 🔧 Open Questions and Tasks
 
 ## Open Questions
@@ -545,21 +564,23 @@ Pandas also comes with a pivot_table method that allows for an additional aggreg
 
 ## Backlog
 
-- Matplotlib
 - Seaborn
 - Crapstone
 - Linear Regression
 - Logistics Regression
 - Machine Learning
 - Revise the lecture before the presentation!
-- Convert [rawTimesamp](https://stackoverflow.com/questions/19231871/convert-unix-time-to-readable-date-in-pandas-dataframe) feature into a datetime object > useful later for feature engineering (see [documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.to_datetime.html))
 
 ## In Progress
 
-- Pandas
+- Matplotlib
+- Apply Panda lessons to project
+- Convert [rawTimesamp](https://stackoverflow.com/questions/19231871/convert-unix-time-to-readable-date-in-pandas-dataframe) feature into a datetime object > useful later for feature engineering (see [documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.to_datetime.html))
 - Make an outline of the project
 - Decide what are the relevant categorial columns for the project
 - Make a [data column reference](https://www.notion.so/ac02bfefe61246918aabf0e6094f18c9) in HTML (see [data type](https://en.wikipedia.org/wiki/Data_type), [7 data types](https://towardsdatascience.com/7-data-types-a-better-way-to-think-about-data-types-for-machine-learning-939fae99a689); use Notion or [Tables Generator](https://www.tablesgenerator.com/html_tables))
+- Strip project data
+- Make sure there is no missing data in the project
 
 ## Resolved
 
@@ -568,6 +589,7 @@ Pandas also comes with a pivot_table method that allows for an additional aggreg
 - Python Crash Course
 - Machine Learning Pathway
 - Numpy
+- Pandas
 
 ## Workflow
 
