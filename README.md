@@ -54,6 +54,10 @@ Useful shortcuts in Jupyter notebook:
 
 [How to add conda environment to jupyter lab](https://stackoverflow.com/questions/53004311/how-to-add-conda-environment-to-jupyter-lab)
 
+## VS Code
+
+Another alternative is VS Code. See [Documentation](https://code.visualstudio.com/docs/python/jupyter-support); note that to work with other languages such as Julia or R the [marketplace extension](https://code.visualstudio.com/docs/python/jupyter-support) has VS Code Insiders as a prerequisite. 
+
 ## Version Control with Git
 
 Keep track of the history changes done to code > facilitate collaboration
@@ -495,7 +499,7 @@ We need to know the exact directory location and correct file name
 
 ### HTML Tables
 
-HTML tables: websites display tabular info through the use of HTML tables tags: <table> ... </table>. Pandas can automatically convert these HTML tables into a DataFrame. 
+HTML tables: websites display tabular info through the use of HTML tables tags: <table> </table>. Pandas can automatically convert these HTML tables into a DataFrame. 
 
 Not every table in a website is available through HTML tables. Some websites may block your computer from scraping the HTML of the site through Pandas (> use Beautiful Soup for Web Scraping with Python). It may be more efficient to use an API if available. 
 
@@ -552,6 +556,75 @@ h.iloc[positions][['name','adults','kids','babies','children']]
 ```
 
 # 📈 Matplotlib
+
+Visualizing data is crucial to quickly understanding trends and relationships in your dataset matplotlib is knows as the 'grandfather' of plotting and visualization libraries for Python. Many other visualization libraries are built directly off of matplotlib (e.g. seaborn and pandas built-in visualization). 
+
+Matplotlib is heavily inspired by the plotting function of the MatLab programming language. It allow for the creation of almost any plot type and heavy customization. This ability to heavily customize a plot comes at a trade-off for beginners, since it can be confusing to learn the syntax at first. This is mainly due to the fact that there are two separate approaches to creating plots, functional based methods and OOP based methods. 
+
+Specialized plot types, e.g. histograms, won't be covered in this section, since seaborn is a better tool to create statistical plots. 
+
+In Matplotlib Basics we use the functional method; on Matplotlib Figures and Subplots the OOP method. 
+
+Topics: 
+
+- Basics and Functions
+- Figures
+- Subplots
+- Styling
+
+[Matplotlib: Python plotting - Matplotlib 3.3.3 documentation](https://matplotlib.org/)
+
+[Thumbnail gallery - Matplotlib 2.0.2 documentation](https://matplotlib.org/gallery.html)
+
+[](https://matplotlib.org/3.1.1/gallery/index.html)
+
+Goals: 
+
+- Plot out a functional relationship (y=ax) (plotting a known relationship from an equation)
+- Plot out a relationship between raw data points (x=[x_1,x_2,x_3,x_4], y=[y_1,y_2,y_3,y_4]) (plotting raw data points)
+
+## Basics
+
+The most basic way to use matplotlib is though the function plot class: `plt.plot(x,y`. These function calls are simple to use, but don't allow for very high degrees of control > quickly visualize relationships and data. Later we will explore the more robust OOP Matplotlib Figure API. 
+
+## Figure Object
+
+The more comprehensive Matplotlib OOP API makes use of a Figure object. We then add axes to this Figure object and then plot on those axes. This allows for very robust controls over the entire plot. 
+
+1. Create the figure object with the `plt.figure()` method and adjust high level parameters, e.g. figure size or dots per inch (and assign it a variable)
+2. Add a set of axes to the figure with the `.add_axes()` method and assign it to a variable 
+3. Plot on top of that set of axis with the `.plot()` method
+
+Important when saving to use `fig.savefig('figure.png', bbox_inches='tight')` 
+
+## Subplots Functionality
+
+We can create a Figure object and manually add and arrange sets of axes to line up multiple plots side by side. However, matplotlib comes with a pre-configured function call `plt-subplots()`that automatically does this. 
+
+This call allows us to easily create Figure and Axes objects in side by side formations. The call `plt.subplots()` return a tuple which by convention we label `(fig,axes)`: `fig` in the entire Figure canvas and `axes` is a numpy array holding each of the axes according to position in the overall canvas. 
+
+[matplotlib.pyplot.subplots_adjust - Matplotlib 3.2.2 documentation](https://matplotlib.org/3.2.2/api/_as_gen/matplotlib.pyplot.subplots_adjust.html)
+
+## Styling
+
+Matpotlib offers very robust styling functions that allow us to edit colors, legends, line widths, markers, etc. 
+
+Stylings: 
+
+- [Legends](https://matplotlib.org/tutorials/intermediate/legend_guide.html)
+- Visual Styling
+    - Colors (with [HEX Color Picker](https://www.w3schools.com/colors/colors_picker.asp))
+    - Editing Lines
+        - Colors, Widths, Styles
+        # possible linestyle options ‘--‘, ‘–’, ‘-.’, ‘:’, ‘steps’
+    - Editing [Markers](https://matplotlib.org/3.2.2/api/markers_api.html)
+        - Colors, Size, Styles, Edges
+
+## Advanced Commands
+
+Almost any Matplotlib question you can think of already has an answer in StackOverflow or an example in the Matplotlib gallery > leaverage these many examples to your advantage and do not waste energy and time into memorizing esoteric commands! 
+
+# 🌊 Seaborn
 
 Start here! 
 
@@ -635,3 +708,5 @@ Can we model the process in the project as a Poisson process?
 [% (String Formatting Operator) - Python Reference (The Right Way) 0.1 documentation](https://python-reference.readthedocs.io/en/latest/docs/str/formatting.html)
 
 [How to save Jupyter's environment (and kernels)](https://kiwidamien.github.io/save-jupyters-environment)
+
+[Visualize any Data Easily, from Notebooks to Dashboards | Scipy 2019 Tutorial | James Bednar](https://www.youtube.com/watch?v=7deGS4IPAQ0)

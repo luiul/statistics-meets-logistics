@@ -1,7 +1,7 @@
-# macOS-specific file
 .DS_Store
-
-__pycache_
+__pycache__
+.vscode
+.virtual_documents
 
 # Created by https://www.toptal.com/developers/gitignore/api/jupyternotebooks
 # Edit at https://www.toptal.com/developers/gitignore?templates=jupyternotebooks
