@@ -36,7 +36,7 @@ Community, documenation and events:
 
 ## Jupyter Notebook
 
-Version control with Git: 
+See [themes](https://stackoverflow.com/questions/46510192/change-the-theme-in-jupyter-notebook). Version control with Git: 
 
 [Reproducible Data Analysis in Jupyter, Part 3/10: Version Control with Git & GitHub](https://www.youtube.com/watch?v=J45NJ0pJXWQ)
 
@@ -615,7 +615,7 @@ Stylings:
 - Visual Styling
     - Colors (with [HEX Color Picker](https://www.w3schools.com/colors/colors_picker.asp))
     - Editing Lines
-        - Colors, Widths, Styles `possible linestyle options ‘--‘, ‘–’, ‘-.’, ‘:’, ‘steps’`
+        - Colors, Widths, Styles
     - Editing [Markers](https://matplotlib.org/3.2.2/api/markers_api.html)
         - Colors, Size, Styles, Edges
 
@@ -625,7 +625,98 @@ Almost any Matplotlib question you can think of already has an answer in StackOv
 
 # 🌊 Seaborn
 
-Start here! 
+[seaborn: statistical data visualization - seaborn 0.11.0 documentation](https://seaborn.pydata.org/)
+
+Statistical plotting library designed to interact well with Pandas DataFrames to create common statistical plot types. It is built directly off of Matplotlib but uses a simpler syntax > we trade-off customization for ease of use. However, since its built directly off of Matplotlib, we can still make plt method calls to directly affect the resulting seaborn plot > seaborn is an abstraction above Matplotlib commands (with the same figure object and axes objects). 
+
+A typical seaborn plot uses one line of come, e.g.
+
+```python
+sns.scatterplot(x='salary', y='sales', data=df)
+```
+
+Seaborn takes in the DataFrame and then the user provides the corresponding string column names for x and y (depending on the plot type). It is important to focus on understanding the use cases for each plot and the seaborn syntax for them. 
+
+It is important to understand the question you're trying to answer. If a visualization is useful you can google 'choosing a plot visualization' for useful flowcharts on the topic.
+
+Overview: 
+
+- Scatter Plots
+- Distribution Plots
+- Categorical Plots
+- Comparison Plots
+- Seaborn Grids
+- Matrix Plots
+
+## Scatter Plots
+
+Scatter plots show the relationship between two continuous features. Recall that **continuous** feature are numeric variables that can take any number of values between any two values, e.g. age, height, salary, temperature, prices, etc.
+
+A continuous feature allow for a value to always be between two values. This is not b confused with **categorical** features which represent distinct and unique categories, e.g. colors, shapes, names, etc. 
+
+Scatter plots line up a set of two continuous features and plots them out as coordinates. Example: employees with salaries who sell a certain dollar amount of items each year. We could explore the relationship between employee salaries and sales amount. 
+
+You can choose a [color palette](https://matplotlib.org/tutorials/colors/colormaps.html) for the plot with the parameter `palette`. 
+
+**The `hue` parameter determines which columns in the data frame should be used for color encoding (parameter is a categorical feature; commonly use in seaborn plots).** 
+
+## Distribution Plots
+
+In this section we use a [data generator](http://roycekimmons.com/tools/generated_data). 
+
+Distribution plots display a single continuous feature and help visualize properties such as deviation and average values. There are 3 main distribution plot types: 
+
+- Rug Plot: simplest distribution plot; it merely adds a dash or tick line for every single value (one dimensional scatter plot with one variable)
+    - CONS:
+        - the y-axis contains no information / not interpretable
+        - many ticks can be on top of each other but we can't tell
+    - PROS:
+        - it's easy to see outliers
+- Histogram: essentially a modified rug plot. If we count how many ticks there are per various x-ranges, we can create a histogram.
+    1. we choose the number of "bins", i.e. the number and size of intervals
+    2. we count the number of data points / instances in the intervals
+    3. we create a bar as high as count
+
+    Note that we can normalize the Y-axis as a percentage. Changing the number and size of the intervals show more detail instad of general trends. 
+
+- KDE Plot (Kernel Density Estimation): Seaborn allows us to add on a KDE plot curve on top of a histogram. It shows what a continuous PDF would look like for this particular dataset. KDE is a method of **estimating** PDF of a random variable > it's a way of estimating a continuous probability curve for a finite data sample. Construction:
+    1. we start off with a rug plot 
+    2. we decide what kernel to use, i.e. what probability distribution do we want to stack on top of each instance
+    3. we sum all distributions to come up the KDE plot
+    4. if the values are outside the image of the random variable we can make a hard cut on the plot (and renormalize)
+
+    Note that we can change the kernel and the bandwidth used on the KDE to show more or less of the variance contained in the data
+
+continue here
+
+## Categorical Plots - Statistics within Categories
+
+The categorical plots discussed here will display a statistical metric **per** category, e.g. mean value per category or a count of the number of row per category > it is the visualization equivalent of a `groupby()` call. 
+
+The two main types of plots for this are: 
+
+- `countplot()` to count number of rows per category. We can display more information in the plot with the addition of hue separation.
+- `barplot()` which is the general form of displaying any chosen metric (measure or estimator) per category, e.g. the mean value or standard deviation. Note: be careful when using these plots, since the bar is filled and continuous, a viewer may interpret continuity along the y-axis which may be incorrect! > Always make sure to add additional labeling and explanation for these plots! > since this are single values it is probably better to report this in a table
+
+## Distributions within Categories
+
+We explored distributions plots for a single feature, i.e. rug plot, histogram and KDE, but what if we want to compare distributions across categories? For example, instead of the distribution of everyone's salary, we can compare the distribution of salaries **per** level of education. We will first separate out each category, then create the distribution visualization. 
+
+Plot types: 
+
+- Boxplot: displays the distribution of a continuous variable. It does this through the use of quartiles. Quartiles separate out the data into 4 equal number of data points: 25% of data points are in bottom quartile. 50th percentile (Q2) is the median. The median splits the data in half (half the data points are to the right / left of it). 
+The IQR defines the box width > 50% of all data points are inside the box. 
+The whiskers are defined by 1.5 IQR. 
+Outside of the whiskers are outliers. 
+Boxplots quickly give statistical distribution information in a visual format > we can make a boxplot **per** category. 
+Note: the boxplot contains information about the distribution of the data, but not the amount of data points (in a category)
+- Violinplot: similar role as the boxplot. It displays the PDF across the data using a KDE. We can imagine it as a mirrored KDE plot.
+- Swarmplot: simply shows all the data points in the distribution > this **will** display the number of data points per category
+- [Boxenplot](https://vita.had.co.nz/papers/letter-value-plot.html) / Letter-Value Plot: expansion upon the normal box plot. Using a system of letter-values we can use multiple quantiles instead of strictly quartiles.
+
+## Comparison Plots
+
+start here! 
 
 # 🔧 Open Questions and Tasks
 
@@ -709,3 +800,9 @@ Can we model the process in the project as a Poisson process?
 [How to save Jupyter's environment (and kernels)](https://kiwidamien.github.io/save-jupyters-environment)
 
 [Visualize any Data Easily, from Notebooks to Dashboards | Scipy 2019 Tutorial | James Bednar](https://www.youtube.com/watch?v=7deGS4IPAQ0)
+
+[pandas - check for non unique values in dataframe groupby](https://stackoverflow.com/questions/33732106/pandas-check-for-non-unique-values-in-dataframe-groupby)
+
+[How to install the JupyterLab plugin](https://help.kite.com/article/143-how-to-install-the-jupyterlab-plugin)
+
+[Meaning of 'hue" in seaborn barplot](https://datascience.stackexchange.com/questions/46117/meaning-of-hue-in-seaborn-barplot)
