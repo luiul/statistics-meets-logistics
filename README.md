@@ -615,8 +615,7 @@ Stylings:
 - Visual Styling
     - Colors (with [HEX Color Picker](https://www.w3schools.com/colors/colors_picker.asp))
     - Editing Lines
-        - Colors, Widths, Styles
-        # possible linestyle options ‘--‘, ‘–’, ‘-.’, ‘:’, ‘steps’
+        - Colors, Widths, Styles `possible linestyle options ‘--‘, ‘–’, ‘-.’, ‘:’, ‘steps’`
     - Editing [Markers](https://matplotlib.org/3.2.2/api/markers_api.html)
         - Colors, Size, Styles, Edges
 
@@ -637,7 +636,6 @@ Start here!
 
 ## Backlog
 
-- Seaborn
 - Crapstone
 - Linear Regression
 - Logistics Regression
@@ -646,7 +644,7 @@ Start here!
 
 ## In Progress
 
-- Matplotlib
+- Seaborn
 - Apply Panda lessons to project
 - Convert [rawTimesamp](https://stackoverflow.com/questions/19231871/convert-unix-time-to-readable-date-in-pandas-dataframe) feature into a datetime object > useful later for feature engineering (see [documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.to_datetime.html))
 - Make an outline of the project
@@ -657,12 +655,13 @@ Start here!
 
 ## Resolved
 
-- Do crash course on Git
-- Upload files to Github
-- Python Crash Course
-- Machine Learning Pathway
-- Numpy
+- Matplotlib
 - Pandas
+- Numpy
+- Machine Learning Pathway
+- Python Crash Course
+- Upload files to Github
+- Do crash course on Git
 
 ## Workflow
 
