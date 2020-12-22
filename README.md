@@ -6,6 +6,83 @@ The [course](https://www.statistik.tu-dortmund.de/2791.html) and the [material](
 
 In the course, students will learn about the application of statistical methods and basic machine learning procedures for the analysis of complex data in the field of logistics. This includes methods of descriptive statistics as well as various regression and classification procedures including neural networks. After the introduction of the methods, the students apply the acquired knowledge independently to work on logistical problems in various practical exercises. The software Python and relevant packages are used.
 
+# 📑 Table of Contents
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<!-- END doctoc -→
+
+- [🌅 Background](#-background)
+  - [Getting Started with Anaconda](#getting-started-with-anaconda)
+  - [Jupyter Notebook](#jupyter-notebook)
+  - [JupyterLab](#jupyterlab)
+  - [VS Code](#vs-code)
+  - [Version Control with Git](#version-control-with-git)
+  - [Basic Markdown](#basic-markdown)
+  - [Virtual Environments](#virtual-environments)
+  - [Setup the virtual environment](#setup-the-virtual-environment)
+  - [Activate the virtual environment](#activate-the-virtual-environment)
+- [🐍 Python Crash Course](#-python-crash-course)
+  - [Crash Course](#crash-course)
+- [🤖 Machine Learning Pathway](#-machine-learning-pathway)
+  - [Meta-Pathway](#meta-pathway)
+  - [Pathway](#pathway)
+- [🥧 NumPy](#-numpy)
+  - [Array](#array)
+    - [Random](#random)
+    - [Useful Attributes and Method Calls](#useful-attributes-and-method-calls)
+  - [Indexing and Selection](#indexing-and-selection)
+    - [Broadcasting and Slicing](#broadcasting-and-slicing)
+    - [Operations](#operations)
+- [🐼 Pandas](#-pandas)
+  - [Series](#series)
+  - [DataFrames](#dataframes)
+    - [Conditional Formating](#conditional-formating)
+  - [Useful Methods](#useful-methods)
+    - [Apply Method a Single Column](#apply-method-a-single-column)
+    - [Apply Method on Multiple Columns](#apply-method-on-multiple-columns)
+    - [Describing and Sorting](#describing-and-sorting)
+  - [Missing Data](#missing-data)
+  - [GroupBy Operations](#groupby-operations)
+  - [Combining DataFrames](#combining-dataframes)
+    - [Concatenate](#concatenate)
+    - [Merge](#merge)
+  - [Text Methods for String Data](#text-methods-for-string-data)
+  - [Time Methods for Date and Time Data](#time-methods-for-date-and-time-data)
+  - [Input and Output](#input-and-output)
+    - [CSV Files](#csv-files)
+    - [HTML Tables](#html-tables)
+    - [Excel files](#excel-files)
+    - [SQL Databases](#sql-databases)
+  - [Pivot Tables](#pivot-tables)
+  - [Notes from the Exercise](#notes-from-the-exercise)
+- [📈 Matplotlib](#-matplotlib)
+  - [Basics](#basics)
+  - [Figure Object](#figure-object)
+  - [Subplots Functionality](#subplots-functionality)
+  - [Styling](#styling)
+  - [Advanced Commands](#advanced-commands)
+- [🌊 Seaborn](#-seaborn)
+  - [Scatter Plots](#scatter-plots)
+  - [Distribution Plots](#distribution-plots)
+  - [Categorical Plots - Statistics within Categories](#categorical-plots---statistics-within-categories)
+  - [Distributions within Categories](#distributions-within-categories)
+  - [Comparison Plots (!)](#comparison-plots-)
+  - [Grids](#grids)
+  - [Matrix Plots](#matrix-plots)
+  - [Notes from Exercise](#notes-from-exercise)
+- [🗿 Capstone](#-capstone)
+- [🔧 Open Questions and Tasks](#-open-questions-and-tasks)
+  - [Open Questions](#open-questions)
+  - [Backlog](#backlog)
+  - [In Progress](#in-progress)
+  - [Resolved](#resolved)
+  - [Workflow](#workflow)
+- [📋 Outline of Project (WIP)](#-outline-of-project-wip)
+- [💡 Misc](#-misc)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # 🌅 Background
 
 In this section we setup the relevant systems for the project and provide additional material not directly tied to the project.
@@ -53,6 +130,8 @@ Useful shortcuts in Jupyter notebook:
 [Contributing to JupyterLab - JupyterLab 2.3.0a2 documentation](https://jupyterlab.readthedocs.io/en/stable/developer/contributing.html?highlight=virtual%20environment#installing-jupyterlab)
 
 [How to add conda environment to jupyter lab](https://stackoverflow.com/questions/53004311/how-to-add-conda-environment-to-jupyter-lab)
+
+[mauhai/awesome-jupyterlab](https://github.com/mauhai/awesome-jupyterlab)
 
 ## VS Code
 
@@ -650,6 +729,12 @@ Overview:
 
 ## Scatter Plots
 
+**continuous feature + categorical hue**
+
+ **x = cont_feature1, y = cont_feature2**
+
+---
+
 Scatter plots show the relationship between two continuous features. Recall that **continuous** feature are numeric variables that can take any number of values between any two values, e.g. age, height, salary, temperature, prices, etc.
 
 A continuous feature allow for a value to always be between two values. This is not b confused with **categorical** features which represent distinct and unique categories, e.g. colors, shapes, names, etc. 
@@ -661,6 +746,12 @@ You can choose a [color palette](https://matplotlib.org/tutorials/colors/colorma
 **The `hue` parameter determines which columns in the data frame should be used for color encoding (parameter is a categorical feature; commonly use in seaborn plots).** 
 
 ## Distribution Plots
+
+**continuous feature**
+
+**x = cont_feature, y = count**
+
+---
 
 In this section we use a [data generator](http://roycekimmons.com/tools/generated_data). 
 
@@ -691,6 +782,12 @@ continue here
 
 ## Categorical Plots - Statistics within Categories
 
+**categorical feature**
+
+ **x = cat_feature, y = estimator**
+
+---
+
 The categorical plots discussed here will display a statistical metric **per** category, e.g. mean value per category or a count of the number of row per category > it is the visualization equivalent of a `groupby()` call. 
 
 The two main types of plots for this are: 
@@ -699,6 +796,12 @@ The two main types of plots for this are:
 - `barplot()` which is the general form of displaying any chosen metric (measure or estimator) per category, e.g. the mean value or standard deviation. Note: be careful when using these plots, since the bar is filled and continuous, a viewer may interpret continuity along the y-axis which may be incorrect! > Always make sure to add additional labeling and explanation for these plots! > since this are single values it is probably better to report this in a table
 
 ## Distributions within Categories
+
+**grouped continuous feature**
+
+ **x = cat_feature, y = cont_feature**
+
+---
 
 We explored distributions plots for a single feature, i.e. rug plot, histogram and KDE, but what if we want to compare distributions across categories? For example, instead of the distribution of everyone's salary, we can compare the distribution of salaries **per** level of education. We will first separate out each category, then create the distribution visualization. 
 
@@ -714,9 +817,64 @@ Note: the boxplot contains information about the distribution of the data, but n
 - Swarmplot: simply shows all the data points in the distribution > this **will** display the number of data points per category
 - [Boxenplot](https://vita.had.co.nz/papers/letter-value-plot.html) / Letter-Value Plot: expansion upon the normal box plot. Using a system of letter-values we can use multiple quantiles instead of strictly quartiles.
 
-## Comparison Plots
+## Comparison Plots (!)
 
-start here! 
+**continuous feature + categorical hue**
+
+**x = cont_feature1, y = cont_feature2**
+
+---
+
+Comparison plots are essentially 2-dimensional versions of the plots we've learned about so far. The two main plot types discussed here are: 
+
+- jointplot(): map histograms to each feature of a scatterplot to clarify the distribution within each feature. We can also adjust the scatterplot to be a hexagons plot or a 2D KDE plot. 
+In the hexagon plot, hexagons are dark the more points fall into their area.
+2D KDE plots show shaded distribution between both KDEs.
+- pairplot(): quick way to compare all numerical columns in a DataFrame. It automatically creates a histogram for each column and a scatterplot comparison between all possible combinations of columns. pairplot() can be CPU and RAM intensive for large DataFrames with many columns > it is a good idea to first filter down to only the columns you are interested in. We can add a hue parameter. We can do this with an KDE too.
+
+For comparison plots we need two continuous features. 
+
+## Grids
+
+**continuous feature + categorical axis (cols or rows) + categorical hue**
+
+**x = cat_feature, y = cont_feature**
+
+---
+
+Seaborn grid calls use Matplotlib subplots() to automatically create a grid based off a categorical column. Instead of passing in a specific number of cols or row for the subplots, we can simply pass int he name of the column and seaborn will automatically map the subplots grid. 
+
+Many built-in plot calls are running on top of this grid system. Directly calling the grid system allows users to heavily customize plots. Calls: 
+
+- catplot(): takes in cols / rows of categorical features and plots the data by category. It runs on a FacetGrid.
+- PairGrid(): pairpot() calls the PairGrid functionality which creates a grid and fills it in. Calling PairGrid makes the grid and wait for mapping commands. We can add a hue in the higher level PairGrid call (note that it doesn't automatically add the legend).
+
+## Matrix Plots
+
+**continuous feature grouped by index**
+
+**x = all_cont_features, y = all_cont_features**
+
+---
+
+Matrix are the visual equivalent of displaying a pivot table. The matrix plot displays all the data passed in, visualizing all the numeric values in a data frame. Note that not every data frame is a valid choice for a matrix plot such as a heatmap. 
+
+The two main matrix plot types are: 
+
+- heatmap(): visually displays the distribution of cell values with a color mapping. Note that a heatmap should ideally have all cells be in the same unit, so the color mapping makes sense across the **entire** data frame. In the example, all values are **rates** of percentage growth or change were in the heatmap. Use cmap instead of palette as a parameter.
+- clustermap(): same visual as heatmap, but first conducts **hierarchical clustering** to reorganize data into groups.
+
+Note that seaborn comes with the ability to automatically cluster similar groupings. Later on we will discuss how this clustering is done when we learn about Machine Learning clustering techniques. 
+
+**We often do a heat map on the correlation of the features within machine learning to see what features are good candidates for trying to predict a label!** 
+
+## Notes from Exercise
+
+Main goal of seaborn is to be able to use its simpler syntax to quickly create informative plots. In general its dificult to test on seaborn skills since most plots are simply passing in the data and choosing x and y. Most plots have filtering and adjustments with pandas on the data frame **before** being passed into the seaborn call. 
+
+# 🗿 Capstone
+
+Start here!
 
 # 🔧 Open Questions and Tasks
 
@@ -758,7 +916,10 @@ start here!
 
 - pull repo
 - work on project
-- update README
+- update readme
+    - export readme from Notion
+    - generate TOC
+    - edit readme
 - push repo
 
 # 📋 Outline of Project (WIP)
@@ -806,3 +967,5 @@ Can we model the process in the project as a Poisson process?
 [How to install the JupyterLab plugin](https://help.kite.com/article/143-how-to-install-the-jupyterlab-plugin)
 
 [Meaning of 'hue" in seaborn barplot](https://datascience.stackexchange.com/questions/46117/meaning-of-hue-in-seaborn-barplot)
+
+[Six easy ways to run your Jupyter Notebook in the cloud](https://www.dataschool.io/cloud-services-for-jupyter-notebook/)
