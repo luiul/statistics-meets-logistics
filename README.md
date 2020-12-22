@@ -10,7 +10,7 @@ In the course, students will learn about the application of statistical methods 
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-<!-- END doctoc -→
+<!-- END doctoc -->
 
 - [🌅 Background](#-background)
   - [Getting Started with Anaconda](#getting-started-with-anaconda)
