@@ -1,6 +1,8 @@
 # Statistics Meets Logistics
 
-The [course](https://www.statistik.tu-dortmund.de/2791.html) and the [material](https://moodle.tu-dortmund.de/enrol/index.php?id=22199) provided by the lecturer are in German. The documentation is in English. This repository documents our preparation for the project and holds the project and its data. Consider using a browser [extension](https://github.com/AaronCQL/katex-github-chrome-extension) to preview LaTeX equations directly on GitHub ([alternative](https://github.com/masakiaota/tex_image_link_generator)). We use LaTeX flavored equations starting from the Linear Regression Section of the repository. 
+The [course](https://www.statistik.tu-dortmund.de/2791.html) and the [material](https://moodle.tu-dortmund.de/enrol/index.php?id=22199) provided by the lecturer are in German. The documentation is in English. This repository documents our preparation for the project and holds the project and its data. 
+
+Consider using a browser [extension](https://github.com/AaronCQL/katex-github-chrome-extension) to preview LaTeX equations directly on GitHub (or copy the block directly from the readme file and use an [alternative](https://github.com/masakiaota/tex_image_link_generator)). We use LaTeX flavored equations starting from the *Introduction to Linear Regression* section of the repository. 
 
 # 📖 Description
 
@@ -79,7 +81,7 @@ In the course, students will learn about the application of statistical methods 
     - [Supervised Learning](#supervised-learning)
     - [Unsupervised Learning](#unsupervised-learning)
   - [Supervised ML Process](#supervised-ml-process)
-- [📈 Introduction to Linear Regression](#-introduction-to-linear-regression)
+- [📏 Introduction to Linear Regression](#-introduction-to-linear-regression)
   - [Algorithm History](#algorithm-history)
   - [OLS Equations](#ols-equations)
   - [Cost Functions](#cost-functions)
@@ -92,6 +94,9 @@ In the course, students will learn about the application of statistical methods 
     - [Mean Absolute Error (MAE)](#mean-absolute-error-mae)
     - [**Mean Squared Error** (MSE)](#mean-squared-error-mse)
     - [**Root Mean Squared Error** (RMSE)](#root-mean-squared-error-rmse)
+  - [Evaluating Residuals](#evaluating-residuals)
+  - [Model Deployment and Coefficient](#model-deployment-and-coefficient)
+- [🦑 Polynomial Regression](#-polynomial-regression)
 - [🔧 Open Questions and Tasks](#-open-questions-and-tasks)
   - [Open Questions](#open-questions)
   - [Backlog](#backlog)
@@ -1134,7 +1139,7 @@ Train / Test Split:
 - Usually, the percentage of training data is larger the percentage of test data.
 - We have 4 components of data: X train, Y train, X test and Y test.
 
-# 📈 Introduction to Linear Regression
+# 📏 Introduction to Linear Regression
 
 This section covers: 
 
@@ -1398,7 +1403,49 @@ Question: What is a good value for the MAE / MSE / RMSE?
 - We may create a model to predict how much medication to give > small fluctuations in RMSE may actually be very significant
 - We create a model to try to improve on existing human performance > we would need some baseline RMSE to compare to and make sure we're improving on previous work
 
-It is recommended to use both the MAE & RMSE -> check to see if on average we're doing good & make sure the prediction is not far off for some data points. 
+It is recommended to use both the MAE & RMSE > check to see if on average we're doing good & make sure the prediction is not far off for some data points. 
+
+## Evaluating Residuals
+
+[Errors and residuals](https://en.wikipedia.org/wiki/Errors_and_residuals)
+
+It's important to separately evaluate **residuals** and not just calculate performance metrics. 
+
+Considering Anscombe's quartet it is obvious that linear regression is not valid for every situation >  how can we tell if we're dealing with more than one x feature, whether or not linear regression was valid since we can not see this discrepancy of fit visually if we have multiple features. 
+
+What we can do is plot residual error against true y values (scalable to any number of features) > the residual errors should be random and close to a normal distribution (centered around 0).
+
+We can also visualize the residual plot. The **residual plot** shows residual error vs true y value. We're plotting the residual (versus y true value) > this should be random > there should be no clear line or curve! 
+
+If Linear Regression is not valid then this will be clear in the **residual plot** as it will show a clear pattern / curve > choose another model! 
+
+Goal: use residual plots to amke sure that the underlying ML algorithm is a valid choice. 
+
+To make sure that the distribution of the residual is normal we can use a normal probability plot (also called QQ plot, normal quantile plot) > compare what a perfectly normally distributed data set versus your actual values (subjective normality test)
+
+Construction: 
+
+- Sort data ascending
+- Rank the data points
+- Compute Plotting Position
+
+## Model Deployment and Coefficient
+
+Model deployment here means only loading and saving the model for future use. Recall the supervised ML process: 
+
+- **X and y Data > Training Data Set & Test Data Set > Fit / Train Model & Evaluate Performance >** Adjust as Needed > Deploy Model
+
+Question: How do we adjust the model? Later, we'll explore polynomial regression and regularization as model adjustments. 
+
+For now we focus on a simple "deployment" of our model by saving (model persistence) and loading it, then applying to new data. 
+
+We fit the final model on all the data since we've decided that these model hyper-parameters are good enough on a test set, so when deployed to the real world, we want to take full advantage of the entire data set and retrain the model on it. 
+
+# 🦑 Polynomial Regression
+
+In this section we discuss Polynomial Regression. We just completed a Linear Regression task, allowing us to predict future label values given a set of features.
+
+Question: how can we improve on a Linear Regression Model? One approach is to consider **higher order relationships** on the feature. 
 
 # 🔧 Open Questions and Tasks
 
@@ -1423,6 +1470,7 @@ It is recommended to use both the MAE & RMSE -> check to see if on average we're
 - Decide what are the relevant categorial columns for the project
 - Make a [data column reference](https://www.notion.so/ac02bfefe61246918aabf0e6094f18c9) in HTML (see [data type](https://en.wikipedia.org/wiki/Data_type), [7 data types](https://towardsdatascience.com/7-data-types-a-better-way-to-think-about-data-types-for-machine-learning-939fae99a689); use Notion or [Tables Generator](https://www.tablesgenerator.com/html_tables))
 - Strip project data
+- Determine an average payload
 
 ## Resolved (Preparation)
 
@@ -1517,3 +1565,5 @@ Can we model the process in the project as a Poisson process?
 [return string with first match Regex](https://stackoverflow.com/questions/38579725/return-string-with-first-match-regex)
 
 [Creating for loop until list.length](https://stackoverflow.com/questions/14532875/creating-for-loop-until-list-length)
+
+[IPython Notebook cell multiple outputs](https://stackoverflow.com/questions/34398054/ipython-notebook-cell-multiple-outputs)
