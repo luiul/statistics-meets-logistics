@@ -1,6 +1,6 @@
 # Statistics Meets Logistics
 
-The [course](https://www.statistik.tu-dortmund.de/2791.html) and the [material](https://moodle.tu-dortmund.de/enrol/index.php?id=22199) provided by the lecturer are in German. The documentation is in English. This repository documents our preparation for the project and holds the project and its data.
+The [course](https://www.statistik.tu-dortmund.de/2791.html) and the [material](https://moodle.tu-dortmund.de/enrol/index.php?id=22199) provided by the lecturer are in German. The documentation is in English. This repository documents our preparation for the project and holds the project and its data. Consider using a browser [extension](https://github.com/AaronCQL/katex-github-chrome-extension) to preview LaTeX equations directly on GitHub ([alternative](https://github.com/masakiaota/tex_image_link_generator)). We use LaTeX flavored equations starting from the Linear Regression Section of the repository. 
 
 # 📖 Description
 
@@ -56,7 +56,7 @@ In the course, students will learn about the application of statistical methods 
     - [SQL Databases](#sql-databases)
   - [Pivot Tables](#pivot-tables)
   - [Notes from the Exercise](#notes-from-the-exercise)
-- [📈 Matplotlib](#-matplotlib)
+- [📊 Matplotlib](#-matplotlib)
   - [Basics](#basics)
   - [Figure Object](#figure-object)
   - [Subplots Functionality](#subplots-functionality)
@@ -71,12 +71,33 @@ In the course, students will learn about the application of statistical methods 
   - [Grids](#grids)
   - [Matrix Plots](#matrix-plots)
   - [Notes from Exercise](#notes-from-exercise)
-- [🗿 Capstone](#-capstone)
+- [🗿 Capstone Project](#-capstone-project)
+  - [Normalization](#normalization)
+- [🏔 Machine Learning Concepts Overview](#%F0%9F%8F%94-machine-learning-concepts-overview)
+  - [Why Machine Learning?](#why-machine-learning)
+  - [Types of ML Algorithms](#types-of-ml-algorithms)
+    - [Supervised Learning](#supervised-learning)
+    - [Unsupervised Learning](#unsupervised-learning)
+  - [Supervised ML Process](#supervised-ml-process)
+- [📈 Introduction to Linear Regression](#-introduction-to-linear-regression)
+  - [Algorithm History](#algorithm-history)
+  - [OLS Equations](#ols-equations)
+  - [Cost Functions](#cost-functions)
+  - [Gradient Descent](#gradient-descent)
+  - [Coding Simple Linear Regression with Python](#coding-simple-linear-regression-with-python)
+- [📚 Scikit-learn](#-scikit-learn)
+  - [Linear Regression with Scikit-learn](#linear-regression-with-scikit-learn)
+    - [Data Setup and Model Training](#data-setup-and-model-training)
+  - [Performance Evaluation with Scikit-learn - Regression Metrics](#performance-evaluation-with-scikit-learn---regression-metrics)
+    - [Mean Absolute Error (MAE)](#mean-absolute-error-mae)
+    - [**Mean Squared Error** (MSE)](#mean-squared-error-mse)
+    - [**Root Mean Squared Error** (RMSE)](#root-mean-squared-error-rmse)
 - [🔧 Open Questions and Tasks](#-open-questions-and-tasks)
   - [Open Questions](#open-questions)
   - [Backlog](#backlog)
   - [In Progress](#in-progress)
-  - [Resolved](#resolved)
+  - [Resolved (Preparation)](#resolved-preparation)
+  - [Resolved (Project)](#resolved-project)
   - [Workflow](#workflow)
 - [📋 Outline of Project (WIP)](#-outline-of-project-wip)
 - [💡 Misc](#-misc)
@@ -113,7 +134,7 @@ Community, documenation and events:
 
 ## Jupyter Notebook
 
-See [themes](https://stackoverflow.com/questions/46510192/change-the-theme-in-jupyter-notebook). Version control with Git: 
+See [themes](https://stackoverflow.com/questions/46510192/change-the-theme-in-jupyter-notebook). See [extensions](https://github.com/ipython-contrib/jupyter_contrib_nbextensions), e.g. [variable explorer](https://stackoverflow.com/questions/37718907/variable-explorer-in-jupyter-notebook). Version control with Git: 
 
 [Reproducible Data Analysis in Jupyter, Part 3/10: Version Control with Git & GitHub](https://www.youtube.com/watch?v=J45NJ0pJXWQ)
 
@@ -125,7 +146,7 @@ Useful shortcuts in Jupyter notebook:
 
 ## JupyterLab
 
-[JupyterLab](https://github.com/jupyterlab/jupyterlab) is the next-gen user interface for Project Jupyter offering all the familiar building blocks of the classic Jupyter Notebook (notebook, terminal, text editor, file browser, rich outputs, etc.) in a flexible and powerful user interface. JupyterLab will eventually replace the classic Jupyter Notebook.
+[JupyterLab](https://github.com/jupyterlab/jupyterlab) is the next-gen user interface for Project Jupyter offering all the familiar building blocks of the classic Jupyter Notebook (notebook, terminal, text editor, file browser, rich outputs, etc.) in a flexible and powerful user interface. JupyterLab will eventually replace the classic Jupyter Notebook. [Kite](https://github.com/kiteco/jupyterlab-kite) is available for Jupyterlab. 
 
 [Contributing to JupyterLab - JupyterLab 2.3.0a2 documentation](https://jupyterlab.readthedocs.io/en/stable/developer/contributing.html?highlight=virtual%20environment#installing-jupyterlab)
 
@@ -186,7 +207,7 @@ There are two options:
 
 # 🐍 Python Crash Course
 
-This is the section for the Python crash course. [Python documentation](https://docs.python.org/3/contents.html).
+This is the section for the Python crash course. [Python documentation](https://docs.python.org/3/contents.html). [Python Built-in Functions](https://docs.python.org/3/library/functions.html). 
 
 ## Crash Course
 
@@ -311,6 +332,8 @@ Lots of built-in random functions
 - array.shape
 - array.dtype
 
+[Index of element in NumPy array](https://stackoverflow.com/questions/18079029/index-of-element-in-numpy-array)
+
 ## Indexing and Selection
 
 - Grabbing single element
@@ -412,6 +435,8 @@ Overview:
 ## Useful Methods
 
 [API reference - pandas 1.1.5 documentation](https://pandas.pydata.org/pandas-docs/stable/reference/index.html)
+
+[Indexing and selecting data - pandas 1.1.5 documentation](https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy)
 
 Series and DataFrames have specialised methods of calls that are very useful. Check the API reference above if necessary. 
 
@@ -544,6 +569,8 @@ Second, we decide how to merge the tables on the selected column.
 
 We can also merge on an index instead of a column 
 
+[Merge two dataframes by index](https://stackoverflow.com/questions/40468069/merge-two-dataframes-by-index)
+
 ## Text Methods for String Data
 
 [Working with text data - pandas 1.1.5 documentation](https://pandas.pydata.org/docs/user_guide/text.html)
@@ -615,12 +642,13 @@ You should first go through this checklist **before** running a pivot():
 - What would a DataFrame that answers the question look like? Does it need a pivot()?
 - What do you want the resulting pivot to look like?
 
-Usually a groupby() call is a better solution to these questions. 
+Usually a groupby() call is a better solution  1wto these questions. 
 
 Pandas also comes with a pivot_table method that allows for an additional aggregation function to be called. This could alternatively be done with a groupby() method as well. 
 
 ## Notes from the Exercise
 
+- See [styling documentation](https://pandas.pydata.org/pandas-docs/stable/user_guide/style.html) for more styling options.
 - Important function to determine most common value in a Series `value_counts()` for Categorical values. For Numerical values use `sort_values()`method.
 - Use lambda functions and np.vectorize more!
 - Break the code into chunks if necessary, for example:
@@ -634,7 +662,7 @@ h.iloc[positions][['name','adults','kids','babies','children']]
 # locate by index, print relevant columns
 ```
 
-# 📈 Matplotlib
+# 📊 Matplotlib
 
 Visualizing data is crucial to quickly understanding trends and relationships in your dataset matplotlib is knows as the 'grandfather' of plotting and visualization libraries for Python. Many other visualization libraries are built directly off of matplotlib (e.g. seaborn and pandas built-in visualization). 
 
@@ -690,7 +718,7 @@ Matpotlib offers very robust styling functions that allow us to edit colors, leg
 
 Stylings: 
 
-- [Legends](https://matplotlib.org/tutorials/intermediate/legend_guide.html)
+- [Legends](https://matplotlib.org/tutorials/intermediate/legend_guide.html) (see also [stack overflow question](https://stackoverflow.com/questions/39803385/what-does-a-4-element-tuple-argument-for-bbox-to-anchor-mean-in-matplotlib/39806180#39806180))
 - Visual Styling
     - Colors (with [HEX Color Picker](https://www.w3schools.com/colors/colors_picker.asp))
     - Editing Lines
@@ -872,9 +900,505 @@ Note that seaborn comes with the ability to automatically cluster similar groupi
 
 Main goal of seaborn is to be able to use its simpler syntax to quickly create informative plots. In general its dificult to test on seaborn skills since most plots are simply passing in the data and choosing x and y. Most plots have filtering and adjustments with pandas on the data frame **before** being passed into the seaborn call. 
 
-# 🗿 Capstone
+# 🗿 Capstone Project
 
-Start here!
+We put our current skills together with a Capstone Project. 
+
+Review: we start from the real world and we start two main approaches: 
+
+1. Problem to Solve: How to fix or change X? 
+2. Question to Answer: How does a change in X affect Y? 
+
+We have the basic skill set to perform basic data analysis (Jupyter Notebook + NumPy + Pandas + Matplotlib + Seaborn): 
+
+1. Real World
+2. Collect & Store Data 
+3. Clean & Organize Data
+4. Exploratory Data Analysis
+    1. Report
+    2. Visualization
+    3. Communication
+5. Data Analysis
+6. Real World
+
+Question to answer in this section: is there a conflict of interest for a website that both sells movie tickets **and** displays review ratings? More specifically: does a website like Fandango artificially display higher review rating to sell more movie tickets? 
+
+First compare the start (what user see) and rating (internal) features to check for discrepancies. Then, compare Fandango's rating to other rating website scores. 
+
+[Normalize columns of pandas data frame](https://stackoverflow.com/questions/26414913/normalize-columns-of-pandas-data-frame)
+
+[https://www.codecademy.com/articles/normalization#:~:text=Min-max normalization is one,decimal between 0 and 1.&text=That data is just as squished as before](https://www.codecademy.com/articles/normalization#:~:text=Min%2Dmax%20normalization%20is%20one,decimal%20between%200%20and%201.&text=That%20data%20is%20just%20as%20squished%20as%20before)!
+
+[Not clear how to reposition seaborn.histplot legend · Issue #2280 · mwaskom/seaborn](https://github.com/mwaskom/seaborn/issues/2280)
+
+## Normalization
+
+[Article](https://www.codecademy.com/articles/normalization#:~:text=Min%2Dmax%20normalization%20is%20one,decimal%20between%200%20and%201.&text=That%20data%20is%20just%20as%20squished%20as%20before)
+
+Problem: features are on (drastically) different scales. 
+
+Solution:
+
+- Min-Max Normalization: downside: it does not handle outliers very well.
+- Z-Score Normalization: The only potential downside is that the features aren’t on the exact same scale
+
+# 🏔 Machine Learning Concepts Overview
+
+Starting Point: 
+
+We put our current skills together with a Capstone Project. 
+
+Review: we start from the real world and we start two main approaches: 
+
+1. Problem to Solve: How to fix or change X? 
+2. Question to Answer: How does a change in X affect Y? 
+
+We have the basic skill set to perform basic data analysis (Jupyter Notebook + NumPy + Pandas + Matplotlib + Seaborn): 
+
+1. Real World
+2. Collect & Store Data 
+3. Clean & Organize Data
+4. Exploratory Data Analysis
+    1. Report
+    2. Visualization
+    3. Communication
+5. Data Analysis
+6. Real World
+
+We can build:
+
+1. Data Products
+2. Data Analysis
+
+After some Exploratory Data Analysis we move onto *Machine Learning Models*; there are two types: 
+
+1. Supervised Learning: Predict an Outcome
+2. Unsupervised Learning: Discover Pattern in Data
+
+Goals: 
+
+- Problems solved by ML
+- Types of ML
+    - Supervised Learning
+    - Unsupervised Learning
+- ML Process for Supervised Learning
+- Discussion on Companion Book
+
+Other important topics: 
+
+- Bias-Variance Trade-off
+- Over- versus Underfitting
+- Cross-validation
+- Feature Engineering
+- Scikit-learn
+- Performance Metrics
+
+ML Sections: 
+
+- Section for Type of Algorithms
+    - Intuition and Mathematical Theory
+    - Example code-along of application of Algorithm
+    - Expansion of Algorithm
+    - Project Exercise
+    - Project Exercise Solution
+
+The only exception to this workflow in the Linear Regression section:
+
+- Intuition and Mathematica Theory
+- Simple Linear Regression
+- Scikit-learn and Linear Regression
+- Regularization
+
+The goal of this section is to discover additional ML topics: 
+
+- Performance Metrics
+- Feature Engineering
+- Cross-Validation
+
+Afterwards, we revisit Linear Regression to combine discovered ML ideas for a final Project Exercise
+
+## Why Machine Learning?
+
+ML is the study of statistical computer algorithms that improve automatically through data > unlike typical computer algorithms that rely on human input for what approach to take, ML algorithms infer best approach from the data itself.
+
+ML is a subset of AI. ML algorithms are not explicitly programmed on which decisions to make. Instead the algorithm is designed to infer from the data the most optimal choices to make. 
+
+What kinds of problems can ML solve? 
+
+- Credit Scoring
+- Insurance Risk
+- Price Forecasting
+- Spam Filtering
+- Customer Segmentation
+
+Structure of ML Problem Framing: 
+
+- Given **Features** from a data set **obtain** a desired **Label**
+- ML algorithms are often called *estimators* since they are estimating the desired **Label** or output
+
+ML algorithms rely on data and a set of statistical methods to learn what features are important in data. 
+
+Simple Example: predict the price a house should sell at given its current features (area, bedrooms, bathrooms, etc.). f(data) = label, where the label is the sell price. 
+
+House Price Prediction: 
+
+- Typical Algorithm: human user defines an algorithm to manually set values of importance (weights) for each feature
+- ML algorithm: Algorithm automatically determines importance (weight) of each feature from existing data > no human has to manually assign the importance of each feature in the data set in order to predict the label. The ML algorithm is going to use statistical methods to determine the importance of each feature to predict the label.
+
+Motivation: 
+
+- Many complex problems are only solvable with ML techniques
+- Problems such as spam email or handwriting identifiers require ML for an effective solution
+
+Problems: 
+
+- Major caveat to effective ML is good data
+- Majority of development time is spent cleaning and organizing data, **not** implementing ML algorithms
+
+Do we develop our own algorithms? 
+
+- Rarely do we need to manually develop and implement a new ML algorithm, since these techniques are well documented and developed
+- We leverage the work that has already been done and can be found in Python libraries
+
+## Types of ML Algorithms
+
+Two main types: supervised and unsupervised learning. 
+
+### Supervised Learning
+
+Supervised Learning: using **historical** and **labeled** data, the machine learning model predicts a value
+
+Requirement: **historical labeled** data: 
+
+- Labeled: the desired output is know (e.g. we know the label, i.e. the price, for the house > in the future we'll be able to predict the label / price of the house based on its features)
+- Historical: known results and data from the past (e.g. data from houses sold in the past)
+
+Two main label types: 
+
+- Categorical Value to Predict: Classification Task
+- Continuos Value to Predict: Regression Task
+
+Classification Task: 
+
+- Predict an assigned category, e.g. cancerous vs benign tumor (binary), fulfillment vs credit default (binary), assigning image category > handwriting recognition
+
+Regression Task: 
+
+- Predict continuous value: future prices, electricity loads, test scores
+
+### Unsupervised Learning
+
+Unsupervised Learning: applied to **unlabeled** data, the machine learning model discovers possible patterns in the data. 
+
+Groups and interpret data without a label, e.g. clustering customer into separate groups based off their behavior features.
+
+Major downside: there is no historical "correct" label > it is much harder to evaluate performance of an unsupervised learning algorithm 
+
+Here we first focus on supervised learning to build an understanding of ML capabilities. Afterwards, we shift focus to unsupervised leaning for clustering and dimensionality reduction. 
+
+## Supervised ML Process
+
+For (1) collect & store data, (2) clean & organize data, and (3) exploratory data analysis we have jupyter, numpy, pandas, matplotlib, and seaborn. For ML Models, i.e. supervised (outcome prediction) and unsupervised learning (pattern recognition in data), we have **Scikit-learn**.  
+
+Start with collecting and organizing a data set based on history. 
+
+Starting situation: we have **historical labeled** data on previously sold houses. 
+
+Task: create a data product that: if a new house comes on the market with a know Area, Bedrooms, and Bathrooms; predict what price should it sell at. 
+
+Data Product: 
+
+- Input: house features
+- Output: predicted selling price
+
+We're using historical, labeled data to predict a future outcome or result. 
+
+The **process**: 
+
+Data > **X: Features, Y: Label** > Training Data Set & Test Data Set > Fit / Train Model > Evaluate Performance > if not satisfied: adjust model > fit / train adjusted model > Evaluate Performance > Deploy Model (as Service, Dashboard or Application > Data Product)
+
+- we have data about the features and labels
+- separate the data into features and label
+    - X: features (know characteristics or components in the data)
+    - Y: label (what are we trying to predict)
+- **Features** and **Label** are identified according to the problem being solved
+- Split data into training data set and test data set (see cross-validation and hold-out sets)
+- We train the ML algorithm on the training data set
+- We feed the ML algorithm the features of the test data set & ask predictions per data point
+- We compare the prediction y_hat against the true price y & evaluate the performance (we'll discuss the evaluation methods later)
+- If we're not satisfied with the performance of the ML algorithm we can adjust the model **hyper-parameter** (many algorithm have adjustable values)
+
+Train / Test Split: 
+
+- We want to be able to fairly evaluate the performance of the ML algorithm.
+- Usually, the percentage of training data is larger the percentage of test data.
+- We have 4 components of data: X train, Y train, X test and Y test.
+
+# 📈 Introduction to Linear Regression
+
+This section covers: 
+
+- Theory of Linear Regression
+- Simple Implementation with Python (and NumPy)
+- Scikit-Learn Overview
+- Linear Regression with Scikit-learn
+- Polynomial Regression (builds on top of Linear Regression)
+- Regularization (builds on top of Linear Regression)
+- Overview of Project Dataset
+
+Note that the Project Exercise will be spread over many section, since we first discuss **Feature Engineering** and **Cross-Validation** before tackling the full Project Exercise. Note that LaTeX equations are exported directly to the readme file and might not be displayed properly in GitHub. 
+
+[Regression analysis](https://en.wikipedia.org/wiki/Regression_analysis)
+
+## Algorithm History
+
+Before we code, we'll build an intuition of the theory and motivation behind Linear Regression: 
+
+- Brief History
+- Linear Relationships
+- Ordinary Least Squares
+- Cost Functions (and Minimization)
+- Gradient Descent
+- Vectorization
+
+Relevant Reading in ISLR: 
+
+- Section 3: Linear Regression
+    - 3.1 Simply Linear Regression
+
+Basic goal: minimize the residual error (squared) (see 24 Classical Inference, p. 109)
+
+**Ordinary Least Squares** works by minimizing the sum of the squares of the residual error (difference between the observed dependent variable (values of the variable being observed) in the given dataset and those predicted by the linear function).  We can visualize squared errors to minimize (minimize the sum of the areas). 
+
+Having a squared error simplifies out calculation later on when setting up a derivative. We explore OLS by converting a real data set into mathematical notation, then working to solve a linear relationship between features and a variable. 
+
+## OLS Equations
+
+Linear Regression allows us to build a relationship between multiple **features** to estimate a **target output** The linear function `y=mx+b` only has room for a possible feature `x`. OLS allows us to solve for the slope `m` and the intercept `b`. Later, we'll need tools like gradient descent to scale this to multiple features. We can translate this data into generalized mathematical notation: X is the matrix that contains multiple features and y is the vector that contains the label we're trying to predict. We build the linear relationship between the features X and label Y. Note that we're looking for a linear combination to computer an estimate. Also note that in the linear combination we don't have an intercept `b`. 
+
+We consider the polynom 1st degree for our estimator (use [extension](https://github.com/AaronCQL/katex-github-chrome-extension) to preview LaTeX equations directly on GitHub): 
+
+$$\hat{y}=b_{0}+b_{1} x$$
+
+$$b_{1}=\rho_{x, y} \frac{\sigma_{y}}{\sigma_{x}} \quad\left[\begin{array}{l}\rho_{x, y}=\text {Pearson Correlation Coefficient} \\\sigma_{x}, \sigma_{y}=\text {Standard Deviations}\end{array}\right.]$$
+
+$$b_{0}=\bar{y}-b_{1} \bar{x}$$
+
+Limitation of Linear Regression: Anscombe's Quartet illustrates the pitfalls of relying on pure calculation. Each graph results in the same calculated regression line > plot the distribution of residuals to see if linear regression makes sense or not. 
+
+Example: a manager wants to find the relationship between the number of hours that a plant is operational in a week and weekly production > x: hours of operation, y: production volume 
+
+As we expand to multiple features, an analytical solution becomes unscalable. Instead we shift focus on **minimizing** a **cost function** with **gradient descent** > we can use gradient descent to solve a cost function to calculate Beta values when we're dealing with multiple features, this can then scale to N number of features given the generalized formula. 
+
+## Cost Functions
+
+Until this points we discussed the following: 
+
+- Linear relationship of x and y
+- OLS: solve simple linear regression
+- Not scalable for multiple features
+- Translating real data to matrix notation
+- Generalized formula for beta coefficients
+
+$$\hat{y}=\sum_{i=0}^{n} \beta_{i} x_{i}$$
+
+We decided to define a "best-fit" as the beta coefficients s.t. beta coefficients **minimize the squared error**. The residual error for some row **j** is: 
+
+$$y^{j}-\hat{y}^{j}$$
+
+We square the residual error and we consider the sum of squared error for m rows: 
+
+$$\sum_{j=1}^{m}\left(y^{j}-\hat{y}^{j}\right)^{2}$$
+
+From here we can calculate the average squared error for m rows by dividing by m: 
+
+$$\frac{1}{m} \sum_{j=1}^{m}\left(y^{j}-\hat{y}^{j}\right)^{2}$$
+
+This is what we need for a **cost function**. We define the following **cost function** defined by some measure of error > we want to **minimize** the cost function: 
+
+$$\begin{aligned}
+J(\boldsymbol{\beta}) &=\frac{1}{2 m} \sum_{j=1}^{m}\left(y^{j}-\hat{y}^{j}\right)^{2} \\
+&=\frac{1}{2 m} \sum_{j=1}^{m}\left(y^{j}-\sum_{i=0}^{n} \beta_{i} x_{i}^{j}\right)^{2}
+\end{aligned}$$
+
+To minimize the function we take the derivative and set it equal to zero: 
+
+$$\begin{aligned}
+\frac{\partial J}{\partial \beta_{k}}(\boldsymbol{\beta}) &=\frac{\partial}{\partial \beta_{k}}\left(\frac{1}{2 m} \sum_{j=1}^{m}\left(y^{j}-\sum_{i=0}^{n} \beta_{i} x_{i}^{j}\right)^{2}\right) \\
+&=\frac{1}{m} \sum_{j=1}^{m}\left(y^{j}-\sum_{i=0}^{n} \beta_{i} x_{i}^{j}\right)\left(-x_{k}^{j}\right)
+\end{aligned}$$
+
+Since this is difficult too difficult to solve analytically, we'll use gradient descent to minimize the cost function. 
+
+## Gradient Descent
+
+We describe the cost function through vectorized matrix notation and use gradient descent to have a computer figure out the set of Beta coefficient values that minimizes the cost / loss function. 
+
+Goal: 
+
+- Find a set of Beta coefficient values that minimize the error (cost function)
+- Leverage computational power instead of having to manually attempt to analytically solve the derivative.
+
+We need a beta for each feature > we can express a vector of beta values > use a gradient (sometimes referred as a multi-dimensional derivative) to express the derivative of the cost function with respect to each beta: 
+
+$$\nabla_{\boldsymbol{\beta}} J=\left[\begin{array}{c}\frac{\partial J}{\partial \beta_{0}} \\\vdots \\\frac{\partial J}{\partial \beta_{n}}\end{array}\right]$$
+
+$$\nabla_{\boldsymbol{\beta}} J=\left[\begin{array}{c}-\frac{1}{m} \sum_{j=1}^{m}\left(y^{j}-\sum_{i=0}^{n} \beta_{i} x_{i}^{j}\right) x_{0}^{j} \\\vdots \\-\frac{1}{m} \sum_{j=1}^{m}\left(y^{j}-\sum_{i=0}^{n} \beta_{i} x_{i}^{j}\right) x_{n}^{j}\end{array}\right]$$
+
+We also vectorize our data: 
+
+$$\mathbf{X}=\left[\begin{array}{ccccc}1 & x_{1}^{1} & x_{2}^{1} & \ldots & x_{n}^{1} \\1 & x_{1}^{2} & x_{2}^{2} & \ldots & x_{n}^{2} \\\vdots & \vdots & \vdots & \ddots & \vdots \\1 & x_{1}^{m} & x_{2}^{m} & \ldots & x_{n}^{m}\end{array}\right] \quad \mathbf{y}=\left[\begin{array}{c}y_{1} \\y_{2} \\\vdots \\y_{m}\end{array}\right] \boldsymbol{\beta}=\left[\begin{array}{c}\beta_{0} \\\beta_{1} \\\vdots \\\beta_{n}\end{array}\right]$$
+
+We split the gradient up: 
+
+$$\nabla_{\beta} J=-\frac{1}{m}\left[\begin{array}{c}\sum_{j=1}^{m} y^{j} x_{0}^{j} \\\vdots \\\sum_{j=1}^{m} y^{j} x_{n}^{j}\end{array}\right]+\frac{1}{m}\left[\begin{array}{c}\sum_{j=1}^{m} \sum_{i=0}^{n} \beta_{i} x_{i}^{j} x_{0}^{j} \\\vdots \\\sum_{j=1}^{m} \sum_{i=0}^{n} \beta_{i} x_{i}^{j} x_{n}^{j}\end{array}\right]$$
+
+We can not calculate the gradient for any set of beta values > what is the best way to "guess" at the correct Beta values that minimize the gradient? Gradient descent! 
+
+Process: 
+
+- Calculate gradient at point
+- Move in a step size proportional to negative gradient
+- Repeat until minimum is found
+
+This way we can leverage computational power to find optimal Beta coefficients that minimize the cost function producing the line of best fit. 
+
+[Gradient descent](https://en.wikipedia.org/wiki/Gradient_descent)
+
+## Coding Simple Linear Regression with Python
+
+In this section we code a simple linear regression with Python. Afterwards, we start considering performance evaluation and multivariate regression > how can we improve linear regression. 
+
+We limit our example one feature X > x is a vector. We will create a best-fit line to map out a linear relationship between total advertising spend and resulting sales. 
+
+# 📚 Scikit-learn
+
+NumPy has some built-in capabilities for simple linear regression, but when it comes to more complex models, we'll use **Scikit-Learn (sklearn)**. 
+
+sklearn is a library containing many ML algorithms. It uses a generalized "estimator API" framework to call the ML models > the ML algorithms are imported, fitted, and used uniformly across all algorithms. 
+
+This allows users to easily swap algorithms in and out and test various approaches > this uniform framework also means users can easily apply almost any algorithm effectively without truly understanding what the algorithm is doing! 
+
+It also comes with many convenience tools, including train test split functions, cross validation tools, and a variety of reporting metric functions (to analyze model performance) > sklearn is a "one-stop shop" for many of our ML needs. 
+
+Philosophy: 
+
+- sklearn approach to model building focuses on **applying models** and **performance metrics**
+- This is a more pragmatic industry style approach rather than an academic approach of describing the model and its parameters > academic users used to **R** style reporting may also want to explore the **statsmodels** python library if interested in more statistical description of models such as significance levels.
+
+Remember the process for supervised learning: 
+
+- Perform a Train | Test split for supervised learning: there are 4 main components X train, X test, y train, and y test (sklearn does this split (as well as more advanced cross-validation))
+
+```python
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X,y) 
+# this is simple tuple unpacking
+```
+
+- At the end of the supervised ML process we want to compare predictions to the y test labels
+
+```python
+from sklearn.model_family import ModelAlgo
+mymodel = ModelAlgo(param1, param2) 
+# we create an instance of the model and define the parameters
+mymodel.fit(X_train, y_train) 
+# this trains the model
+predictions = mymodel.predict(X_test) 
+# we predict on our X_test sample 
+
+from sklearn.metrics import error_metric
+# see later: performance evaluation techniques and what metrics are important
+performance = error_metric(y_test, predictions) 
+# get performance metric back
+```
+
+**This is the general framework code for essentially any supervised learning algorithm**! 
+
+## Linear Regression with Scikit-learn
+
+In this section we perform a linear regression with the Scikit-learn library. 
+
+### Data Setup and Model Training
+
+- Data Setup
+    - Reading in a data source
+    - Splitting it into features and a vector label
+    - Splitting it into training and test set
+- Model Training
+    - Creating model
+    - Setting up (default) parameters
+    - Training the model
+- Testing the model & evaluating its performance
+
+Expanding the question: Is there a relationship between **total advertising spend** and **sales**? > What is the relationship between **each advertising channel (TV, Radio, Newspaper)** and **sales**? 
+
+[Random state (Pseudo-random number) in Scikit learn](https://stackoverflow.com/questions/28064634/random-state-pseudo-random-number-in-scikit-learn)
+
+It is important when comparing ML algorithms to make sure to use the same random_state (relevant for shuffle and split). 
+
+## Performance Evaluation with Scikit-learn - Regression Metrics
+
+After we have a fitted model that can perform predictions based on features, how do we decide if those predictions are any good?
+
+In this section we discuss evaluating Regression Models. Regression is a task when a model attempts to predict continuous values (unlike categorical values, which is classification task). 
+
+Example: 
+
+- Attempting to predict the price of a house given its features is a **regression task**
+- Attempting to predict the country a house is in given its features is a **classification task** (there is no in-between value for two separate countries)
+
+Some evaluation metrics are accuracy or recall. These sort of metrics aren't useful for regression problems since we need metrics designed for **continuous** values. 
+
+The most common evaluation metrics for regression are: 
+
+- Mean Absolute Error (MAE)
+- Mean Squared Error (MSE)
+- Root Mean Square Error (RMSE)
+
+All of these are **loss functions** because we are trying to minimize them. 
+
+### Mean Absolute Error (MAE)
+
+MAE is the mean of the absolute value of the errors: 
+
+$$\frac 1n\sum_{i=1}^n|y_i-\hat{y}_i|$$
+
+Characteristics: 
+
+- This is the easiest to understand since it's the average error.
+- MAE won't punish large errors! See Anscombe's Quartet.
+
+### **Mean Squared Error** (MSE)
+
+MSE is the mean of the squared errors: 
+
+$$\frac 1n\sum_{i=1}^n(y_i-\hat{y}_i)^2$$
+
+Characteristics: 
+
+- MSE is more popular than MAE, because MSE "punishes" larger errors, which tends to be useful in the real world.
+- Issue with MSE: it reports back the error in different units than your original y value It reports units of y squared > really hard to interpret and explain!
+
+### **Root Mean Squared Error** (RMSE)
+
+RMSE is the square root of the mean of the squared errors:
+
+$$\sqrt{\frac 1n\sum_{i=1}^n(y_i-\hat{y}_i)^2}$$
+
+Characteristics: 
+
+- RMSE is even more popular than MSE, because RMSE is interpretable in the y units.
+
+Question: What is a good value for the MAE / MSE / RMSE? 
+
+- Context is everything, e.g. $10 RMSE is fantastic for house prices, but horrible for predicting candy bar prices
+- Compare error metric to the average value of the label in your data set to get an intuition of its overall performance
+- Domain knowledge play an important role!
+- We may create a model to predict how much medication to give > small fluctuations in RMSE may actually be very significant
+- We create a model to try to improve on existing human performance > we would need some baseline RMSE to compare to and make sure we're improving on previous work
+
+It is recommended to use both the MAE & RMSE -> check to see if on average we're doing good & make sure the prediction is not far off for some data points. 
 
 # 🔧 Open Questions and Tasks
 
@@ -885,25 +1409,25 @@ Start here!
 
 ## Backlog
 
-- Crapstone
-- Linear Regression
 - Logistics Regression
 - Machine Learning
 - Revise the lecture before the presentation!
+- Read about [copy warning](https://realpython.com/pandas-settingwithcopywarning/)
+- Read Wiki on [Regression Analysis](https://en.wikipedia.org/wiki/Regression_analysis)
 
 ## In Progress
 
-- Seaborn
-- Apply Panda lessons to project
+- Linear Regression
 - Convert [rawTimesamp](https://stackoverflow.com/questions/19231871/convert-unix-time-to-readable-date-in-pandas-dataframe) feature into a datetime object > useful later for feature engineering (see [documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.to_datetime.html))
 - Make an outline of the project
 - Decide what are the relevant categorial columns for the project
 - Make a [data column reference](https://www.notion.so/ac02bfefe61246918aabf0e6094f18c9) in HTML (see [data type](https://en.wikipedia.org/wiki/Data_type), [7 data types](https://towardsdatascience.com/7-data-types-a-better-way-to-think-about-data-types-for-machine-learning-939fae99a689); use Notion or [Tables Generator](https://www.tablesgenerator.com/html_tables))
 - Strip project data
-- Make sure there is no missing data in the project
 
-## Resolved
+## Resolved (Preparation)
 
+- Crapstone Project (Numpy, Pandas, Matplotlib, and Seaborn)
+- Seaborn
 - Matplotlib
 - Pandas
 - Numpy
@@ -912,14 +1436,18 @@ Start here!
 - Upload files to Github
 - Do crash course on Git
 
+## Resolved (Project)
+
+- Make sure there is no missing data in the project
+
 ## Workflow
 
 - pull repo
 - work on project
 - update readme
     - export readme from Notion
-    - generate TOC
-    - edit readme
+    - generate TOC by calling doctoc
+    - edit readme by removing metadata
 - push repo
 
 # 📋 Outline of Project (WIP)
@@ -969,3 +1497,23 @@ Can we model the process in the project as a Poisson process?
 [Meaning of 'hue" in seaborn barplot](https://datascience.stackexchange.com/questions/46117/meaning-of-hue-in-seaborn-barplot)
 
 [Six easy ways to run your Jupyter Notebook in the cloud](https://www.dataschool.io/cloud-services-for-jupyter-notebook/)
+
+[Add percentages instead of counts to countplot · Issue #1027 · mwaskom/seaborn](https://github.com/mwaskom/seaborn/issues/1027)
+
+[Python: Plotting percentage in seaborn bar plot](https://stackoverflow.com/questions/35692781/python-plotting-percentage-in-seaborn-bar-plot)
+
+[How to deal with SettingWithCopyWarning in Pandas](https://stackoverflow.com/questions/20625582/how-to-deal-with-settingwithcopywarning-in-pandas)
+
+[Select by partial string from a pandas DataFrame](https://stackoverflow.com/questions/11350770/select-by-partial-string-from-a-pandas-dataframe)
+
+[SettingWithCopyWarning in Pandas: Views vs Copies - Real Python](https://realpython.com/pandas-settingwithcopywarning/)
+
+[pandas.DataFrame.copy - pandas 1.1.5 documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.copy.html)
+
+[Indexing and selecting data - pandas 1.1.5 documentation](https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html)
+
+[why should I make a copy of a data frame in pandas](https://stackoverflow.com/questions/27673231/why-should-i-make-a-copy-of-a-data-frame-in-pandas)
+
+[return string with first match Regex](https://stackoverflow.com/questions/38579725/return-string-with-first-match-regex)
+
+[Creating for loop until list.length](https://stackoverflow.com/questions/14532875/creating-for-loop-until-list-length)
