@@ -1,12 +1,12 @@
 # Statistics Meets Logistics
 
-The [course](https://www.statistik.tu-dortmund.de/2791.html) and the [material](https://moodle.tu-dortmund.de/enrol/index.php?id=22199) provided by the lecturer are in German. The documentation is in English. This repository documents our preparation for the project and holds the project and its data. 
+The [course](https://www.statistik.tu-dortmund.de/2791.html) and the [material](https://moodle.tu-dortmund.de/enrol/index.php?id=22199) provided by the lecturer are in German. This repository documents our preparation for the project and holds the project and its data. 
 
 To view LaTeX equations found in *Introduction to Linear Regression* and subsequent Sections, consider the following options: 
 
+- Open the [.HTML version of the README](https://htmlpreview.github.io/?https://github.com/luiul/statistics-meets-logistics/blob/main/README.html)
 - Preview directly on Github using a browser [extension](https://github.com/AaronCQL/katex-github-chrome-extension) (Chromium based)
-- View the equations in the [.HTML version](https://github.com/luiul/statistics-meets-logistics/blob/main/README.html) of the README
-- Copy the equation block from the [raw README](https://raw.githubusercontent.com/luiul/statistics-meets-logistics/main/README.md) and use a LaTeX renderer or [image generator](https://github.com/masakiaota/tex_image_link_generator)
+- Copy the equation block directly from the [raw README](https://raw.githubusercontent.com/luiul/statistics-meets-logistics/main/README.md) and use a LaTeX [renderer](https://quicklatex.com/) or [image generator](https://github.com/masakiaota/tex_image_link_generator)
 
 # 📖 Description
 
@@ -26,7 +26,6 @@ In the course, students will learn about the application of statistical methods 
   - [Version Control with Git](#version-control-with-git)
   - [Basic Markdown](#basic-markdown)
   - [Virtual Environments](#virtual-environments)
-  - [Setup the virtual environment](#setup-the-virtual-environment)
   - [Activate the virtual environment](#activate-the-virtual-environment)
 - [🐍 Python Crash Course](#-python-crash-course)
   - [Crash Course](#crash-course)
@@ -197,30 +196,21 @@ Keep track of the history changes done to code > facilitate collaboration
 
 There are two options:
 
-1. Import `requirements.txt` as Conda explicit specification file
+1. Import `requirements.txt` as Conda explicit specification file in the Anaconda Navigator
 2. Run the following command in the command prompt interface (Anaconda prompt or directly in the terminal):
 
-`conda create --name <envName> jupyter==1.0.0 lxml==4.5.1 MarkupSafe==1.1.1 matplotlib==3.3.2 notebook==6.0.3 numpy==1.18.1 openpyxl==3.0.4 pandas==1.1.2 Pillow==7.2.0 scikit-learn==0.23.2 scipy==1.4.1 seaborn==0.11.0 SQLAlchemy==1.3.18`
+`conda create --name <envName> jupyter==1.0.0 lxml==4.5.1 MarkupSafe==1.1.1 matplotlib==3.3.2 notebook==6.0.3 numpy==1.18.1 openpyxl==3.0.4 pandas==1.1.2 Pillow==7.2.0 scikit-learn==0.23.2 scipy==1.4.1 seaborn==0.11.0 SQLAlchemy==1.3.18 xlrd==1.2.0`
 
 or
 
-`conda create --prefix ~/opt/anaconda3 jupyter==1.0.0 lxml==4.5.1 MarkupSafe==1.1.1 matplotlib==3.3.2 notebook==6.0.3 numpy==1.18.1 openpyxl==3.0.4 pandas==1.1.2 Pillow==7.2.0 scikit-learn==0.23.2 scipy==1.4.1 seaborn==0.11.0 SQLAlchemy==1.3.18`
-
-## Setup the virtual environment
-
-There are two options:
-
-1. Import `requirements.txt` as Conda explicit specification file
-2. Run the following command in the command prompt interface (Anaconda prompt or directly in the terminal): 
-
-`conda create --prefix ./envs jupyter==1.0.0 lxml==4.5.1 MarkupSafe==1.1.1 matplotlib==3.3.2 notebook==6.0.3 numpy==1.18.1 openpyxl==3.0.4 pandas==1.1.2 Pillow==7.2.0 scikit-learn==0.23.2 scipy==1.4.1 seaborn==0.11.0 SQLAlchemy==1.3.18` 
+`conda create --prefix ~/opt/anaconda3 jupyter==1.0.0 lxml==4.5.1 MarkupSafe==1.1.1 matplotlib==3.3.2 notebook==6.0.3 numpy==1.18.1 openpyxl==3.0.4 pandas==1.1.2 Pillow==7.2.0 scikit-learn==0.23.2 scipy==1.4.1 seaborn==0.11.0 SQLAlchemy==1.3.18 xlrd==1.2.0`
 
 ## Activate the virtual environment
 
 There are two options: 
 
 1. On the Anaconda Navigator: Environments tab > choose the environment > open application on the environment
-2. In the terminal: `conda active myEnv` (replace `myEnv` the name of your environment)
+2. In the terminal: `conda active <myEnv>` (replace `<myEnv>` the name of your environment)
 
 # 🐍 Python Crash Course
 
@@ -228,8 +218,9 @@ This is the section for the Python crash course. [Python documentation](https://
 
 ## Crash Course
 
-If a variable is being highlighted by the IDE, this keyword is reserved for an object!
+Keep the following points in mind when working with Python: 
 
+- If a variable is being highlighted by the IDE, this keyword is reserved for an object!
 - String interpolation / [.format()](https://pyformat.info/) on string = a way to insert things into a string. More info on [format method](https://www.w3schools.com/python/ref_string_format.asp). See improved [String Formatting Syntax Guide](https://realpython.com/python-f-strings/).
 - List = arrays in other languages. In Python a list can contain objects of different types. Lists can be nested (useful with 2D object, e.g. a matrix). Important function:
     - list(iterable) is a list constructor.
@@ -1193,11 +1184,11 @@ Having a squared error simplifies out calculation later on when setting up a der
 
 Linear Regression allows us to build a relationship between multiple **features** to estimate a **target output** The linear function `y=mx+b` only has room for a possible feature `x`. OLS allows us to solve for the slope `m` and the intercept `b`. Later, we'll need tools like gradient descent to scale this to multiple features. We can translate this data into generalized mathematical notation: X is the matrix that contains multiple features and y is the vector that contains the label we're trying to predict. We build the linear relationship between the features X and label Y. Note that we're looking for a linear combination to computer an estimate. Also note that in the linear combination we don't have an intercept `b`. 
 
-We consider the polynom 1st degree for our estimator (use [extension](https://github.com/AaronCQL/katex-github-chrome-extension) to preview LaTeX equations directly on GitHub): 
+We consider the 1st degree polynomial for our estimator (see REnADME preamble if LaTeX equation is not rendering): 
 
 $$\hat{y}=b_{0}+b_{1} x$$
 
-$$b_{1}=\rho_{x, y} \frac{\sigma_{y}}{\sigma_{x}} \quad\left[\begin{array}{l}\rho_{x, y}=\text {Pearson Correlation Coefficient} \\\sigma_{x}, \sigma_{y}=\text {Standard Deviations}\end{array}\right.]$$
+$$b_{1}=\rho_{x, y} \frac{\sigma_{y}}{\sigma_{x}}~ \quad\left[\begin{array}{l}\rho_{x, y}=\text {Pearson Correlation Coefficient} \\\sigma_{x}, \sigma_{y}=\text {Standard Deviations}\end{array} \right]$$
 
 $$b_{0}=\bar{y}-b_{1} \bar{x}$$
 
