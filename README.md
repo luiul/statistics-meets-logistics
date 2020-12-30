@@ -2,7 +2,11 @@
 
 The [course](https://www.statistik.tu-dortmund.de/2791.html) and the [material](https://moodle.tu-dortmund.de/enrol/index.php?id=22199) provided by the lecturer are in German. The documentation is in English. This repository documents our preparation for the project and holds the project and its data. 
 
-Consider using a browser [extension](https://github.com/AaronCQL/katex-github-chrome-extension) to preview LaTeX equations directly on GitHub (or copy the block directly from the readme file and use an [alternative](https://github.com/masakiaota/tex_image_link_generator)). We use LaTeX flavored equations starting from the *Introduction to Linear Regression* section of the repository. 
+To view LaTeX equations found in *Introduction to Linear Regression* and subsequent Sections, consider the following options: 
+
+- Preview directly on Github using a browser [extension](https://github.com/AaronCQL/katex-github-chrome-extension) (Chromium based)
+- View the equations in the [.HTML version](https://github.com/luiul/statistics-meets-logistics/blob/main/README.html) of the README
+- Copy the equation block from the [raw README](https://raw.githubusercontent.com/luiul/statistics-meets-logistics/main/README.md) and use a LaTeX renderer or [image generator](https://github.com/masakiaota/tex_image_link_generator)
 
 # 📖 Description
 
@@ -97,6 +101,14 @@ In the course, students will learn about the application of statistical methods 
   - [Evaluating Residuals](#evaluating-residuals)
   - [Model Deployment and Coefficient](#model-deployment-and-coefficient)
 - [🦑 Polynomial Regression](#-polynomial-regression)
+  - [Bias Variance Trade-Off: Overfitting versus Underfitting (based on MSE)](#bias-variance-trade-off-overfitting-versus-underfitting-based-on-mse)
+- [🍡 Regularization and Cross Validation](#-regularization-and-cross-validation)
+  - [Feature Scaling and Regularization](#feature-scaling-and-regularization)
+  - [Cross Validation](#cross-validation)
+    - [Principle](#principle)
+    - [Hold Out Test Set](#hold-out-test-set)
+    - [Regularization Data Setup](#regularization-data-setup)
+  - [L2 Regularization - Ridge Regression](#l2-regularization---ridge-regression)
 - [🔧 Open Questions and Tasks](#-open-questions-and-tasks)
   - [Open Questions](#open-questions)
   - [Backlog](#backlog)
@@ -1320,6 +1332,8 @@ performance = error_metric(y_test, predictions)
 
 **This is the general framework code for essentially any supervised learning algorithm**! 
 
+[What does "fit" method in scikit-learn do?](https://stackoverflow.com/questions/45704226/what-does-fit-method-in-scikit-learn-do)
+
 ## Linear Regression with Scikit-learn
 
 In this section we perform a linear regression with the Scikit-learn library. 
@@ -1443,9 +1457,230 @@ We fit the final model on all the data since we've decided that these model hype
 
 # 🦑 Polynomial Regression
 
-In this section we discuss Polynomial Regression. We just completed a Linear Regression task, allowing us to predict future label values given a set of features.
+In this section we discuss Polynomial Regression (more akin to Feature Engineering and expanding a data set than creating a new model). We just completed a Linear Regression task, allowing us to predict future label values given a set of features.
 
 Question: how can we improve on a Linear Regression Model? One approach is to consider **higher order relationships** on the feature. 
+
+There are two main issues polynomial regression will address for us: 
+
+- **non-linear feature relationships** to label: we're able to find accurate beta coefficients for higher orders of the feature is the relationship between the original is non-linear. Note that not every feature will have relationships at a higher order > the main point here is that it could be reasonable to solve for a single linear beta coefficient for polynomial of an original feature.
+- **interaction terms between features**: what if features are only significant when in sync with one another (synergies)? Example: newspapers ads by itself is not effective, but greatly increases effectiveness if added to a TV ad campaign. Maybe consumers only watching TV  ads will create some sales, but consumers who watch TV and see a newspaper ad could contribute more sales than TV or newspaper alone. 
+Question: Can we check for this? Simples way is to create a new feature that multiplies two existing features to create an **interaction term**. We can keep the original features, and add on this interaction term. sklearn does this through a **pre-processing** call.
+
+sklearn's pre-processing library contains many useful tools to apply to the original data set **before** model training. One tool is the **PolynomialFeatures** which automatically creates both higher order feature polynomials and the interaction terms between all feature combinations. 
+
+The features created include: 
+
+- the bias (default value 1; indicating the y-intersect term)
+- values raised to a power for each degree x**i
+- interactions between all pairs of features x_i * x_j
+
+Example for the features A and B it creates: 1, A, B, A**2, A*B, B**2 > we grab more signal from the data to determine if there are interaction term relationships or higher order relationships
+
+## Bias Variance Trade-Off: Overfitting versus Underfitting (based on MSE)
+
+The higher order polynomial model perform better than a standard linear regression model. How do we choose the optimal degree for the polynomial? What trade-offs are we to consider as we increase model complexity? 
+
+In general, increasing model complexity in search for better performance leads to a **bias-variance trade-off.** We want to have a model that can generalize well to new unseen data, but can also account for variance and patterns in the known data. 
+
+Extreme bias or extreme variance both lead to bad models. We can visualize this effect by considering a model that underfits (high bias) or a model that overfits (high variance). 
+
+Overfitting:
+
+The model fits too much to the noise from the data. This often results in **low error on training sets** but **high error on test / validation sets** > the model performs well on the training set and bad on unseen data (test or validation set).
+
+Underfitting:
+
+Model does not capture the underlying trend of the data and does not fit the data well enough. Low variance but high bias. Underfitting is often a result of an excessively simple model. 
+
+Model has high bias and is generalizing too much. Underfitting can lead to poor performance in both training and testing data sets.  
+
+It is easy to visualize if the model is over- or underfitting in one dimension, but what do we do in multi-dimensional data sets? Assume we train a model and measure its error versus model complexity, e.g. higher order polynomials > we plot the **error versus model complexity**. Both these quantities scale regardless of how many features we have. 
+
+When thinking about over- and underfitting we want to keep in mind the relationship of model performance on the training set versus the test / validation set. If we overfit on the training data, we will perform poorly on the test data. Ideally, the curve for the train set will be a falling convex curve. 
+
+Process: 
+
+- Check performance on the **training set** (x: model complexity, y: error).
+- Check performance on the **test set** (to avoid overfitting on the train set).
+    - If the model is not overfitted both curves will run similarly, i.e. both will be falling convex curves
+    - If the model is overfitted to training data then with increasing model complexity the error will increase rapidly after a certain point > decide on a cut-off point (of model complexity)
+
+When deciding optimal model complexity **and** wanting to fairly evaluate our model's performance , we can consider both the train error and test error to select an ideal complexity. 
+
+In case of Polynomial Regression complexity directly relates to degree of the polynomial. Other ML algorithms have their won hyper-parameters that can increase complexity, .e.g. in random forest the amount of decisions trees. 
+
+For choosing the optimal model complexity (order polynomial), we will need to understand error for both training and test data to look out for potential overfitting. See also this [article](https://towardsdatascience.com/understanding-the-bias-variance-tradeoff-165e6942b229#:~:text=Variance%20is%20the%20variability%20of,it%20hasn't%20seen%20before.) and [question](https://datascience.stackexchange.com/questions/80157/what-are-bias-and-variance-in-machine-learning) (both may have some mistakes!)
+
+$$\begin{aligned}\mathbb{E}\left[\left(\hat{\theta}_{S}-\theta\right)^{2}\right] &=\mathbb{E}\left[\hat{\theta}_{S}^{2}\right]+\theta^{2}-2 \mathbb{E}\left[\hat{\theta}_{S}\right] \theta \\\operatorname{Bias}^{2}\left(\hat{\theta}_{S}, \theta\right) &=\left(\mathbb{E}\left[\hat{\theta}_{S}\right]-\theta\right)^{2} \\&=\mathbb{E}^{2}\left[\hat{\theta}_{S}\right]+\theta^{2}-2 \mathbb{E}\left[\hat{\theta}_{S}\right] \theta \\\operatorname{Var}\left(\hat{\theta}_{S}\right) &=\mathbb{E}\left[\hat{\theta}_{S}^{2}\right]-\mathbb{E}^{2}\left[\hat{\theta}_{S}\right]\end{aligned}$$
+
+# 🍡 Regularization and Cross Validation
+
+In this section we discuss different types of regularization and related topics. Regularization is the process of adding information in order to solve an ill-posed problem or to prevent overfitting
+
+Regularization seeks to solve a few common model issues by: 
+
+- minimizing model complexity
+- penalizing the loss function
+- reducing model overfitting (add more bias to reduce model variance)
+
+In general, we can think of regularization as a way to reduce model overfitting and variance: 
+
+- requires some additional bias
+- requires a search for optimal penalty hyper-parameter
+
+Three main types of Regularization: 
+
+- L1 Regularization
+    - LASSO Regression
+- L2 Regularization
+    - Ridge Regression
+- Combining L1 and L2
+    - Elastic Net
+
+**L1 Regularization** 
+
+L1 Regularization adds a penalty equal to the **absolute value** of the magnitude of coefficients (**RSS:** Residual Sum of Squares): 
+
+- Limits the size of the coefficients
+- Can yield sparse models where some coefficients can become zero
+
+Minimize the following function (we can tune the hyper-parameter lambda): 
+
+$$\sum_{i=1}^{n}\left(y_{i}-\beta_{0}-\sum_{j=1}^{p} \beta_{j} x_{i j}\right)^{2}+\lambda \sum_{j=1}^{p}\left|\beta_{j}\right|=\operatorname{RSS}+\lambda \sum_{j=1}^{p}\left|\beta_{j}\right|$$
+
+**L2 Regularization** 
+
+L2 Regularization adds a penalty equal to the square of the magnitude of coefficients: 
+
+- All coefficients are shrunk by the same factor
+- Does not necessarily eliminate coefficients
+
+Minimize the following function (we can tune the hyper-parameter lambda): 
+
+$$\sum_{i=1}^{n}\left(y_{i}-\beta_{0}-\sum_{j=1}^{p} \beta_{j} x_{i j}\right)^{2}+\lambda \sum_{j=1}^{p} \beta_{j}^{2}=\mathrm{RSS}+\lambda \sum_{j=1}^{p} \beta_{j}^{2}$$
+
+**Combining L1 and L2**
+
+Elastic Net combines L1 and L2 with the addition of an alpha parameter deciding the ratio between them (alpha = 0 > we don't consider L1, alpha = 1 > we don't consider L2): 
+
+$$\frac{\sum_{i=1}^{n}\left(y_{i}-x_{i}^{J} \hat{\beta}\right)^{2}}{2 n}+\lambda\left(\frac{1-\alpha}{2} \sum_{j=1}^{m} \hat{\beta}_{j}^{2}+\alpha \sum_{j=1}^{m}\left|\hat{\beta}_{j}\right|\right)$$
+
+These regularizations methods do have a cost:
+
+- Introduce an additional hyper-parameter that needs to be tuned (guess & check)
+- This hyper -parameter can be thought of as a multiplier to the penalty to decide the "strength" of the penalty
+
+We will cover L2 regularization (Ridge Regression) first, because to the intuition behind the squared term being easier to understand. Before coding regularization we need to discuss Feature Scaling and Cross Validation. 
+
+## Feature Scaling and Regularization
+
+[Feature scaling](https://en.wikipedia.org/wiki/Feature_scaling)
+
+Feature scaling provides many benefits to our ML process. Some ML models that rely on distance metric, e.g. KNN, **require** feature scaling to perform well. 
+
+Feature scaling improves the convergence of steepest descent algorithms, which do not possess the **property of scale invariance**. If features are on different scales, certain weights may update faster than others since the feature values x_j play a role int he weight updates. 
+
+Critical benefit of feature scaling related to gradient descent. There are some ML algos where scaling won't have an effect, e.g. CART (regression, decisions trees, random forests > decisions tree based algorithms) based methods
+
+Scaling the features so that their respective range are uniform is important in comparing measurements that have different units. It allows us to directly compare model coefficients to each other. 
+
+Caveats: 
+
+- must always scale new unseen data before feeding to model
+- affects direct interpretability of feature coefficients: easier to compare coefficients to one another, but harder to relate back to original unscaled feature > it's a trade-off between being able to compare coefficients between each other versus being able to relate coefficients to the original unscaled feature
+
+Benefits: 
+
+- Can lead to great increases in performance
+- Necessary for some models
+- Virtually no "real" downside to scaling features
+
+Two main way to scale features: 
+
+- **Standardization** (also referred as Z-score normalization): rescales data to have a mean or 0 and a standard deviation of 1: X_s = (X - X.mean()) / X.std()
+- **Normalization**: Rescales all data values to be between 0 and 1: X_m = (X - X.min()) /( X.max() - X.min())
+
+There are other methods of scaling features and sklearn provides easy to use classes that "fit" and "transform" feature data for scaling: 
+
+- a .fit() method call calculates the necessary statistics, e.g. X_min, X_max, X_mean, X_std, etc.
+- a .transform() method call actually scales data and returns the new scaled (transformed) version of the data
+
+Note that in the previous section we created new features and populated the columns, we did **not** scale the data! Important considerations for fit and transform: 
+
+- Only **fit** to training data! Calculating statistical information should only come from training data since we don't want to assume prior knowledge of the test set!
+- Using the full data set would cause **data leakage**: calculating statistics from full data leads to some information of the test set leaking into the training process upon transform() conversion.
+
+Feature scaling **process**:
+
+- perform train test split
+- fit to training feature data
+- transform training feature data
+- transform test feature data
+- (make predictions**)**
+
+We do **not** scale the label! It's not necessary nor advised. Normalizing the output distribution is altering the definition of the target. Predicting a distribution that doesn't mirror your real-world target. Additionally, it can negatively impact stochastic gradient descent (see [article](https://stats.stackexchange.com/questions/111467/is-it-necessary-to-scale-the-target-value-in-addition-to-scaling-features-for-re)). 
+
+## Cross Validation
+
+See Section 5.1 of ISLR. Cross validation is a more advanced set of methods for splitting data into training and testing sets. Cross-validation is a resampling procedure used to evaluate machine learning models on a limited data sample. 
+
+We understand the intuition behind performing a train test split, we want to fairly evaluate out model's performance on unseen data > we are **not** able to tune hyper-parameters to the **entire** dataset. 
+
+Question: can we achieve the following: 
+
+- train on all the data and
+- evaluate on all the data?
+
+We can achieve this with cross validation. 
+
+### Principle
+
+We split the data into k equal parts (axis = 0) > we have the ratio 1/k left as test set. We train the model and get the error metric for split. We repeat this process for all possible splits and determine error_1, ..., error_k. We computer the mean error > the average error is the expected performance. 
+
+We were able to train on all data **and** evaluate on all data (the caveat being that we did not do it all at once, but over k times) > we get a better sense of true performance across multiple potential splits. What is the cost of this? We have to repeat computations k number of times! 
+
+This is known as k-fold cross-validation. Common choice for k is 10 so each test set is 10% of your total data. Largest k possible would be the #rows-1. This is knows as *leave one out* cross validation; gives us a good sense of the model's performance but computationally expensive. 
+
+### Hold Out Test Set
+
+One consideration to note with k-fold cross validation and a standard train test split is fairly tuning hyper-parameters. If we tune hyper-parameters to test data performance, are we ever fairly getting performance results? Does this constitute data leakage? 
+
+How can we understand how the model behaves for data that is has not seen **and** not been influenced by for hyper-parameter tuning? For this we can use a **hold out** test set. 
+
+We fold the data set and remove a hold out test set. The model will not see this data **and** never be adjusted to. At this point we have two options: 
+
+1. Train and tune on this data
+2. Perform k-fold cross validation, train, and tune on this data 
+
+After training and tuning perform **final evaluation** on hold out test set. We can **not** tune after this final test evaluation! The idea being that we want a performance metric as a final report how we'll the model is going to perform based on data that it was not trained on **and** based on data that it was never adjusted to. The new split names become: 
+
+**Train | Validation | Test Split** > allows us to get a true final performance metric to report (no editing model after test!) 
+
+Note that all the approaches discussed above are valid, each situation is unique. Keep in mind: 
+
+- previous modeling work
+- reporting requirements
+- fairness of evaluation
+- context of data and model
+
+The most robust approach would be a k-fold cross-validation with a holdout test set. 
+
+Many regularization methods have tunable parameters we can adjust based on cross-validation techniques. 
+
+### Regularization Data Setup
+
+Process: 
+
+- import numpy, pandas, matplotlib.pyplot, and seaborn
+- read in data, assign data to matrix, vector
+- polynomial conversion (generate polynomial features)
+- split data into train and test data set
+- standardize the data (avoid data leakage!)
+
+## L2 Regularization - Ridge Regression
+
+Start here! 
 
 # 🔧 Open Questions and Tasks
 
@@ -1490,13 +1725,15 @@ Question: how can we improve on a Linear Regression Model? One approach is to co
 
 ## Workflow
 
-- pull repo
-- work on project
-- update readme
-    - export readme from Notion
-    - generate TOC by calling doctoc
-    - edit readme by removing metadata
-- push repo
+- pull repo (T)
+- work on project (N, J)
+- update readme (N, F, T, VS)
+    - export readme (N)
+    - rename and replace old readme (F)
+    - generate TOC (T)
+    - remove metadata (VS)
+    - save to HTML (VS)
+- push repo (T)
 
 # 📋 Outline of Project (WIP)
 
@@ -1567,3 +1804,5 @@ Can we model the process in the project as a Poisson process?
 [Creating for loop until list.length](https://stackoverflow.com/questions/14532875/creating-for-loop-until-list-length)
 
 [IPython Notebook cell multiple outputs](https://stackoverflow.com/questions/34398054/ipython-notebook-cell-multiple-outputs)
+
+[sklearn: how to get coefficients of polynomial features](https://stackoverflow.com/questions/31290976/sklearn-how-to-get-coefficients-of-polynomial-features)
