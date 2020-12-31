@@ -2,11 +2,11 @@
 
 The [course](https://www.statistik.tu-dortmund.de/2791.html) and the [material](https://moodle.tu-dortmund.de/enrol/index.php?id=22199) provided by the lecturer are in German. This repository documents our preparation for the project and holds the project and its data. 
 
-To view LaTeX equations found in *Introduction to Linear Regression* and subsequent Sections, consider the following options: 
+To view TeX equations found in *Introduction to Linear Regression* and subsequent Sections, consider the following options: 
 
 - Open the [.HTML version of the README](https://htmlpreview.github.io/?https://github.com/luiul/statistics-meets-logistics/blob/main/README.html)
 - Preview directly on Github using a browser [extension](https://github.com/AaronCQL/katex-github-chrome-extension) (Chromium based)
-- Copy the equation block directly from the [raw README](https://raw.githubusercontent.com/luiul/statistics-meets-logistics/main/README.md) and use a LaTeX [renderer](https://quicklatex.com/) or [image generator](https://github.com/masakiaota/tex_image_link_generator)
+- Copy the equation block directly from the [raw README](https://raw.githubusercontent.com/luiul/statistics-meets-logistics/main/README.md) and use a TeX [renderer](https://quicklatex.com/) or [image generator](https://github.com/masakiaota/tex_image_link_generator)
 
 # 📖 Description
 
@@ -108,6 +108,10 @@ In the course, students will learn about the application of statistical methods 
     - [Hold Out Test Set](#hold-out-test-set)
     - [Regularization Data Setup](#regularization-data-setup)
   - [L2 Regularization - Ridge Regression](#l2-regularization---ridge-regression)
+  - [L1 Regularization - Lasso Regression](#l1-regularization---lasso-regression)
+  - [L1 and L2 Regularization - Elastic Net](#l1-and-l2-regularization---elastic-net)
+  - [LR Project - Data Overview](#lr-project---data-overview)
+- [🧼 Feature Engineering and Data Preparation](#%F0%9F%A7%BC-feature-engineering-and-data-preparation)
 - [🔧 Open Questions and Tasks](#-open-questions-and-tasks)
   - [Open Questions](#open-questions)
   - [Backlog](#backlog)
@@ -199,11 +203,21 @@ There are two options:
 1. Import `requirements.txt` as Conda explicit specification file in the Anaconda Navigator
 2. Run the following command in the command prompt interface (Anaconda prompt or directly in the terminal):
 
-`conda create --name <envName> jupyter==1.0.0 lxml==4.5.1 MarkupSafe==1.1.1 matplotlib==3.3.2 notebook==6.0.3 numpy==1.18.1 openpyxl==3.0.4 pandas==1.1.2 Pillow==7.2.0 scikit-learn==0.23.2 scipy==1.4.1 seaborn==0.11.0 SQLAlchemy==1.3.18 xlrd==1.2.0`
+```python
+conda create --name <envName> jupyter==1.0.0 lxml==4.5.1 MarkupSafe==1.1.1 
+matplotlib==3.3.2 notebook==6.0.3 numpy==1.18.1 openpyxl==3.0.4 pandas==1.1.2 
+Pillow==7.2.0 scikit-learn==0.23.2 scipy==1.4.1 seaborn==0.11.0 SQLAlchemy==1.3.18 
+xlrd==1.2.0
+```
 
 or
 
-`conda create --prefix ~/opt/anaconda3 jupyter==1.0.0 lxml==4.5.1 MarkupSafe==1.1.1 matplotlib==3.3.2 notebook==6.0.3 numpy==1.18.1 openpyxl==3.0.4 pandas==1.1.2 Pillow==7.2.0 scikit-learn==0.23.2 scipy==1.4.1 seaborn==0.11.0 SQLAlchemy==1.3.18 xlrd==1.2.0`
+```python
+conda create --prefix ~/opt/anaconda3 jupyter==1.0.0 lxml==4.5.1 MarkupSafe==1.1.1 
+matplotlib==3.3.2 notebook==6.0.3 numpy==1.18.1 openpyxl==3.0.4 pandas==1.1.2 
+Pillow==7.2.0 scikit-learn==0.23.2 scipy==1.4.1 seaborn==0.11.0 SQLAlchemy==1.3.18 
+xlrd==1.2.0
+```
 
 ## Activate the virtual environment
 
@@ -1671,7 +1685,87 @@ Process:
 
 ## L2 Regularization - Ridge Regression
 
-Start here! 
+Relevant reading in ISLR: Section 6.2.1. Ridge Regression is a regularization method for Linear Regression. L2 Regularization technique that works by helping reduce the potential for overfitting to the training data. It does this by adding in a penalty term to the error that is based on the squared value of the beta coefficients. 
+
+Recall that the prediction is a linear combination y_hat = X * beta. The beta coefficients were solved by **minimizing** the residual sum of squared (RSS): 
+
+$$\begin{aligned}\mathrm{RSS} &=\sum_{i=1}^{n}\left(y_{i}-\hat{y}_{i}\right)^{2} \\&=\sum_{i=1}^{n}\left(y_{i}-\hat{\beta}_{0}-\hat{\beta}_{1} x_{i 1}-\hat{\beta}_{2} x_{i 2}-\cdots-\hat{\beta}_{p} x_{i p}\right)^{2}\end{aligned}$$
+
+We can summarize the RSS as: 
+
+$$\mathrm{RSS}(\beta)=\sum_{i=1}^{n}\left(y_{i}-\beta_{0}-\sum_{j=1}^{p} \beta_{j} x_{i j}\right)^{2}$$
+
+The goal of Ridge Regression is to help prevent overfitting by adding as additional penalty term; it adds a **shrinkage penalty**:
+
+ 
+
+$$\mathrm{ERROR}(\beta,\lambda) = \sum_{i=1}^{n}\left(y_{i}-\beta_{0}-\sum_{j=1}^{p} \beta_{j} x_{i j}\right)^{2}+\lambda \sum_{j=1}^{p} \beta_{j}^{2}=\mathrm{RSS}+\lambda \sum_{j=1}^{p} \beta_{j}^{2}$$
+
+L2 seeks to minimize this error. Note that the **shrinkage penalty** is based off the squared coefficient beta_j and has a **tunable lambda parameter**. If lambda is zero be do back to RSS minimization. 
+
+**Principle**: 
+
+Assume we overfit the model to the train data set > we have high variance, i.e. we're fitting to noise in the train data set instead of generalizing on the entire data set. Question: can we introduce a little more **bias** to significantly **reduce** variance? Adding bias can help generalize the model. 
+
+The shrinkage penalty goes from j=1, ..., n > it punishes a large slope for the regression; at the cost of some additional bias (error in training set) but we generalize better to unseen data. Question: how much should we push these larger coefficients, i.e. what lambda term should we choose? We can use cross-validation to explore multiple lambda options and then choose the best one!   
+
+When coding it's important to know that sklearn refers to lambda as alpha within the class call! For cross validation sklearn uses a "scorer object"; all scorer objects follow the convention that **higher** return values are **better** than lower return values (sklearn uses a negative error > maximize the negative error function). This allows for uniformity across all scorer metrics even across different tasks types. The same idea of uniformity across model classes applies to referring to the penalty strength parameter as alpha > very uniform framework!
+
+## L1 Regularization - Lasso Regression
+
+L1 Regularization adds a penalty equal to the **absolute value** of the magnitude of coefficients. 
+
+$$\mathrm{ERROR}(\beta,\lambda) = \sum_{i=1}^{n}\left(y_{i}-\beta_{0}-\sum_{j=1}^{p} \beta_{j} x_{i j}\right)^{2}+\lambda \sum_{j=1}^{p}\left|\beta_{j}\right|=\operatorname{RSS}+\lambda \sum_{j=1}^{p}\left|\beta_{j}\right|$$
+
+This limits the size of the coefficients and can yield sparse models where some coefficients can become zero. LASSO (least absolute shrinkage and selection operator) can force some of the coefficients estimates to be exactly equal to zero when the tuning parameter lambda is sufficiently large. Similar to subset selection, the L1 performs variable selection. Models generated form the L1 are generally much easier to interpret (coefficient b_j=0 > x_j is not relevant for the model and the model does not consider this feature).
+
+LassoCV with sklearn operates on checking a number of alphas within a range, instead of providing the alphas directly.  
+
+[sklearn.linear_model.LassoCV - scikit-learn 0.24.0 documentation](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoCV.html)
+
+## L1 and L2 Regularization - Elastic Net
+
+We've been able to perform Ridge and Lasso Regression. Lasso is able to shrink coefficients to zero, but we haven't taken a deeper dive into how or why that is. This ability becomes more clear when learning about **elastic net** which combines Lasso and Ridge together. 
+
+The rights side of both error function is non-negative > we can rewrite Lasso: 
+
+$$\underset{\beta}{\operatorname{minimize}}\left\{\sum_{i=1}^{n}\left(y_{i}-\beta_{0}-\sum_{j=1}^{p} \beta_{j} x_{i j}\right)^{2}\right\} \quad \text { subject to } \sum_{j=1}^{p}\left|\beta_{j}\right| \leq s$$
+
+And we can rewrite Ridge: 
+
+$$\underset{\beta}{\operatorname{minimize}}\left\{\sum_{i=1}^{n}\left(y_{i}-\beta_{0}-\sum_{j=1}^{p} \beta_{j} x_{i j}\right)^{2}\right\} \quad \text { subject to } \sum_{j=1}^{p} \beta_{j}^{2} \leq s$$
+
+We write both constrains in terms of **s** so that we can relate them to each other. We know that regularization can be expressed as an additional requirement that RSS is subject to. L1 constrains the sum of absolute values and L2 the sum of squared values. 
+
+The Lasso penalty region is a diamond centered on the zero vector. The Ridge penalty region is a circle centered on the zero vector. 
+
+For the Ridge penalty the gradient descent of the beta term is going to be tangential to the hyper-sphere of the constraint at the optimum. It is similar to Lasso with the gradient descent making contact with the hyper-cube shape. 
+
+A convex object (gradient descent to minimize the RSS) that lies tangent to the boundary, is likely to encounter a corner of a hyper-cube, for which some components of beta are identical to zero. This contrasts to Ridge: in the case of an hyper-sphere, the points on the boundary for which some of the components of beta are zero are not distinguished form the others and the convex object is no more likely to contact a points at which some components of beta are zero than one for which none of them are. 
+
+This is the reason why Lasso is more likely to lead to beta coefficient with value zero. The diagram for this explanation is usually shown with contours RSS on the plane spanned by beta_1 and beta_2. The combination of L1 and L2 created a curved hyper-cube as the penalty region. 
+
+**Elastic Net** seeks to improve on both L1 and L2 Regularizations by combining them: 
+
+$$\text { Error}(\beta, \lambda_1, \lambda_2)=\sum_{i=1}^{n}\left(y_{i}-\beta_{0}-\sum_{j=1}^{p} \beta_{j} x_{i j}\right)^{2}+\lambda_{1} \sum_{j=1}^{p} \beta_{j}^{2}+\lambda_{2} \sum_{j=1}^{p}\left|\beta_{j}\right|$$
+
+We can alternatively express this as a ration between L1 and L2 (alpha = 0 > L2 Regularization; alpha = 1 > L1 Regularization): 
+
+$$\frac{\sum_{i=1}^{n}\left(y_{i}-x_{i}^{J} \hat{\beta}\right)^{2}}{2 n}+\lambda\left(\frac{1-\alpha}{2} \sum_{j=1}^{m} \hat{\beta}_{j}^{2}+\alpha \sum_{j=1}^{m}\left|\hat{\beta}_{j}\right|\right)$$
+
+Note that we still have two hyper-parameters alpha and lambda. We can simplify the notation: 
+
+$$\hat{\beta} \equiv \underset{\beta}{\operatorname{argmin}}\left(\|y-X \beta\|^{2}+\lambda_{2}\|\beta\|^{2}+\lambda_{1}\|\beta\|_{1}\right)$$
+
+The sklearn documentation recommends to put more weight on Lasso and less on Ridge, i.e. l1_ratio should be closer to one > beta coefficient with value zero are more likely to appear. It is recommended to use the list provided in the documentation, i.e. `[.1, .5, .7, .9, .95, .99, 1]`. 
+
+## LR Project - Data Overview
+
+Most data sets require cleaning, analysis, and feature engineering before being used for ML. We'll quickly review the data set for the LR Project and in the next section we'll focus on setting up the data for ML (do we need all the features? should be modify features? should be clean features up?). Note that 80% of your time is usually spend cleaning and formatting data. 
+
+# 🧼 Feature Engineering and Data Preparation
+
+Realistically not every data set is ML ready, we often need to perform data cleaning or try to produce more usable features. In this section, we'll work on the large LR data set to get it ready for a ML project. 
 
 # 🔧 Open Questions and Tasks
 
@@ -1682,7 +1776,9 @@ Start here!
 
 ## Backlog
 
-- Logistics Regression
+- Feature Engineering
+- Cross Validation II & Grid Search
+- Linear Regression Project (?)
 - Machine Learning
 - Revise the lecture before the presentation!
 - Read about [copy warning](https://realpython.com/pandas-settingwithcopywarning/)
@@ -1690,7 +1786,6 @@ Start here!
 
 ## In Progress
 
-- Linear Regression
 - Convert [rawTimesamp](https://stackoverflow.com/questions/19231871/convert-unix-time-to-readable-date-in-pandas-dataframe) feature into a datetime object > useful later for feature engineering (see [documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.to_datetime.html))
 - Make an outline of the project
 - Decide what are the relevant categorial columns for the project
@@ -1700,6 +1795,7 @@ Start here!
 
 ## Resolved (Preparation)
 
+- Linear Regression
 - Crapstone Project (Numpy, Pandas, Matplotlib, and Seaborn)
 - Seaborn
 - Matplotlib
@@ -1724,7 +1820,8 @@ Start here!
     - generate TOC (T)
     - remove metadata (VS)
     - save to HTML (VS)
-- push repo (T)
+- add and commit to main (T)
+- push to repo (T)
 
 # 📋 Outline of Project (WIP)
 
