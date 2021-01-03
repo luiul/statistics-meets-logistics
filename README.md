@@ -1,139 +1,136 @@
+<!-- omit in toc -->
 # Statistics Meets Logistics
 
 The [course](https://www.statistik.tu-dortmund.de/2791.html) and the [material](https://moodle.tu-dortmund.de/enrol/index.php?id=22199) provided by the lecturer are in German. This repository documents our preparation for the project and holds the project and its data. 
 
-To view TeX equations found in *Introduction to Linear Regression* and subsequent Sections, consider the following options: 
+To view TeX equations found in *10. Introduction to Linear Regression* and subsequent Sections, consider the following options: 
 
 - Open the [.HTML version of the README](https://htmlpreview.github.io/?https://github.com/luiul/statistics-meets-logistics/blob/main/README.html)
 - Preview directly on Github using a browser [extension](https://github.com/AaronCQL/katex-github-chrome-extension) (Chromium based)
 - Copy the equation block directly from the [raw README](https://raw.githubusercontent.com/luiul/statistics-meets-logistics/main/README.md) and use a TeX [renderer](https://quicklatex.com/) or [image generator](https://github.com/masakiaota/tex_image_link_generator)
 
-# 📖 Description
+<!-- omit in toc -->
+# Description 📖
 
 In the course, students will learn about the application of statistical methods and basic machine learning procedures for the analysis of complex data in the field of logistics. This includes methods of descriptive statistics as well as various regression and classification procedures including neural networks. After the introduction of the methods, the students apply the acquired knowledge independently to work on logistical problems in various practical exercises. The software Python and relevant packages are used.
 
-# 📑 Table of Contents
+<!-- omit in toc -->
+# Table of Contents 📑
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-<!-- END doctoc -->
+- [1. Background 🌅](#1-background-)
+  - [1.1. Getting Started with Anaconda](#11-getting-started-with-anaconda)
+  - [1.2. Jupyter Notebook](#12-jupyter-notebook)
+  - [1.3. JupyterLab](#13-jupyterlab)
+  - [1.4. VS Code](#14-vs-code)
+  - [1.5. Version Control with Git](#15-version-control-with-git)
+  - [1.6. Basic Markdown](#16-basic-markdown)
+  - [1.7. Virtual Environments](#17-virtual-environments)
+  - [1.8. Activate the virtual environment](#18-activate-the-virtual-environment)
+- [2. Python Crash Course 🐍](#2-python-crash-course-)
+- [3. Machine Learning Pathway 🤖](#3-machine-learning-pathway-)
+  - [3.1. Meta-Pathway](#31-meta-pathway)
+  - [3.2. Pathway](#32-pathway)
+- [4. NumPy 🥧](#4-numpy-)
+  - [4.1. Array](#41-array)
+    - [4.1.1. Random](#411-random)
+    - [4.1.2. Useful Attributes and Method Calls](#412-useful-attributes-and-method-calls)
+  - [4.2. Indexing and Selection](#42-indexing-and-selection)
+    - [4.2.1. Broadcasting and Slicing](#421-broadcasting-and-slicing)
+    - [4.2.2. Operations](#422-operations)
+- [5. Pandas 🐼](#5-pandas-)
+  - [5.1. Series](#51-series)
+  - [5.2. DataFrames](#52-dataframes)
+  - [5.3. Useful Methods](#53-useful-methods)
+    - [5.3.1. Apply Method a Single Column](#531-apply-method-a-single-column)
+    - [5.3.2. Apply Method on Multiple Columns](#532-apply-method-on-multiple-columns)
+    - [5.3.3. Describing and Sorting](#533-describing-and-sorting)
+  - [5.4. Missing Data](#54-missing-data)
+  - [5.5. GroupBy Operations](#55-groupby-operations)
+  - [5.6. Combining DataFrames](#56-combining-dataframes)
+    - [5.6.1. Concatenate](#561-concatenate)
+    - [5.6.2. Merge](#562-merge)
+  - [5.7. Text Methods for String Data](#57-text-methods-for-string-data)
+  - [5.8. Time Methods for Date and Time Data](#58-time-methods-for-date-and-time-data)
+  - [5.9. Input and Output](#59-input-and-output)
+    - [5.9.1. CSV Files](#591-csv-files)
+    - [5.9.2. HTML Tables](#592-html-tables)
+    - [5.9.3. Excel files](#593-excel-files)
+    - [5.9.4. SQL Databases](#594-sql-databases)
+  - [5.10. Pivot Tables](#510-pivot-tables)
+  - [5.11. Notes from the Exercise](#511-notes-from-the-exercise)
+- [6. Matplotlib 📊](#6-matplotlib-)
+  - [6.1. Basics](#61-basics)
+  - [6.2. Figure Object](#62-figure-object)
+  - [6.3. Subplots Functionality](#63-subplots-functionality)
+  - [6.4. Styling](#64-styling)
+  - [6.5. Advanced Commands](#65-advanced-commands)
+- [7. Seaborn 🌊](#7-seaborn-)
+  - [7.1. Scatter Plots](#71-scatter-plots)
+  - [7.2. Distribution Plots](#72-distribution-plots)
+  - [7.3. Categorical Plots - Statistics within Categories](#73-categorical-plots---statistics-within-categories)
+  - [7.4. Distributions within Categories](#74-distributions-within-categories)
+  - [7.5. Comparison Plots (!)](#75-comparison-plots-)
+  - [7.6. Grids](#76-grids)
+  - [7.7. Matrix Plots](#77-matrix-plots)
+  - [7.8. Notes from Exercise](#78-notes-from-exercise)
+- [8. Capstone Project 🗿](#8-capstone-project-)
+  - [8.1. Basic Skills](#81-basic-skills)
+  - [8.2. Normalization](#82-normalization)
+- [9. Machine Learning Concepts Overview 🏔](#9-machine-learning-concepts-overview-)
+  - [9.1. Why Machine Learning?](#91-why-machine-learning)
+  - [9.2. Types of ML Algorithms](#92-types-of-ml-algorithms)
+    - [9.2.1. Supervised Learning](#921-supervised-learning)
+    - [9.2.2. Unsupervised Learning](#922-unsupervised-learning)
+  - [9.3. Supervised ML Process](#93-supervised-ml-process)
+- [10. Introduction to Linear Regression 📏](#10-introduction-to-linear-regression-)
+  - [10.1. Algorithm History](#101-algorithm-history)
+  - [10.2. OLS Equations](#102-ols-equations)
+  - [10.3. Cost Functions](#103-cost-functions)
+  - [10.4. Gradient Descent](#104-gradient-descent)
+  - [10.5. Coding Simple Linear Regression with Python](#105-coding-simple-linear-regression-with-python)
+- [11. Scikit-learn 📚](#11-scikit-learn-)
+  - [11.1. Linear Regression with Scikit-learn - Data Setup and Model Training](#111-linear-regression-with-scikit-learn---data-setup-and-model-training)
+  - [11.2. Performance Evaluation with Scikit-learn - Regression Metrics](#112-performance-evaluation-with-scikit-learn---regression-metrics)
+    - [11.2.1. Mean Absolute Error (MAE)](#1121-mean-absolute-error-mae)
+    - [11.2.2. **Mean Squared Error** (MSE)](#1122-mean-squared-error-mse)
+    - [11.2.3. **Root Mean Squared Error** (RMSE)](#1123-root-mean-squared-error-rmse)
+  - [11.3. Evaluating Residuals](#113-evaluating-residuals)
+  - [11.4. Model Deployment and Coefficient](#114-model-deployment-and-coefficient)
+- [12. Polynomial Regression 🦑](#12-polynomial-regression-)
+  - [12.1. Introduction](#121-introduction)
+  - [12.2. Bias Variance Trade-Off: Overfitting versus Underfitting (based on MSE)](#122-bias-variance-trade-off-overfitting-versus-underfitting-based-on-mse)
+- [13. Regularization and Cross Validation 🍡](#13-regularization-and-cross-validation-)
+  - [13.1. Feature Scaling and Regularization](#131-feature-scaling-and-regularization)
+  - [13.2. Cross Validation](#132-cross-validation)
+    - [13.2.1. Principle](#1321-principle)
+    - [13.2.2. Hold Out Test Set](#1322-hold-out-test-set)
+    - [13.2.3. Regularization Data Setup](#1323-regularization-data-setup)
+  - [13.3. L2 Regularization - Ridge Regression](#133-l2-regularization---ridge-regression)
+  - [13.4. L1 Regularization - Lasso Regression](#134-l1-regularization---lasso-regression)
+  - [13.5. L1 and L2 Regularization - Elastic Net](#135-l1-and-l2-regularization---elastic-net)
+  - [13.6. LR Project - Data Overview](#136-lr-project---data-overview)
+- [14. Feature Engineering and Data Preparation 🧹](#14-feature-engineering-and-data-preparation-)
+  - [14.1. Introduction to Feature Engineering](#141-introduction-to-feature-engineering)
+  - [14.2. Dealing with Outliers](#142-dealing-with-outliers)
+  - [14.3. Dealing with Missing Data](#143-dealing-with-missing-data)
+- [15. Cross Validation and Linear Regression Project 🗂](#15-cross-validation-and-linear-regression-project-)
+- [16. Open Questions and Tasks 🔧](#16-open-questions-and-tasks-)
+  - [16.1. Open Questions](#161-open-questions)
+  - [16.2. Backlog](#162-backlog)
+  - [16.3. In Progress](#163-in-progress)
+  - [16.4. Resolved (Preparation)](#164-resolved-preparation)
+  - [16.5. Resolved (Project)](#165-resolved-project)
+  - [16.6. Workflow](#166-workflow)
+- [17. Notes 📝](#17-notes-)
+  - [17.1. On the Articles](#171-on-the-articles)
+  - [17.2. On the Project](#172-on-the-project)
+- [18. Misc 💡](#18-misc-)
 
-- [🌅 Background](#-background)
-  - [Getting Started with Anaconda](#getting-started-with-anaconda)
-  - [Jupyter Notebook](#jupyter-notebook)
-  - [JupyterLab](#jupyterlab)
-  - [VS Code](#vs-code)
-  - [Version Control with Git](#version-control-with-git)
-  - [Basic Markdown](#basic-markdown)
-  - [Virtual Environments](#virtual-environments)
-  - [Activate the virtual environment](#activate-the-virtual-environment)
-- [🐍 Python Crash Course](#-python-crash-course)
-  - [Crash Course](#crash-course)
-- [🤖 Machine Learning Pathway](#-machine-learning-pathway)
-  - [Meta-Pathway](#meta-pathway)
-  - [Pathway](#pathway)
-- [🥧 NumPy](#-numpy)
-  - [Array](#array)
-    - [Random](#random)
-    - [Useful Attributes and Method Calls](#useful-attributes-and-method-calls)
-  - [Indexing and Selection](#indexing-and-selection)
-    - [Broadcasting and Slicing](#broadcasting-and-slicing)
-    - [Operations](#operations)
-- [🐼 Pandas](#-pandas)
-  - [Series](#series)
-  - [DataFrames](#dataframes)
-    - [Conditional Formating](#conditional-formating)
-  - [Useful Methods](#useful-methods)
-    - [Apply Method a Single Column](#apply-method-a-single-column)
-    - [Apply Method on Multiple Columns](#apply-method-on-multiple-columns)
-    - [Describing and Sorting](#describing-and-sorting)
-  - [Missing Data](#missing-data)
-  - [GroupBy Operations](#groupby-operations)
-  - [Combining DataFrames](#combining-dataframes)
-    - [Concatenate](#concatenate)
-    - [Merge](#merge)
-  - [Text Methods for String Data](#text-methods-for-string-data)
-  - [Time Methods for Date and Time Data](#time-methods-for-date-and-time-data)
-  - [Input and Output](#input-and-output)
-    - [CSV Files](#csv-files)
-    - [HTML Tables](#html-tables)
-    - [Excel files](#excel-files)
-    - [SQL Databases](#sql-databases)
-  - [Pivot Tables](#pivot-tables)
-  - [Notes from the Exercise](#notes-from-the-exercise)
-- [📊 Matplotlib](#-matplotlib)
-  - [Basics](#basics)
-  - [Figure Object](#figure-object)
-  - [Subplots Functionality](#subplots-functionality)
-  - [Styling](#styling)
-  - [Advanced Commands](#advanced-commands)
-- [🌊 Seaborn](#-seaborn)
-  - [Scatter Plots](#scatter-plots)
-  - [Distribution Plots](#distribution-plots)
-  - [Categorical Plots - Statistics within Categories](#categorical-plots---statistics-within-categories)
-  - [Distributions within Categories](#distributions-within-categories)
-  - [Comparison Plots (!)](#comparison-plots-)
-  - [Grids](#grids)
-  - [Matrix Plots](#matrix-plots)
-  - [Notes from Exercise](#notes-from-exercise)
-- [🗿 Capstone Project](#-capstone-project)
-  - [Normalization](#normalization)
-- [🏔 Machine Learning Concepts Overview](#%F0%9F%8F%94-machine-learning-concepts-overview)
-  - [Why Machine Learning?](#why-machine-learning)
-  - [Types of ML Algorithms](#types-of-ml-algorithms)
-    - [Supervised Learning](#supervised-learning)
-    - [Unsupervised Learning](#unsupervised-learning)
-  - [Supervised ML Process](#supervised-ml-process)
-- [📏 Introduction to Linear Regression](#-introduction-to-linear-regression)
-  - [Algorithm History](#algorithm-history)
-  - [OLS Equations](#ols-equations)
-  - [Cost Functions](#cost-functions)
-  - [Gradient Descent](#gradient-descent)
-  - [Coding Simple Linear Regression with Python](#coding-simple-linear-regression-with-python)
-- [📚 Scikit-learn](#-scikit-learn)
-  - [Linear Regression with Scikit-learn](#linear-regression-with-scikit-learn)
-    - [Data Setup and Model Training](#data-setup-and-model-training)
-  - [Performance Evaluation with Scikit-learn - Regression Metrics](#performance-evaluation-with-scikit-learn---regression-metrics)
-    - [Mean Absolute Error (MAE)](#mean-absolute-error-mae)
-    - [**Mean Squared Error** (MSE)](#mean-squared-error-mse)
-    - [**Root Mean Squared Error** (RMSE)](#root-mean-squared-error-rmse)
-  - [Evaluating Residuals](#evaluating-residuals)
-  - [Model Deployment and Coefficient](#model-deployment-and-coefficient)
-- [🦑 Polynomial Regression](#-polynomial-regression)
-  - [Bias Variance Trade-Off: Overfitting versus Underfitting (based on MSE)](#bias-variance-trade-off-overfitting-versus-underfitting-based-on-mse)
-- [🍡 Regularization and Cross Validation](#-regularization-and-cross-validation)
-  - [Feature Scaling and Regularization](#feature-scaling-and-regularization)
-  - [Cross Validation](#cross-validation)
-    - [Principle](#principle)
-    - [Hold Out Test Set](#hold-out-test-set)
-    - [Regularization Data Setup](#regularization-data-setup)
-  - [L2 Regularization - Ridge Regression](#l2-regularization---ridge-regression)
-  - [L1 Regularization - Lasso Regression](#l1-regularization---lasso-regression)
-  - [L1 and L2 Regularization - Elastic Net](#l1-and-l2-regularization---elastic-net)
-  - [LR Project - Data Overview](#lr-project---data-overview)
-- [🧹 Feature Engineering and Data Preparation](#%F0%9F%A7%B9-feature-engineering-and-data-preparation)
-  - [Introduction to Feature Engineering](#introduction-to-feature-engineering)
-  - [Dealing with Outliers](#dealing-with-outliers)
-  - [Dealing with Missing Data](#dealing-with-missing-data)
-- [🗂  Cross Validation and Linear Regression Project](#%F0%9F%97%82--cross-validation-and-linear-regression-project)
-- [🔧 Open Questions and Tasks](#-open-questions-and-tasks)
-  - [Open Questions](#open-questions)
-  - [Backlog](#backlog)
-  - [In Progress](#in-progress)
-  - [Resolved (Preparation)](#resolved-preparation)
-  - [Resolved (Project)](#resolved-project)
-  - [Workflow](#workflow)
-- [📄 Moodle Articles](#-moodle-articles)
-- [📋 Project (WIP)](#-project-wip)
-- [💡 Misc](#-misc)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-# 🌅 Background
+# 1. Background 🌅
 
 In this section we setup the relevant systems for the project and provide additional material not directly tied to the project.
 
-## Getting Started with Anaconda
+## 1.1. Getting Started with Anaconda
 
 - Anaconda curates data science packages for analysis, visualization and modelling (200+ packages)
 - Conda package manager
@@ -157,7 +154,7 @@ Community, documenation and events:
 
 [Installing Python Packages from a Jupyter Notebook](https://jakevdp.github.io/blog/2017/12/05/installing-python-packages-from-jupyter/)
 
-## Jupyter Notebook
+## 1.2. Jupyter Notebook
 
 See [themes](https://stackoverflow.com/questions/46510192/change-the-theme-in-jupyter-notebook). See [extensions](https://github.com/ipython-contrib/jupyter_contrib_nbextensions), e.g. [variable explorer](https://stackoverflow.com/questions/37718907/variable-explorer-in-jupyter-notebook). Version control with Git: 
 
@@ -169,7 +166,7 @@ Useful shortcuts in Jupyter notebook:
 
 [My favorite Jupyter notebook shortcuts](https://www.youtube.com/watch?v=FW2BF6jbHBk)
 
-## JupyterLab
+## 1.3. JupyterLab
 
 [JupyterLab](https://github.com/jupyterlab/jupyterlab) is the next-gen user interface for Project Jupyter offering all the familiar building blocks of the classic Jupyter Notebook (notebook, terminal, text editor, file browser, rich outputs, etc.) in a flexible and powerful user interface. JupyterLab will eventually replace the classic Jupyter Notebook. [Kite](https://github.com/kiteco/jupyterlab-kite) is available for Jupyterlab. 
 
@@ -179,11 +176,11 @@ Useful shortcuts in Jupyter notebook:
 
 [mauhai/awesome-jupyterlab](https://github.com/mauhai/awesome-jupyterlab)
 
-## VS Code
+## 1.4. VS Code
 
 Another alternative is VS Code. See [Documentation](https://code.visualstudio.com/docs/python/jupyter-support); note that to work with other languages such as Julia or R the [marketplace extension](https://code.visualstudio.com/docs/python/jupyter-support) has VS Code Insiders as a prerequisite. 
 
-## Version Control with Git
+## 1.5. Version Control with Git
 
 Keep track of the history changes done to code > facilitate collaboration
 
@@ -191,13 +188,13 @@ Keep track of the history changes done to code > facilitate collaboration
 
 [gitignore.io](https://www.toptal.com/developers/gitignore)
 
-## Basic Markdown
+## 1.6. Basic Markdown
 
 [Basic Syntax | Markdown Guide](https://www.markdownguide.org/basic-syntax/)
 
 [adam-p/markdown-here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
-## Virtual Environments
+## 1.7. Virtual Environments
 
 [Managing Environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
 
@@ -224,18 +221,14 @@ Pillow==7.2.0 scikit-learn==0.23.2 scipy==1.4.1 seaborn==0.11.0 SQLAlchemy==1.3.
 xlrd==1.2.0
 ```
 
-## Activate the virtual environment
+## 1.8. Activate the virtual environment
 
 There are two options: 
 
 1. On the Anaconda Navigator: Environments tab > choose the environment > open application on the environment
 2. In the terminal: `conda active <myEnv>` (replace `<myEnv>` the name of your environment)
 
-# 🐍 Python Crash Course
-
-This is the section for the Python crash course. [Python documentation](https://docs.python.org/3/contents.html). [Python Built-in Functions](https://docs.python.org/3/library/functions.html). 
-
-## Crash Course
+# 2. Python Crash Course 🐍
 
 Keep the following points in mind when working with Python: 
 
@@ -277,11 +270,11 @@ Keep the following points in mind when working with Python:
         - filter(None, data): filters out all values that are treated as false in a boolen setting. **Be careful** with 0, as they are treated as False in Python
     - reduce(): no longer a built in function. It can be found in the 'functools' module.
 
-# 🤖 Machine Learning Pathway
+# 3. Machine Learning Pathway 🤖
 
 General idea of a pathway of using Machine Learning and Data Science for useful applications, e.g. create a data report or product. We'll try to distinguish between Data Engineer, Data Analyst, Data Scientist, and Machine Learning Researcher. 
 
-## Meta-Pathway
+## 3.1. Meta-Pathway
 
 Real World > Problem to Solve or Question to Answer > Real World
 
@@ -295,7 +288,7 @@ Question to Answer
 - How does a change in X affect Y?
 - Create: data analysis, e.g. reports, visualization, communications, etc.
 
-## Pathway
+## 3.2. Pathway
 
 Real World > Collect & Store Data <> **Data Analysis** > Machine learning models > Real World
 
@@ -317,7 +310,7 @@ Machine Learning Models (Role: Data Scientist or Machine Learning Engineer)
 - Unsupervised Learning: Discover hidden patterns in data
 - Create: service, dashboard, application, etc > data product (predict future outcomes or gain insight on data) > Affect some change in the real world
 
-# 🥧 NumPy
+# 4. NumPy 🥧
 
 [NumPy](https://note.nkmk.me/en/python-numpy-ndarray-ndim-shape-size/#:~:text=len()%20is%20the%20built,only%20for%20one%2Ddimensional%20arrays.) is a Python library. Almost every data science library is built using NumPy.
 
@@ -339,7 +332,7 @@ Motivation:
 - NumPy arrays are more efficient than Python lists
 - Broadcasting capabilities useful for quickly applying functions to data set
 
-## Array
+## 4.1. Array
 
 Create by: 
 
@@ -347,11 +340,11 @@ Create by:
 - Built-in functions
 - Generating random data
 
-### Random
+### 4.1.1. Random
 
 Lots of built-in random functions
 
-### Useful Attributes and Method Calls
+### 4.1.2. Useful Attributes and Method Calls
 
 - np.arrange()
 - array.reshape()
@@ -361,7 +354,7 @@ Lots of built-in random functions
 
 [Index of element in NumPy array](https://stackoverflow.com/questions/18079029/index-of-element-in-numpy-array)
 
-## Indexing and Selection
+## 4.2. Indexing and Selection
 
 - Grabbing single element
 - Grabbing a slice of elements
@@ -369,7 +362,7 @@ Lots of built-in random functions
 - Indexing and selection in 2-dim
 - Conditional Selection
 
-### Broadcasting and Slicing
+### 4.2.1. Broadcasting and Slicing
 
 With NumPy arrays, we can broadcast a single value across a larger set of values. Slicing section of an array and setting it to a new variable only acts as a pointer to the original array (use the copy method to avoid this).
 
@@ -379,14 +372,14 @@ Examples: [1,2]*2 = [1,2,1,2] versus np.array([1,2]*2) = array([2,4])
 
 [What is :: (double colon) in numpy like in myarray[0::3]?](https://stackoverflow.com/questions/7123888/what-is-double-colon-in-numpy-like-in-myarray03)
 
-### Operations
+### 4.2.2. Operations
 
 [Universal functions (ufunc) - NumPy v1.19 Manual](https://numpy.org/doc/stable/reference/ufuncs.html)
 
 - */0 gives a warning (not an error) and it outputs a result (limit of the operation or nan if the object is not defined)
 - consider axis logic when performing operations on arrays
 
-# 🐼 Pandas
+# 5. Pandas 🐼
 
 Important library for cleaning & organising data and exploratory data analysis. Open source library for data analysis. Uses extremely powerful table object called DataFrame (system) built of NumPy. 
 
@@ -411,7 +404,7 @@ Overview:
 - Text Methods and Time Methods
 - Inputs and Outputs
 
-## Series
+## 5.1. Series
 
 Data structure that holds an array of information along with a named index (as opposed to numeric index). Similar to a map or dictionary.
 
@@ -426,7 +419,7 @@ We can combine Series with a shared index to create a tabular data structure cal
 - Performing numeric computations with Panda objects, will convert the data into floating numbers. To avoid this we can round with np.round() or pd.round() or specify / hardcode the data type in the operations
 - We can name Series when creating them
 
-## DataFrames
+## 5.2. DataFrames
 
 Table of columns and rows that can be easily restructured and filtered. We can combine Series that share the same index. Each individual column in the table is a Series and all the Series in the DataFrame share the same index
 
@@ -445,7 +438,7 @@ Working with Rows
 
 df.loc['index'] similar to Excel's lookup function
 
-### Conditional Formating
+**Conditional Formating**
 
 Typically in data analysis the datasets are large enough that we don't filter based on position, but instead based on a (column) condition. Conditional filtering allows us to select rows based on condition on a column. This lead to a discussion on organising out data. 
 
@@ -459,7 +452,7 @@ Overview:
 - Filter by multiple conditions (operators: & and |)
 - Check against multiple possible values (categorical values): is in method
 
-## Useful Methods
+## 5.3. Useful Methods
 
 [API reference - pandas 1.1.5 documentation](https://pandas.pydata.org/pandas-docs/stable/reference/index.html)
 
@@ -467,11 +460,11 @@ Overview:
 
 Series and DataFrames have specialised methods of calls that are very useful. Check the API reference above if necessary. 
 
-### Apply Method a Single Column
+### 5.3.1. Apply Method a Single Column
 
 We can use the .apply() method call to apply any custom function to every row in a Series. We can use either one or multiple columns as input. We argument of .apply() is just the function number, we do not call the function! Apply function should return just a single value, as .apply() applies the function for each row in the series (single cell)
 
-### Apply Method on Multiple Columns
+### 5.3.2. Apply Method on Multiple Columns
 
 Lambda expression are very useful when calling the apply method on multiple columns of the DataFrame. 
 
@@ -490,7 +483,7 @@ This structure is expandable to N columns. There is an alternative to make this 
 
 [Using Numpy Vectorize on Functions that Return Vectors](https://stackoverflow.com/questions/3379301/using-numpy-vectorize-on-functions-that-return-vectors)
 
-### Describing and Sorting
+### 5.3.3. Describing and Sorting
 
 - describe method (transpose the DataFrame to make it more readable)
 - sort_values method
@@ -498,7 +491,7 @@ This structure is expandable to N columns. There is an alternative to make this 
 
 [pandas idxmax: return all rows in case of ties](https://stackoverflow.com/questions/52588298/pandas-idxmax-return-all-rows-in-case-of-ties)
 
-## Missing Data
+## 5.4. Missing Data
 
 Options for Missing Data (depending on the situation): 
 
@@ -535,7 +528,7 @@ Comparison on NaN-values are done with the 'is' keyword.
 
 [pandas.DataFrame.interpolate - pandas 1.1.5 documentation](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.interpolate.html)
 
-## GroupBy Operations
+## 5.5. GroupBy Operations
 
 A groupby() operation allows us to examine data on a **per category** basis > aggregate a continuous value per category. We need to choose a **categorical** column to call with groupby(), i.e. a columns with non-continous values. Note that the values can still be numerical, e.g. Class 1, ..., Class N or Production dates 1970, ..., YYYY. 
 
@@ -567,15 +560,15 @@ Note that we can specify what aggregate function to call on each column.
 
 Grab based on Cross-Section: it is important to filter out DataFrame first, and then grouping the resulting DataFrame. Concatenation is simply "pasting" the two DataFrames together either based columns or rows (NaN will be filled in automatically)
 
-## Combining DataFrames
+## 5.6. Combining DataFrames
 
 [Merge, join, concatenate and compare - pandas 1.1.5 documentation](https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html)
 
-### Concatenate
+### 5.6.1. Concatenate
 
 Data might exist in two separate sources and combining them might be necessary. The simplest combination is if both sources are already in the same format, then a concatenation through the pd.concat() call is all we need. 
 
-### Merge
+### 5.6.2. Merge
 
 Merges are often shows as a Venn diagram 
 
@@ -598,13 +591,13 @@ We can also merge on an index instead of a column
 
 [Merge two dataframes by index](https://stackoverflow.com/questions/40468069/merge-two-dataframes-by-index)
 
-## Text Methods for String Data
+## 5.7. Text Methods for String Data
 
 [Working with text data - pandas 1.1.5 documentation](https://pandas.pydata.org/docs/user_guide/text.html)
 
 Often text data needs to be cleaned or manipulated for processing. While we can always use a custom apply() function for these tasks, Pandas comes with many built-in sting method calls.
 
-## Time Methods for Date and Time Data
+## 5.8. Time Methods for Date and Time Data
 
 [Time series / date functionality - pandas 1.1.5 documentation](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#converting-to-timestamps)
 
@@ -620,29 +613,29 @@ For example, we may have recent timestamped sales data. We're trying to predict 
 
 A common operation is resampling or grouping by when the actual time series has the time as the index (time index is a datetime object / timestamp column) . 
 
-## Input and Output
+## 5.9. Input and Output
 
 [IO tools (text, CSV, HDF5, ...) - pandas 1.1.5 documentation](https://pandas.pydata.org/pandas-docs/stable/user_guide/io.html)
 
 Pandas can read in data from a wide variety of sources and has excellent online documentation. We may need passwords / permissions for certain data inputs, e.g. SQL database password.
 
-### CSV Files
+### 5.9.1. CSV Files
 
 We need to know the exact directory location and correct file name
 
-### HTML Tables
+### 5.9.2. HTML Tables
 
 HTML tables: websites display tabular info through the use of HTML tables tags: <table> </table>. Pandas can automatically convert these HTML tables into a DataFrame. 
 
 Not every table in a website is available through HTML tables. Some websites may block your computer from scraping the HTML of the site through Pandas (> use Beautiful Soup for Web Scraping with Python). It may be more efficient to use an API if available. 
 
-### Excel files
+### 5.9.3. Excel files
 
 [Working with Excel Files in Python](https://www.python-excel.org/)
 
 Using Pandas with Excel requires additional libraries (openpyxl and xlrd). Pandas can only read and write in raw data, it is not able to read in macros, visualisation, or formulas created inside the spreadsheets. Pandas treats an Excel Workbook as a dictionary, with the key being the sheet name and the value being the DataFrame representing the sheet itself > the result is dictionary of DataFrames. 
 
-### SQL Databases
+### 5.9.4. SQL Databases
 
 [](https://docs.sqlalchemy.org/en/13/core/connections.html)
 
@@ -655,7 +648,7 @@ Pandas can read and write to various SQL engines through the use of a driver and
 3. Use the [sqlalchemy](https://docs.sqlalchemy.org/en/13/core/connections.html) library to connect to your SQL database with the driver
 4. Use the sqlalchemy driver connection with Pandas read_sql method. Pandas can read in entire tables as a DataFrame or actual parse a SQL query through the connection: SELECT * FROM table; 
 
-## Pivot Tables
+## 5.10. Pivot Tables
 
 [Reshaping and pivot tables - pandas 1.1.5 documentation](https://pandas.pydata.org/docs/user_guide/reshaping.html)
 
@@ -673,7 +666,7 @@ Usually a groupby() call is a better solution  1wto these questions.
 
 Pandas also comes with a pivot_table method that allows for an additional aggregation function to be called. This could alternatively be done with a groupby() method as well. 
 
-## Notes from the Exercise
+## 5.11. Notes from the Exercise
 
 - See [styling documentation](https://pandas.pydata.org/pandas-docs/stable/user_guide/style.html) for more styling options.
 - Important function to determine most common value in a Series `value_counts()` for Categorical values. For Numerical values use `sort_values()`method.
@@ -689,7 +682,7 @@ h.iloc[positions][['name','adults','kids','babies','children']]
 # locate by index, print relevant columns
 ```
 
-# 📊 Matplotlib
+# 6. Matplotlib 📊
 
 Visualizing data is crucial to quickly understanding trends and relationships in your dataset matplotlib is knows as the 'grandfather' of plotting and visualization libraries for Python. Many other visualization libraries are built directly off of matplotlib (e.g. seaborn and pandas built-in visualization). 
 
@@ -717,11 +710,11 @@ Goals:
 - Plot out a functional relationship (y=ax) (plotting a known relationship from an equation)
 - Plot out a relationship between raw data points (x=[x_1,x_2,x_3,x_4], y=[y_1,y_2,y_3,y_4]) (plotting raw data points)
 
-## Basics
+## 6.1. Basics
 
 The most basic way to use matplotlib is though the function plot class: `plt.plot(x,y`. These function calls are simple to use, but don't allow for very high degrees of control > quickly visualize relationships and data. Later we will explore the more robust OOP Matplotlib Figure API. 
 
-## Figure Object
+## 6.2. Figure Object
 
 The more comprehensive Matplotlib OOP API makes use of a Figure object. We then add axes to this Figure object and then plot on those axes. This allows for very robust controls over the entire plot. 
 
@@ -731,7 +724,7 @@ The more comprehensive Matplotlib OOP API makes use of a Figure object. We then 
 
 Important when saving to use `fig.savefig('figure.png', bbox_inches='tight')` 
 
-## Subplots Functionality
+## 6.3. Subplots Functionality
 
 We can create a Figure object and manually add and arrange sets of axes to line up multiple plots side by side. However, matplotlib comes with a pre-configured function call `plt-subplots()`that automatically does this. 
 
@@ -739,7 +732,7 @@ This call allows us to easily create Figure and Axes objects in side by side for
 
 [matplotlib.pyplot.subplots_adjust - Matplotlib 3.2.2 documentation](https://matplotlib.org/3.2.2/api/_as_gen/matplotlib.pyplot.subplots_adjust.html)
 
-## Styling
+## 6.4. Styling
 
 Matpotlib offers very robust styling functions that allow us to edit colors, legends, line widths, markers, etc. 
 
@@ -753,11 +746,11 @@ Stylings:
     - Editing [Markers](https://matplotlib.org/3.2.2/api/markers_api.html)
         - Colors, Size, Styles, Edges
 
-## Advanced Commands
+## 6.5. Advanced Commands
 
 Almost any Matplotlib question you can think of already has an answer in StackOverflow or an example in the Matplotlib gallery > leaverage these many examples to your advantage and do not waste energy and time into memorizing esoteric commands! 
 
-# 🌊 Seaborn
+# 7. Seaborn 🌊
 
 [seaborn: statistical data visualization - seaborn 0.11.0 documentation](https://seaborn.pydata.org/)
 
@@ -782,7 +775,7 @@ Overview:
 - Seaborn Grids
 - Matrix Plots
 
-## Scatter Plots
+## 7.1. Scatter Plots
 
 **continuous feature + categorical hue**
 
@@ -800,7 +793,7 @@ You can choose a [color palette](https://matplotlib.org/tutorials/colors/colorma
 
 **The `hue` parameter determines which columns in the data frame should be used for color encoding (parameter is a categorical feature; commonly use in seaborn plots).** 
 
-## Distribution Plots
+## 7.2. Distribution Plots
 
 **continuous feature**
 
@@ -835,7 +828,7 @@ Distribution plots display a single continuous feature and help visualize proper
 
 continue here
 
-## Categorical Plots - Statistics within Categories
+## 7.3. Categorical Plots - Statistics within Categories
 
 **categorical feature**
 
@@ -850,7 +843,7 @@ The two main types of plots for this are:
 - `countplot()` to count number of rows per category. We can display more information in the plot with the addition of hue separation.
 - `barplot()` which is the general form of displaying any chosen metric (measure or estimator) per category, e.g. the mean value or standard deviation. Note: be careful when using these plots, since the bar is filled and continuous, a viewer may interpret continuity along the y-axis which may be incorrect! > Always make sure to add additional labeling and explanation for these plots! > since this are single values it is probably better to report this in a table
 
-## Distributions within Categories
+## 7.4. Distributions within Categories
 
 **grouped continuous feature**
 
@@ -872,7 +865,7 @@ Note: the boxplot contains information about the distribution of the data, but n
 - Swarmplot: simply shows all the data points in the distribution > this **will** display the number of data points per category
 - [Boxenplot](https://vita.had.co.nz/papers/letter-value-plot.html) / Letter-Value Plot: expansion upon the normal box plot. Using a system of letter-values we can use multiple quantiles instead of strictly quartiles.
 
-## Comparison Plots (!)
+## 7.5. Comparison Plots (!)
 
 **continuous feature + categorical hue**
 
@@ -889,7 +882,7 @@ In the hexagon plot, hexagons are dark the more points fall into their area.
 
 For comparison plots we need two continuous features. 
 
-## Grids
+## 7.6. Grids
 
 **continuous feature + categorical axis (cols or rows) + categorical hue**
 
@@ -904,7 +897,7 @@ Many built-in plot calls are running on top of this grid system. Directly callin
 - catplot(): takes in cols / rows of categorical features and plots the data by category. It runs on a FacetGrid.
 - PairGrid(): pairpot() calls the PairGrid functionality which creates a grid and fills it in. Calling PairGrid makes the grid and wait for mapping commands. We can add a hue in the higher level PairGrid call (note that it doesn't automatically add the legend).
 
-## Matrix Plots
+## 7.7. Matrix Plots
 
 **continuous feature grouped by index**
 
@@ -923,11 +916,11 @@ Note that seaborn comes with the ability to automatically cluster similar groupi
 
 **We often do a heat map on the correlation of the features within machine learning to see what features are good candidates for trying to predict a label!** 
 
-## Notes from Exercise
+## 7.8. Notes from Exercise
 
 Main goal of seaborn is to be able to use its simpler syntax to quickly create informative plots. In general its dificult to test on seaborn skills since most plots are simply passing in the data and choosing x and y. Most plots have filtering and adjustments with pandas on the data frame **before** being passed into the seaborn call. 
 
-# 🗿 Capstone Project
+# 8. Capstone Project 🗿
 
 We put our current skills together with a Capstone Project. 
 
@@ -935,6 +928,8 @@ Review: we start from the real world and we start two main approaches:
 
 1. Problem to Solve: How to fix or change X? 
 2. Question to Answer: How does a change in X affect Y? 
+
+## 8.1. Basic Skills
 
 We have the basic skill set to perform basic data analysis (Jupyter Notebook + NumPy + Pandas + Matplotlib + Seaborn): 
 
@@ -958,7 +953,7 @@ First compare the start (what user see) and rating (internal) features to check 
 
 [Not clear how to reposition seaborn.histplot legend · Issue #2280 · mwaskom/seaborn](https://github.com/mwaskom/seaborn/issues/2280)
 
-## Normalization
+## 8.2. Normalization
 
 [Article](https://www.codecademy.com/articles/normalization#:~:text=Min%2Dmax%20normalization%20is%20one,decimal%20between%200%20and%201.&text=That%20data%20is%20just%20as%20squished%20as%20before)
 
@@ -969,7 +964,7 @@ Solution:
 - Min-Max Normalization: downside: it does not handle outliers very well.
 - Z-Score Normalization: The only potential downside is that the features aren’t on the exact same scale
 
-# 🏔 Machine Learning Concepts Overview
+# 9. Machine Learning Concepts Overview 🏔
 
 Starting Point: 
 
@@ -1044,7 +1039,7 @@ The goal of this section is to discover additional ML topics:
 
 Afterwards, we revisit Linear Regression to combine discovered ML ideas for a final Project Exercise
 
-## Why Machine Learning?
+## 9.1. Why Machine Learning?
 
 ML is the study of statistical computer algorithms that improve automatically through data > unlike typical computer algorithms that rely on human input for what approach to take, ML algorithms infer best approach from the data itself.
 
@@ -1087,11 +1082,11 @@ Do we develop our own algorithms?
 - Rarely do we need to manually develop and implement a new ML algorithm, since these techniques are well documented and developed
 - We leverage the work that has already been done and can be found in Python libraries
 
-## Types of ML Algorithms
+## 9.2. Types of ML Algorithms
 
 Two main types: supervised and unsupervised learning. 
 
-### Supervised Learning
+### 9.2.1. Supervised Learning
 
 Supervised Learning: using **historical** and **labeled** data, the machine learning model predicts a value
 
@@ -1113,7 +1108,7 @@ Regression Task:
 
 - Predict continuous value: future prices, electricity loads, test scores
 
-### Unsupervised Learning
+### 9.2.2. Unsupervised Learning
 
 Unsupervised Learning: applied to **unlabeled** data, the machine learning model discovers possible patterns in the data. 
 
@@ -1123,7 +1118,7 @@ Major downside: there is no historical "correct" label > it is much harder to ev
 
 Here we first focus on supervised learning to build an understanding of ML capabilities. Afterwards, we shift focus to unsupervised leaning for clustering and dimensionality reduction. 
 
-## Supervised ML Process
+## 9.3. Supervised ML Process
 
 For (1) collect & store data, (2) clean & organize data, and (3) exploratory data analysis we have jupyter, numpy, pandas, matplotlib, and seaborn. For ML Models, i.e. supervised (outcome prediction) and unsupervised learning (pattern recognition in data), we have **Scikit-learn**.  
 
@@ -1161,7 +1156,7 @@ Train / Test Split:
 - Usually, the percentage of training data is larger the percentage of test data.
 - We have 4 components of data: X train, Y train, X test and Y test.
 
-# 📏 Introduction to Linear Regression
+# 10. Introduction to Linear Regression 📏
 
 This section covers: 
 
@@ -1177,7 +1172,7 @@ Note that the Project Exercise will be spread over many section, since we first 
 
 [Regression analysis](https://en.wikipedia.org/wiki/Regression_analysis)
 
-## Algorithm History
+## 10.1. Algorithm History
 
 Before we code, we'll build an intuition of the theory and motivation behind Linear Regression: 
 
@@ -1199,7 +1194,7 @@ Basic goal: minimize the residual error (squared) (see 24 Classical Inference, p
 
 Having a squared error simplifies out calculation later on when setting up a derivative. We explore OLS by converting a real data set into mathematical notation, then working to solve a linear relationship between features and a variable. 
 
-## OLS Equations
+## 10.2. OLS Equations
 
 Linear Regression allows us to build a relationship between multiple **features** to estimate a **target output** The linear function `y=mx+b` only has room for a possible feature `x`. OLS allows us to solve for the slope `m` and the intercept `b`. Later, we'll need tools like gradient descent to scale this to multiple features. We can translate this data into generalized mathematical notation: X is the matrix that contains multiple features and y is the vector that contains the label we're trying to predict. We build the linear relationship between the features X and label Y. Note that we're looking for a linear combination to computer an estimate. Also note that in the linear combination we don't have an intercept `b`. 
 
@@ -1217,7 +1212,7 @@ Example: a manager wants to find the relationship between the number of hours th
 
 As we expand to multiple features, an analytical solution becomes unscalable. Instead we shift focus on **minimizing** a **cost function** with **gradient descent** > we can use gradient descent to solve a cost function to calculate Beta values when we're dealing with multiple features, this can then scale to N number of features given the generalized formula. 
 
-## Cost Functions
+## 10.3. Cost Functions
 
 Until this points we discussed the following: 
 
@@ -1257,7 +1252,7 @@ $$\begin{aligned}
 
 Since this is difficult too difficult to solve analytically, we'll use gradient descent to minimize the cost function. 
 
-## Gradient Descent
+## 10.4. Gradient Descent
 
 We describe the cost function through vectorized matrix notation and use gradient descent to have a computer figure out the set of Beta coefficient values that minimizes the cost / loss function. 
 
@@ -1292,13 +1287,13 @@ This way we can leverage computational power to find optimal Beta coefficients t
 
 [Gradient descent](https://en.wikipedia.org/wiki/Gradient_descent)
 
-## Coding Simple Linear Regression with Python
+## 10.5. Coding Simple Linear Regression with Python
 
 In this section we code a simple linear regression with Python. Afterwards, we start considering performance evaluation and multivariate regression > how can we improve linear regression. 
 
 We limit our example one feature X > x is a vector. We will create a best-fit line to map out a linear relationship between total advertising spend and resulting sales. 
 
-# 📚 Scikit-learn
+# 11. Scikit-learn 📚
 
 NumPy has some built-in capabilities for simple linear regression, but when it comes to more complex models, we'll use **Scikit-Learn (sklearn)**. 
 
@@ -1344,21 +1339,21 @@ performance = error_metric(y_test, predictions)
 
 [What does "fit" method in scikit-learn do?](https://stackoverflow.com/questions/45704226/what-does-fit-method-in-scikit-learn-do)
 
-## Linear Regression with Scikit-learn
+## 11.1. Linear Regression with Scikit-learn - Data Setup and Model Training
 
-In this section we perform a linear regression with the Scikit-learn library. 
+Data Setup
 
-### Data Setup and Model Training
+- Reading in a data source
+- Splitting it into features and a vector label
+- Splitting it into training and test set
 
-- Data Setup
-    - Reading in a data source
-    - Splitting it into features and a vector label
-    - Splitting it into training and test set
-- Model Training
-    - Creating model
-    - Setting up (default) parameters
-    - Training the model
-- Testing the model & evaluating its performance
+Model Training
+
+- Creating model
+- Setting up (default) parameters
+- Training the model
+
+Testing the model & evaluating its performance
 
 Expanding the question: Is there a relationship between **total advertising spend** and **sales**? > What is the relationship between **each advertising channel (TV, Radio, Newspaper)** and **sales**? 
 
@@ -1366,7 +1361,7 @@ Expanding the question: Is there a relationship between **total advertising spen
 
 It is important when comparing ML algorithms to make sure to use the same random_state (relevant for shuffle and split). 
 
-## Performance Evaluation with Scikit-learn - Regression Metrics
+## 11.2. Performance Evaluation with Scikit-learn - Regression Metrics
 
 After we have a fitted model that can perform predictions based on features, how do we decide if those predictions are any good?
 
@@ -1387,7 +1382,7 @@ The most common evaluation metrics for regression are:
 
 All of these are **loss functions** because we are trying to minimize them. 
 
-### Mean Absolute Error (MAE)
+### 11.2.1. Mean Absolute Error (MAE)
 
 MAE is the mean of the absolute value of the errors: 
 
@@ -1398,7 +1393,7 @@ Characteristics:
 - This is the easiest to understand since it's the average error.
 - MAE won't punish large errors! See Anscombe's Quartet.
 
-### **Mean Squared Error** (MSE)
+### 11.2.2. **Mean Squared Error** (MSE)
 
 MSE is the mean of the squared errors: 
 
@@ -1409,7 +1404,7 @@ Characteristics:
 - MSE is more popular than MAE, because MSE "punishes" larger errors, which tends to be useful in the real world.
 - Issue with MSE: it reports back the error in different units than your original y value It reports units of y squared > really hard to interpret and explain!
 
-### **Root Mean Squared Error** (RMSE)
+### 11.2.3. **Root Mean Squared Error** (RMSE)
 
 RMSE is the square root of the mean of the squared errors:
 
@@ -1429,7 +1424,7 @@ Question: What is a good value for the MAE / MSE / RMSE?
 
 It is recommended to use both the MAE & RMSE > check to see if on average we're doing good & make sure the prediction is not far off for some data points. 
 
-## Evaluating Residuals
+## 11.3. Evaluating Residuals
 
 [Errors and residuals](https://en.wikipedia.org/wiki/Errors_and_residuals)
 
@@ -1453,7 +1448,7 @@ Construction:
 - Rank the data points
 - Compute Plotting Position
 
-## Model Deployment and Coefficient
+## 11.4. Model Deployment and Coefficient
 
 Model deployment here means only loading and saving the model for future use. Recall the supervised ML process: 
 
@@ -1465,7 +1460,9 @@ For now we focus on a simple "deployment" of our model by saving (model persiste
 
 We fit the final model on all the data since we've decided that these model hyper-parameters are good enough on a test set, so when deployed to the real world, we want to take full advantage of the entire data set and retrain the model on it. 
 
-# 🦑 Polynomial Regression
+# 12. Polynomial Regression 🦑
+
+## 12.1. Introduction
 
 In this section we discuss Polynomial Regression (more akin to Feature Engineering and expanding a data set than creating a new model). We just completed a Linear Regression task, allowing us to predict future label values given a set of features.
 
@@ -1487,7 +1484,7 @@ The features created include:
 
 Example for the features A and B it creates: 1, A, B, A^2, A*B, B^2 > we grab more signal from the data to determine if there are interaction term relationships or higher order relationships
 
-## Bias Variance Trade-Off: Overfitting versus Underfitting (based on MSE)
+## 12.2. Bias Variance Trade-Off: Overfitting versus Underfitting (based on MSE)
 
 The higher order polynomial model perform better than a standard linear regression model. How do we choose the optimal degree for the polynomial? What trade-offs are we to consider as we increase model complexity? 
 
@@ -1524,7 +1521,7 @@ For choosing the optimal model complexity (order polynomial), we will need to un
 
 $$\begin{aligned}\mathbb{E}\left[\left(\hat{\theta}_{S}-\theta\right)^{2}\right] &=\mathbb{E}\left[\hat{\theta}_{S}^{2}\right]+\theta^{2}-2 \mathbb{E}\left[\hat{\theta}_{S}\right] \theta \\\operatorname{Bias}^{2}\left(\hat{\theta}_{S}, \theta\right) &=\left(\mathbb{E}\left[\hat{\theta}_{S}\right]-\theta\right)^{2} \\&=\mathbb{E}^{2}\left[\hat{\theta}_{S}\right]+\theta^{2}-2 \mathbb{E}\left[\hat{\theta}_{S}\right] \theta \\\operatorname{Var}\left(\hat{\theta}_{S}\right) &=\mathbb{E}\left[\hat{\theta}_{S}^{2}\right]-\mathbb{E}^{2}\left[\hat{\theta}_{S}\right]\end{aligned}$$
 
-# 🍡 Regularization and Cross Validation
+# 13. Regularization and Cross Validation 🍡
 
 In this section we discuss different types of regularization and related topics. Regularization is the process of adding information in order to solve an ill-posed problem or to prevent overfitting
 
@@ -1583,7 +1580,7 @@ These regularizations methods do have a cost:
 
 We will cover L2 regularization (Ridge Regression) first, because to the intuition behind the squared term being easier to understand. Before coding regularization we need to discuss Feature Scaling and Cross Validation. 
 
-## Feature Scaling and Regularization
+## 13.1. Feature Scaling and Regularization
 
 [Feature scaling](https://en.wikipedia.org/wiki/Feature_scaling)
 
@@ -1631,7 +1628,7 @@ Feature scaling **process**:
 
 We do **not** scale the label! It's not necessary nor advised. Normalizing the output distribution is altering the definition of the target. Predicting a distribution that doesn't mirror your real-world target. Additionally, it can negatively impact stochastic gradient descent (see [article](https://stats.stackexchange.com/questions/111467/is-it-necessary-to-scale-the-target-value-in-addition-to-scaling-features-for-re)). 
 
-## Cross Validation
+## 13.2. Cross Validation
 
 See Section 5.1 of ISLR. Cross validation is a more advanced set of methods for splitting data into training and testing sets. Cross-validation is a resampling procedure used to evaluate machine learning models on a limited data sample. 
 
@@ -1644,7 +1641,7 @@ Question: can we achieve the following:
 
 We can achieve this with cross validation. 
 
-### Principle
+### 13.2.1. Principle
 
 We split the data into k equal parts (axis = 0) > we have the ratio 1/k left as test set. We train the model and get the error metric for split. We repeat this process for all possible splits and determine error_1, ..., error_k. We computer the mean error > the average error is the expected performance. 
 
@@ -1652,7 +1649,7 @@ We were able to train on all data **and** evaluate on all data (the caveat being
 
 This is known as k-fold cross-validation. Common choice for k is 10 so each test set is 10% of your total data. Largest k possible would be the #rows-1. This is knows as *leave one out* cross validation; gives us a good sense of the model's performance but computationally expensive. 
 
-### Hold Out Test Set
+### 13.2.2. Hold Out Test Set
 
 One consideration to note with k-fold cross validation and a standard train test split is fairly tuning hyper-parameters. If we tune hyper-parameters to test data performance, are we ever fairly getting performance results? Does this constitute data leakage? 
 
@@ -1678,7 +1675,7 @@ The most robust approach would be a k-fold cross-validation with a holdout test 
 
 Many regularization methods have tunable parameters we can adjust based on cross-validation techniques. 
 
-### Regularization Data Setup
+### 13.2.3. Regularization Data Setup
 
 Process: 
 
@@ -1688,7 +1685,7 @@ Process:
 - split data into train and test data set
 - standardize the data (avoid data leakage!)
 
-## L2 Regularization - Ridge Regression
+## 13.3. L2 Regularization - Ridge Regression
 
 Relevant reading in ISLR: Section 6.2.1. Ridge Regression is a regularization method for Linear Regression. L2 Regularization technique that works by helping reduce the potential for overfitting to the training data. It does this by adding in a penalty term to the error that is based on the squared value of the beta coefficients. 
 
@@ -1716,7 +1713,7 @@ The shrinkage penalty goes from j=1, ..., n > it punishes a large slope for the 
 
 When coding it's important to know that sklearn refers to lambda as alpha within the class call! For cross validation sklearn uses a "scorer object"; all scorer objects follow the convention that **higher** return values are **better** than lower return values (sklearn uses a negative error > maximize the negative error function). This allows for uniformity across all scorer metrics even across different tasks types. The same idea of uniformity across model classes applies to referring to the penalty strength parameter as alpha > very uniform framework!
 
-## L1 Regularization - Lasso Regression
+## 13.4. L1 Regularization - Lasso Regression
 
 L1 Regularization adds a penalty equal to the **absolute value** of the magnitude of coefficients. 
 
@@ -1728,7 +1725,7 @@ LassoCV with sklearn operates on checking a number of alphas within a range, ins
 
 [sklearn.linear_model.LassoCV - scikit-learn 0.24.0 documentation](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoCV.html)
 
-## L1 and L2 Regularization - Elastic Net
+## 13.5. L1 and L2 Regularization - Elastic Net
 
 We've been able to perform Ridge and Lasso Regression. Lasso is able to shrink coefficients to zero, but we haven't taken a deeper dive into how or why that is. This ability becomes more clear when learning about **elastic net** which combines Lasso and Ridge together. 
 
@@ -1764,11 +1761,11 @@ $$\hat{\beta} \equiv \underset{\beta}{\operatorname{argmin}}\left(\|y-X \beta\|^
 
 The sklearn documentation recommends to put more weight on Lasso and less on Ridge, i.e. l1_ratio should be closer to one > beta coefficients with value zero are more likely to appear. It is recommended to use the list provided in the documentation, i.e. `[.1, .5, .7, .9, .95, .99, 1]`. 
 
-## LR Project - Data Overview
+## 13.6. LR Project - Data Overview
 
 Most data sets require cleaning, analysis, and feature engineering before being used for ML. We'll quickly review the data set for the LR Project and in the next section we'll focus on setting up the data for ML (do we need all the features? should be modify features? should be clean features up?). Note that 80% of your time is usually spend cleaning and formatting data. 
 
-# 🧹 Feature Engineering and Data Preparation
+# 14. Feature Engineering and Data Preparation 🧹
 
 Realistically not every data set is ML ready, we often need to perform data cleaning or try to produce more usable features. In this section, we'll work on the large LR data set to get it ready for a ML project. 
 
@@ -1778,7 +1775,7 @@ Realistically not every data set is ML ready, we often need to perform data clea
 2. Combining Information
 3. Transforming Information
 
-## Introduction to Feature Engineering
+## 14.1. Introduction to Feature Engineering
 
 **Extracting Information**
 
@@ -1822,7 +1819,7 @@ In this section we'll work on addressing the following issues:
 
 Not every issue here is strictly "feature engineering" but could also be called "data cleaning". Feature engineering in general will always be data and domain dependent. There is no one size fits all solution. 
 
-## Dealing with Outliers
+## 14.2. Dealing with Outliers
 
 Often a data set will have a few points that are extreme outliers. It's often better to simply remove these few points from the data set in order to have a more generalized model and add a caveat to the model, e.g. this model is not meant for houses that that are likely to cost more than x dollars. 
 
@@ -1846,7 +1843,7 @@ There are many ways to identify and remove outliers:
 - [Way to Detect and Remove Outliers](https://towardsdatascience.com/ways-to-detect-and-remove-the-outliers-404d16608dba)
 - [5 Ways to Detect Outliers/Anomalies That Every Data Scientist Should Know (Python Code)](https://towardsdatascience.com/5-ways-to-detect-outliers-that-every-data-scientist-should-know-python-code-70a54335a623)
 
-## Dealing with Missing Data
+## 14.3. Dealing with Missing Data
 
 First, calculate percentage of data missing per feature column. If we have a very low percentage of information missing (e.g. below a 1% threshold) we consider dropping or adjusting the **row**. 
 
@@ -1865,7 +1862,7 @@ If the percentage of information missing is too high we consider dropping or adj
     - potential to lose a feature with possible important signal
     - should consider drop feature approach **when many rows are NaN** (e.g. 99% NaN values)
 
-# 🗂  Cross Validation and Linear Regression Project
+# 15. Cross Validation and Linear Regression Project 🗂
 
 In this section we discuss cross validation in detail before diving into the regression project: 
 
@@ -1880,14 +1877,14 @@ We've already discussed models with built-in cross validation, e.g. RidgeCV. We 
 
 We'll begin by reviewing the most basic CV process we know so far (Train | Test Split) and the build up to the full k-fold CV. 
 
-# 🔧 Open Questions and Tasks
+# 16. Open Questions and Tasks 🔧
 
-## Open Questions
+## 16.1. Open Questions
 
 - What are our categorical columns to group by?
 - Do we need to use datetime objects in our project?
 
-## Backlog
+## 16.2. Backlog
 
 - Feature Engineering
 - Cross Validation II & Grid Search
@@ -1897,8 +1894,9 @@ We'll begin by reviewing the most basic CV process we know so far (Train | Test 
 - Read about [copy warning](https://realpython.com/pandas-settingwithcopywarning/)
 - Read Wiki on [Regression Analysis](https://en.wikipedia.org/wiki/Regression_analysis)
 
-## In Progress
+## 16.3. In Progress
 
+- Make new workflow
 - Convert [rawTimesamp](https://stackoverflow.com/questions/19231871/convert-unix-time-to-readable-date-in-pandas-dataframe) feature into a datetime object > useful later for feature engineering (see [documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.to_datetime.html))
 - Make an outline of the project
 - Decide what are the relevant categorial columns for the project
@@ -1906,7 +1904,7 @@ We'll begin by reviewing the most basic CV process we know so far (Train | Test 
 - Strip project data
 - Determine an average payload
 
-## Resolved (Preparation)
+## 16.4. Resolved (Preparation)
 
 - Linear Regression
 - Crapstone Project (Numpy, Pandas, Matplotlib, and Seaborn)
@@ -1919,26 +1917,31 @@ We'll begin by reviewing the most basic CV process we know so far (Train | Test 
 - Upload files to Github
 - Do crash course on Git
 
-## Resolved (Project)
+## 16.5. Resolved (Project)
 
 - Make sure there is no missing data in the project
 
-## Workflow
+## 16.6. Workflow
 
-- pull repo (T)
-- work on project (N, J)
-- update readme (N, F, T, VS)
-    - export readme (N)
-    - rename and replace old readme (F)
-    - generate TOC (T)
-    - remove metadata (VS)
-    - save to HTML (VS)
-- add and commit to main (T)
-- push to repo (T)
+1. pull repo & work on project
+2. export readme
+3. unzip, rename, move, and replace readme
+4. open readme in VS Code
+    1. delete metadata
+    2. delete space between omit toc and headings 
+    3. add section numbers (command)
+    4. create table of contents (command)
+    5. print to html (command)
+5. add & commit to main 
+6. push to repo
 
-# 📄 Moodle Articles
+# 17. Notes 📝
 
-# 📋 Project (WIP)
+## 17.1. On the Articles
+
+Start here!
+
+## 17.2. On the Project
 
 Label: 
 
@@ -1961,7 +1964,7 @@ Overview:
     - Useful Methods
     - Check for missing data
 
-# 💡 Misc
+# 18. Misc 💡
 
 $PATH is stored in /etc/paths; open with sudo nano to modify 
 
