@@ -27,7 +27,7 @@
         <!-- omit in toc -->
 <h1 id="statistics-meets-logistics">Statistics Meets Logistics</h1>
 <p>The <a href="https://www.statistik.tu-dortmund.de/2791.html">course</a> and the <a href="https://moodle.tu-dortmund.de/enrol/index.php?id=22199">material</a> provided by the lecturer are in German. This repository documents our preparation for the project and holds the project and its data.</p>
-<p>To view TeX equations found in <em>10. Introduction to Linear Regression</em> and subsequent Sections, consider the following options:</p>
+<p>To view TeX equations found in <em>Introduction to Linear Regression</em> and subsequent Sections, consider the following options:</p>
 <ul>
 <li>Open the <a href="https://htmlpreview.github.io/?https://github.com/luiul/statistics-meets-logistics/blob/main/README.html">.HTML version of the README</a></li>
 <li>Preview directly on Github using a browser <a href="https://github.com/AaronCQL/katex-github-chrome-extension">extension</a> (Chromium based)</li>
@@ -198,24 +198,32 @@
 <li><a href="#143-dealing-with-missing-data">14.3. Dealing with Missing Data</a></li>
 </ul>
 </li>
-<li><a href="#15-cross-validation-and-linear-regression-project-">15. Cross Validation and Linear Regression Project 🗂</a></li>
-<li><a href="#16-open-questions-and-tasks-">16. Open Questions and Tasks 🔧</a>
+<li><a href="#15-cross-validation-and-linear-regression-project-">15. Cross Validation and Linear Regression Project 🗂</a>
 <ul>
-<li><a href="#161-open-questions">16.1. Open Questions</a></li>
-<li><a href="#162-backlog">16.2. Backlog</a></li>
-<li><a href="#163-in-progress">16.3. In Progress</a></li>
-<li><a href="#164-resolved-preparation">16.4. Resolved (Preparation)</a></li>
-<li><a href="#165-resolved-project">16.5. Resolved (Project)</a></li>
-<li><a href="#166-workflow">16.6. Workflow</a></li>
+<li><a href="#151-train--test-split">15.1. Train | Test Split</a></li>
+<li><a href="#152-train--validation--test-split">15.2. Train | Validation | Test Split</a></li>
+<li><a href="#153-k-fold-cross-validation--built-in-function">15.3. k-fold Cross Validation &amp; Built-In Function</a></li>
+<li><a href="#154-grid-search">15.4. Grid Search</a></li>
 </ul>
 </li>
-<li><a href="#17-notes-">17. Notes 📝</a>
+<li><a href="#16-support-vector-machines-">16. Support Vector Machines 🏹</a></li>
+<li><a href="#17-open-questions-and-tasks-">17. Open Questions and Tasks 🔧</a>
 <ul>
-<li><a href="#171-on-the-articles">17.1. On the Articles</a></li>
-<li><a href="#172-on-the-project">17.2. On the Project</a></li>
+<li><a href="#171-open-questions">17.1. Open Questions</a></li>
+<li><a href="#172-backlog">17.2. Backlog</a></li>
+<li><a href="#173-in-progress">17.3. In Progress</a></li>
+<li><a href="#174-resolved-preparation">17.4. Resolved (Preparation)</a></li>
+<li><a href="#175-resolved-project">17.5. Resolved (Project)</a></li>
+<li><a href="#176-workflow">17.6. Workflow</a></li>
 </ul>
 </li>
-<li><a href="#18-misc-">18. Misc 💡</a></li>
+<li><a href="#18-notes-">18. Notes 📝</a>
+<ul>
+<li><a href="#181-on-the-articles">18.1. On the Articles</a></li>
+<li><a href="#182-on-the-project">18.2. On the Project</a></li>
+</ul>
+</li>
+<li><a href="#19-misc-">19. Misc 💡</a></li>
 </ul>
 <h1 id="1-background-">1. Background 🌅</h1>
 <p>In this section we setup the relevant systems for the project and provide additional material not directly tied to the project.</p>
@@ -1194,6 +1202,7 @@ J(\boldsymbol{\beta}) &amp;=\frac{1}{2 m} \sum_{j=1}^{m}\left(y^{j}-\hat{y}^{j}\
 <p>In this section we code a simple linear regression with Python. Afterwards, we start considering performance evaluation and multivariate regression &gt; how can we improve linear regression.</p>
 <p>We limit our example one feature X &gt; x is a vector. We will create a best-fit line to map out a linear relationship between total advertising spend and resulting sales.</p>
 <h1 id="11-scikit-learn-">11. Scikit-learn 📚</h1>
+<p><a href="https://scikit-learn.org/stable/user_guide.html">User guide: contents - scikit-learn 0.24.0 documentation</a></p>
 <p>NumPy has some built-in capabilities for simple linear regression, but when it comes to more complex models, we'll use <strong>Scikit-Learn (sklearn)</strong>.</p>
 <p>sklearn is a library containing many ML algorithms. It uses a generalized &quot;estimator API&quot; framework to call the ML models &gt; the ML algorithms are imported, fitted, and used uniformly across all algorithms.</p>
 <p>This allows users to easily swap algorithms in and out and test various approaches &gt; this uniform framework also means users can easily apply almost any algorithm effectively without truly understanding what the algorithm is doing!</p>
@@ -1657,13 +1666,78 @@ In this case we usually group by the data and consider an estimator. Afterwards,
 </ul>
 <p>We've already discussed models with built-in cross validation, e.g. RidgeCV. We will expand on this by exploring sklearn general tools for using cross-validation for any model. This will also allow us to later perform grid searches for the optimal combination fo multiple hyper-parameters.</p>
 <p>We'll begin by reviewing the most basic CV process we know so far (Train | Test Split) and the build up to the full k-fold CV.</p>
-<h1 id="16-open-questions-and-tasks-">16. Open Questions and Tasks 🔧</h1>
-<h2 id="161-open-questions">16.1. Open Questions</h2>
+<h2 id="151-train--test-split">15.1. Train | Test Split</h2>
+<p>Train | Test Split: we partition the data set. Some percentage will be train data, the rest test data, e.g. 70% train, 30% test. We train on the train set and evaluate on the test set. We make model adjustments, e.g. adjusting the hyperparameter based off the error of the test set.</p>
+<p><strong>Procedure</strong>:</p>
+<ol>
+<li>Clean and adjust data as necessary for X and y</li>
+<li>Split Data in Train/Test for both X and y</li>
+<li>Fit/Train Scaler on Training X Data</li>
+<li>Scale X Test Data</li>
+<li>Create Model</li>
+<li>Fit/Train Model on X Train Data</li>
+<li>Evaluate Model on X Test Data (by creating predictions and comparing to y_test)</li>
+<li>Adjust Parameters as Necessary and repeat steps 5 and 6</li>
+</ol>
+<p>Problems with this approach:</p>
+<ol>
+<li>Tedious process to readjust the alpha parameter manually</li>
+<li>The performance evaluation is not fair. We are adjusting hyperparameters based off the test set performance. There a hidden interaction between the hyperparameter and the test set. There is no final performance metric based on <strong>entirely new data</strong>.</li>
+</ol>
+<h2 id="152-train--validation--test-split">15.2. Train | Validation | Test Split</h2>
+<p>The first method has the disadvantage of not having a portion of data that can report a performance metric on truly &quot;unseen&quot; data. Note that adjusting hyperparameters on test data is a fair technique (and not typically referred to as &quot;data leakage&quot;) it is a potential issue in regards to reporting. If we want a truly fair and final set of performance metrics, we should get these metrics form a <strong>final</strong> test set that we do not allow ourselves to adjust on.</p>
+<p>We partition the data into train, validation and test set (typically 70%, 15%, 15%). We train on the train set, we evaluate performance on the validation set and computer an error metric. We adjust hyperparameters and repeat the process. Once satisfied, we perform a final evaluation on the test set. This is the final error report and we're not allowed to adjust the hypterparameter. We get a final metric for the model.</p>
+<p>Recall the reason to not adjust after the final test data set is to get the fairest evaluation fo the model. The model was not fitted to the final test data and the model hyperparameters were not adjusted based off final test data. This is truly never before seen data. This is often also called a &quot;hold-out&quot; set, since you should not adjust parameters based on the final test set, but instead use it <em>only</em> for reporting final expected performance.</p>
+<p>With sklearn we perform the train_test_split() function twice on the data:</p>
+<ul>
+<li>Once to split off larger training set (e.g. 100% &gt; 70% &amp; 30%)</li>
+<li>Second time to split remaining data into a validation and test set (70% &amp; 30% &gt; 70% &amp; 15% &amp; 15%)</li>
+</ul>
+<p><strong>Procedure</strong>:</p>
+<ol>
+<li>Clean and adjust data as necessary for X and y</li>
+<li>Split Data in Train/Validation/Test for both X and y</li>
+<li>Fit/Train Scaler on Training X Data</li>
+<li>Scale X Eval Data</li>
+<li>Create Model</li>
+<li>Fit/Train Model on X Train Data</li>
+<li>Evaluate Model on X Evaluation Data (by creating predictions and comparing to Y_eval)</li>
+<li>Adjust Parameters as Necessary and repeat steps 5 and 6</li>
+<li>Get final metrics on Test set (not allowed to go back and adjust after this!)</li>
+</ol>
+<p>We report the (expected) performance based on the final test. However, we deploy a model that is fit and train to the entire data set.</p>
+<h2 id="153-k-fold-cross-validation--built-in-function">15.3. k-fold Cross Validation &amp; Built-In Function</h2>
+<p><a href="https://scikit-learn.org/stable/modules/model_evaluation.html">3.3. Metrics and scoring: quantifying the quality of predictions - scikit-learn 0.24.0 documentation</a></p>
+<p>We split the data set in train and test set (note that the set set can be smaller in k-fold CV, e.g. 85% &amp; 15%). We remove the test set for final evaluation (hold-out set). We choose k-fold split value for training data. Largest k = N (leave-one out policy).  We train on k-1 folds and validate on 1 fold. We compute the error metric for this fold (error 1). We repeat for all possible fold combinations and computer all errors (error 1, ..., error k). We use the mean error for hyperparameter adjustments. Once satisfied with the final mean error, we get the final metrics from the final test set.</p>
+<p>The <strong>cross_val_score</strong> function uses a model and training set (along with a k and chosen metric) to perform all of this for us automatically. This allows for k-fold cross validation to be performed on any model. This function does not fit the model, it only computes the error for the folds to get a better estimation of the error.</p>
+<p>Note that mean score of a k-fold cross-validation is typically going to be a little worse than a single train test split.</p>
+<p>The <strong>cross_validate</strong> function allows us to view multiple performance metrics from cross validation on a model and explore how much time fitting and testing took.</p>
+<p>The cross_validate function differs from cross_val_score in two ways:</p>
+<ol>
+<li>It allows specifying multiple metrics for evaluation.</li>
+<li>It returns a dict containing fit-times, score-times (and optionally training scores as well as fitted estimators) in addition to the test score.</li>
+</ol>
+<p>For single metric evaluation, where the scoring parameter is a string, callable or None, the keys will be:</p>
+<pre><code class="language-python"><div>    - [<span class="hljs-string">&#x27;test_score&#x27;</span>, <span class="hljs-string">&#x27;fit_time&#x27;</span>, <span class="hljs-string">&#x27;score_time&#x27;</span>]
+
+</div></code></pre>
+<p>And for multiple metric evaluation, the return value is a dict with the following keys:</p>
+<pre><code class="language-python"><div>[<span class="hljs-string">&#x27;test_&lt;scorer1_name&gt;&#x27;</span>, <span class="hljs-string">&#x27;test_&lt;scorer2_name&gt;&#x27;</span>, <span class="hljs-string">&#x27;test_&lt;scorer...&gt;&#x27;</span>, <span class="hljs-string">&#x27;fit_time&#x27;</span>, <span class="hljs-string">&#x27;score_time&#x27;</span>]
+
+</div></code></pre>
+<p>return_train_score is set to False by default to save computation time. To evaluate the scores on the training set as well you need to be set to True.</p>
+<h2 id="154-grid-search">15.4. Grid Search</h2>
+<p>More complex models have multiple adjustable hyperparameters. A grid search is a way of training and validating a model on every possible combination of multiple hyperparameter options.</p>
+<p>sklearn includes a <strong>GridSearchCV</strong> class capable of testing a dictionary of multiple hyperparameter options through cross-validation. This allows for both (k-fold) cross validation and a grid search to be performed in a generalized way for any model.</p>
+<h1 id="16-support-vector-machines-">16. Support Vector Machines 🏹</h1>
+<p>Start here!</p>
+<h1 id="17-open-questions-and-tasks-">17. Open Questions and Tasks 🔧</h1>
+<h2 id="171-open-questions">17.1. Open Questions</h2>
 <ul>
 <li>What are our categorical columns to group by?</li>
 <li>Do we need to use datetime objects in our project?</li>
 </ul>
-<h2 id="162-backlog">16.2. Backlog</h2>
+<h2 id="172-backlog">17.2. Backlog</h2>
 <ul>
 <li>Feature Engineering</li>
 <li>Cross Validation II &amp; Grid Search</li>
@@ -1673,7 +1747,7 @@ In this case we usually group by the data and consider an estimator. Afterwards,
 <li>Read about <a href="https://realpython.com/pandas-settingwithcopywarning/">copy warning</a></li>
 <li>Read Wiki on <a href="https://en.wikipedia.org/wiki/Regression_analysis">Regression Analysis</a></li>
 </ul>
-<h2 id="163-in-progress">16.3. In Progress</h2>
+<h2 id="173-in-progress">17.3. In Progress</h2>
 <ul>
 <li>Make new workflow</li>
 <li>Convert <a href="https://stackoverflow.com/questions/19231871/convert-unix-time-to-readable-date-in-pandas-dataframe">rawTimesamp</a> feature into a datetime object &gt; useful later for feature engineering (see <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.to_datetime.html">documentation</a>)</li>
@@ -1683,7 +1757,7 @@ In this case we usually group by the data and consider an estimator. Afterwards,
 <li>Strip project data</li>
 <li>Determine an average payload</li>
 </ul>
-<h2 id="164-resolved-preparation">16.4. Resolved (Preparation)</h2>
+<h2 id="174-resolved-preparation">17.4. Resolved (Preparation)</h2>
 <ul>
 <li>Linear Regression</li>
 <li>Crapstone Project (Numpy, Pandas, Matplotlib, and Seaborn)</li>
@@ -1696,11 +1770,11 @@ In this case we usually group by the data and consider an estimator. Afterwards,
 <li>Upload files to Github</li>
 <li>Do crash course on Git</li>
 </ul>
-<h2 id="165-resolved-project">16.5. Resolved (Project)</h2>
+<h2 id="175-resolved-project">17.5. Resolved (Project)</h2>
 <ul>
 <li>Make sure there is no missing data in the project</li>
 </ul>
-<h2 id="166-workflow">16.6. Workflow</h2>
+<h2 id="176-workflow">17.6. Workflow</h2>
 <ol>
 <li>pull repo &amp; work on project</li>
 <li>export readme</li>
@@ -1717,10 +1791,10 @@ In this case we usually group by the data and consider an estimator. Afterwards,
 <li>add &amp; commit to main</li>
 <li>push to repo</li>
 </ol>
-<h1 id="17-notes-">17. Notes 📝</h1>
-<h2 id="171-on-the-articles">17.1. On the Articles</h2>
+<h1 id="18-notes-">18. Notes 📝</h1>
+<h2 id="181-on-the-articles">18.1. On the Articles</h2>
 <p>Start here!</p>
-<h2 id="172-on-the-project">17.2. On the Project</h2>
+<h2 id="182-on-the-project">18.2. On the Project</h2>
 <p>Label:</p>
 <ul>
 <li>Throughput</li>
@@ -1745,7 +1819,7 @@ In this case we usually group by the data and consider an estimator. Afterwards,
 </ul>
 </li>
 </ul>
-<h1 id="18-misc-">18. Misc 💡</h1>
+<h1 id="19-misc-">19. Misc 💡</h1>
 <p>$PATH is stored in /etc/paths; open with sudo nano to modify</p>
 <p>Can we model the process in the project as a Poisson process?</p>
 <p><code>pd.options.display.float_format = &quot;{:,.2f}&quot;.format</code> &gt; <code>pd.set_option('float_format', '{:f}'.format)</code></p>

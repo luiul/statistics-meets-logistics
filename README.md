@@ -3,7 +3,7 @@
 
 The [course](https://www.statistik.tu-dortmund.de/2791.html) and the [material](https://moodle.tu-dortmund.de/enrol/index.php?id=22199) provided by the lecturer are in German. This repository documents our preparation for the project and holds the project and its data. 
 
-To view TeX equations found in *10. Introduction to Linear Regression* and subsequent Sections, consider the following options: 
+To view TeX equations found in *Introduction to Linear Regression* and subsequent Sections, consider the following options: 
 
 - Open the [.HTML version of the README](https://htmlpreview.github.io/?https://github.com/luiul/statistics-meets-logistics/blob/main/README.html)
 - Preview directly on Github using a browser [extension](https://github.com/AaronCQL/katex-github-chrome-extension) (Chromium based)
@@ -114,17 +114,22 @@ In the course, students will learn about the application of statistical methods 
   - [14.2. Dealing with Outliers](#142-dealing-with-outliers)
   - [14.3. Dealing with Missing Data](#143-dealing-with-missing-data)
 - [15. Cross Validation and Linear Regression Project 🗂](#15-cross-validation-and-linear-regression-project-)
-- [16. Open Questions and Tasks 🔧](#16-open-questions-and-tasks-)
-  - [16.1. Open Questions](#161-open-questions)
-  - [16.2. Backlog](#162-backlog)
-  - [16.3. In Progress](#163-in-progress)
-  - [16.4. Resolved (Preparation)](#164-resolved-preparation)
-  - [16.5. Resolved (Project)](#165-resolved-project)
-  - [16.6. Workflow](#166-workflow)
-- [17. Notes 📝](#17-notes-)
-  - [17.1. On the Articles](#171-on-the-articles)
-  - [17.2. On the Project](#172-on-the-project)
-- [18. Misc 💡](#18-misc-)
+  - [15.1. Train | Test Split](#151-train--test-split)
+  - [15.2. Train | Validation | Test Split](#152-train--validation--test-split)
+  - [15.3. k-fold Cross Validation & Built-In Function](#153-k-fold-cross-validation--built-in-function)
+  - [15.4. Grid Search](#154-grid-search)
+- [16. Support Vector Machines 🏹](#16-support-vector-machines-)
+- [17. Open Questions and Tasks 🔧](#17-open-questions-and-tasks-)
+  - [17.1. Open Questions](#171-open-questions)
+  - [17.2. Backlog](#172-backlog)
+  - [17.3. In Progress](#173-in-progress)
+  - [17.4. Resolved (Preparation)](#174-resolved-preparation)
+  - [17.5. Resolved (Project)](#175-resolved-project)
+  - [17.6. Workflow](#176-workflow)
+- [18. Notes 📝](#18-notes-)
+  - [18.1. On the Articles](#181-on-the-articles)
+  - [18.2. On the Project](#182-on-the-project)
+- [19. Misc 💡](#19-misc-)
 
 # 1. Background 🌅
 
@@ -1295,6 +1300,8 @@ We limit our example one feature X > x is a vector. We will create a best-fit li
 
 # 11. Scikit-learn 📚
 
+[User guide: contents - scikit-learn 0.24.0 documentation](https://scikit-learn.org/stable/user_guide.html)
+
 NumPy has some built-in capabilities for simple linear regression, but when it comes to more complex models, we'll use **Scikit-Learn (sklearn)**. 
 
 sklearn is a library containing many ML algorithms. It uses a generalized "estimator API" framework to call the ML models > the ML algorithms are imported, fitted, and used uniformly across all algorithms. 
@@ -1877,14 +1884,104 @@ We've already discussed models with built-in cross validation, e.g. RidgeCV. We 
 
 We'll begin by reviewing the most basic CV process we know so far (Train | Test Split) and the build up to the full k-fold CV. 
 
-# 16. Open Questions and Tasks 🔧
+## 15.1. Train | Test Split
 
-## 16.1. Open Questions
+Train | Test Split: we partition the data set. Some percentage will be train data, the rest test data, e.g. 70% train, 30% test. We train on the train set and evaluate on the test set. We make model adjustments, e.g. adjusting the hyperparameter based off the error of the test set. 
+
+**Procedure**: 
+
+1. Clean and adjust data as necessary for X and y
+2. Split Data in Train/Test for both X and y
+3. Fit/Train Scaler on Training X Data
+4. Scale X Test Data
+5. Create Model
+6. Fit/Train Model on X Train Data
+7. Evaluate Model on X Test Data (by creating predictions and comparing to y_test)
+8. Adjust Parameters as Necessary and repeat steps 5 and 6
+
+Problems with this approach: 
+
+1. Tedious process to readjust the alpha parameter manually
+2. The performance evaluation is not fair. We are adjusting hyperparameters based off the test set performance. There a hidden interaction between the hyperparameter and the test set. There is no final performance metric based on **entirely new data**.  
+
+## 15.2. Train | Validation | Test Split
+
+The first method has the disadvantage of not having a portion of data that can report a performance metric on truly "unseen" data. Note that adjusting hyperparameters on test data is a fair technique (and not typically referred to as "data leakage") it is a potential issue in regards to reporting. If we want a truly fair and final set of performance metrics, we should get these metrics form a **final** test set that we do not allow ourselves to adjust on. 
+
+We partition the data into train, validation and test set (typically 70%, 15%, 15%). We train on the train set, we evaluate performance on the validation set and computer an error metric. We adjust hyperparameters and repeat the process. Once satisfied, we perform a final evaluation on the test set. This is the final error report and we're not allowed to adjust the hypterparameter. We get a final metric for the model. 
+
+Recall the reason to not adjust after the final test data set is to get the fairest evaluation fo the model. The model was not fitted to the final test data and the model hyperparameters were not adjusted based off final test data. This is truly never before seen data. This is often also called a "hold-out" set, since you should not adjust parameters based on the final test set, but instead use it *only* for reporting final expected performance.
+
+With sklearn we perform the train_test_split() function twice on the data: 
+
+- Once to split off larger training set (e.g. 100% > 70% & 30%)
+- Second time to split remaining data into a validation and test set (70% & 30% > 70% & 15% & 15%)
+
+**Procedure**: 
+
+1. Clean and adjust data as necessary for X and y
+2. Split Data in Train/Validation/Test for both X and y
+3. Fit/Train Scaler on Training X Data
+4. Scale X Eval Data
+5. Create Model
+6. Fit/Train Model on X Train Data
+7. Evaluate Model on X Evaluation Data (by creating predictions and comparing to Y_eval)
+8. Adjust Parameters as Necessary and repeat steps 5 and 6
+9. Get final metrics on Test set (not allowed to go back and adjust after this!)
+
+We report the (expected) performance based on the final test. However, we deploy a model that is fit and train to the entire data set. 
+
+## 15.3. k-fold Cross Validation & Built-In Function
+
+[3.3. Metrics and scoring: quantifying the quality of predictions - scikit-learn 0.24.0 documentation](https://scikit-learn.org/stable/modules/model_evaluation.html)
+
+We split the data set in train and test set (note that the set set can be smaller in k-fold CV, e.g. 85% & 15%). We remove the test set for final evaluation (hold-out set). We choose k-fold split value for training data. Largest k = N (leave-one out policy).  We train on k-1 folds and validate on 1 fold. We compute the error metric for this fold (error 1). We repeat for all possible fold combinations and computer all errors (error 1, ..., error k). We use the mean error for hyperparameter adjustments. Once satisfied with the final mean error, we get the final metrics from the final test set. 
+
+The **cross_val_score** function uses a model and training set (along with a k and chosen metric) to perform all of this for us automatically. This allows for k-fold cross validation to be performed on any model. This function does not fit the model, it only computes the error for the folds to get a better estimation of the error. 
+
+Note that mean score of a k-fold cross-validation is typically going to be a little worse than a single train test split. 
+
+The **cross_validate** function allows us to view multiple performance metrics from cross validation on a model and explore how much time fitting and testing took. 
+
+The cross_validate function differs from cross_val_score in two ways:
+
+1. It allows specifying multiple metrics for evaluation.
+2. It returns a dict containing fit-times, score-times (and optionally training scores as well as fitted estimators) in addition to the test score.
+
+For single metric evaluation, where the scoring parameter is a string, callable or None, the keys will be:
+
+```python
+    - ['test_score', 'fit_time', 'score_time']
+
+```
+
+And for multiple metric evaluation, the return value is a dict with the following keys:
+
+```python
+['test_<scorer1_name>', 'test_<scorer2_name>', 'test_<scorer...>', 'fit_time', 'score_time']
+
+```
+
+return_train_score is set to False by default to save computation time. To evaluate the scores on the training set as well you need to be set to True.
+
+## 15.4. Grid Search
+
+More complex models have multiple adjustable hyperparameters. A grid search is a way of training and validating a model on every possible combination of multiple hyperparameter options. 
+
+sklearn includes a **GridSearchCV** class capable of testing a dictionary of multiple hyperparameter options through cross-validation. This allows for both (k-fold) cross validation and a grid search to be performed in a generalized way for any model. 
+
+# 16. Support Vector Machines 🏹
+
+Start here! 
+
+# 17. Open Questions and Tasks 🔧
+
+## 17.1. Open Questions
 
 - What are our categorical columns to group by?
 - Do we need to use datetime objects in our project?
 
-## 16.2. Backlog
+## 17.2. Backlog
 
 - Feature Engineering
 - Cross Validation II & Grid Search
@@ -1894,7 +1991,7 @@ We'll begin by reviewing the most basic CV process we know so far (Train | Test 
 - Read about [copy warning](https://realpython.com/pandas-settingwithcopywarning/)
 - Read Wiki on [Regression Analysis](https://en.wikipedia.org/wiki/Regression_analysis)
 
-## 16.3. In Progress
+## 17.3. In Progress
 
 - Make new workflow
 - Convert [rawTimesamp](https://stackoverflow.com/questions/19231871/convert-unix-time-to-readable-date-in-pandas-dataframe) feature into a datetime object > useful later for feature engineering (see [documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.to_datetime.html))
@@ -1904,7 +2001,7 @@ We'll begin by reviewing the most basic CV process we know so far (Train | Test 
 - Strip project data
 - Determine an average payload
 
-## 16.4. Resolved (Preparation)
+## 17.4. Resolved (Preparation)
 
 - Linear Regression
 - Crapstone Project (Numpy, Pandas, Matplotlib, and Seaborn)
@@ -1917,11 +2014,11 @@ We'll begin by reviewing the most basic CV process we know so far (Train | Test 
 - Upload files to Github
 - Do crash course on Git
 
-## 16.5. Resolved (Project)
+## 17.5. Resolved (Project)
 
 - Make sure there is no missing data in the project
 
-## 16.6. Workflow
+## 17.6. Workflow
 
 1. pull repo & work on project
 2. export readme
@@ -1935,13 +2032,13 @@ We'll begin by reviewing the most basic CV process we know so far (Train | Test 
 5. add & commit to main 
 6. push to repo
 
-# 17. Notes 📝
+# 18. Notes 📝
 
-## 17.1. On the Articles
+## 18.1. On the Articles
 
 Start here!
 
-## 17.2. On the Project
+## 18.2. On the Project
 
 Label: 
 
@@ -1964,7 +2061,7 @@ Overview:
     - Useful Methods
     - Check for missing data
 
-# 18. Misc 💡
+# 19. Misc 💡
 
 $PATH is stored in /etc/paths; open with sudo nano to modify 
 
