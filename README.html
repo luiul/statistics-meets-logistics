@@ -201,7 +201,14 @@
 <li><a href="#lr-project---data-overview">LR Project - Data Overview</a></li>
 </ul>
 </li>
-<li><a href="#%F0%9F%A7%BC-feature-engineering-and-data-preparation">🧼 Feature Engineering and Data Preparation</a></li>
+<li><a href="#%F0%9F%A7%B9-feature-engineering-and-data-preparation">🧹 Feature Engineering and Data Preparation</a>
+<ul>
+<li><a href="#introduction-to-feature-engineering">Introduction to Feature Engineering</a></li>
+<li><a href="#dealing-with-outliers">Dealing with Outliers</a></li>
+<li><a href="#dealing-with-missing-data">Dealing with Missing Data</a></li>
+</ul>
+</li>
+<li><a href="#%F0%9F%97%82--cross-validation-and-linear-regression-project">🗂  Cross Validation and Linear Regression Project</a></li>
 <li><a href="#-open-questions-and-tasks">🔧 Open Questions and Tasks</a>
 <ul>
 <li><a href="#open-questions">Open Questions</a></li>
@@ -212,7 +219,8 @@
 <li><a href="#workflow">Workflow</a></li>
 </ul>
 </li>
-<li><a href="#-outline-of-project-wip">📋 Outline of Project (WIP)</a></li>
+<li><a href="#-moodle-articles">📄 Moodle Articles</a></li>
+<li><a href="#-project-wip">📋 Project (WIP)</a></li>
 <li><a href="#-misc">💡 Misc</a></li>
 </ul>
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -1122,7 +1130,7 @@ In the hexagon plot, hexagons are dark the more points fall into their area.
 <p>Having a squared error simplifies out calculation later on when setting up a derivative. We explore OLS by converting a real data set into mathematical notation, then working to solve a linear relationship between features and a variable.</p>
 <h2 id="ols-equations">OLS Equations</h2>
 <p>Linear Regression allows us to build a relationship between multiple <strong>features</strong> to estimate a <strong>target output</strong> The linear function <code>y=mx+b</code> only has room for a possible feature <code>x</code>. OLS allows us to solve for the slope <code>m</code> and the intercept <code>b</code>. Later, we'll need tools like gradient descent to scale this to multiple features. We can translate this data into generalized mathematical notation: X is the matrix that contains multiple features and y is the vector that contains the label we're trying to predict. We build the linear relationship between the features X and label Y. Note that we're looking for a linear combination to computer an estimate. Also note that in the linear combination we don't have an intercept <code>b</code>.</p>
-<p>We consider the 1st degree polynomial for our estimator (see REnADME preamble if LaTeX equation is not rendering):</p>
+<p>We consider the 1st degree polynomial for our estimator (see preamble if TeX equation is not rendering):</p>
 <p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>y</mi><mo>^</mo></mover><mo>=</mo><msub><mi>b</mi><mn>0</mn></msub><mo>+</mo><msub><mi>b</mi><mn>1</mn></msub><mi>x</mi></mrow><annotation encoding="application/x-tex">\hat{y}=b_{0}+b_{1} x
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.19444em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault">x</span></span></span></span></span></p>
 <p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mn>1</mn></msub><mo>=</mo><msub><mi>ρ</mi><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi></mrow></msub><mfrac><msub><mi>σ</mi><mi>y</mi></msub><msub><mi>σ</mi><mi>x</mi></msub></mfrac><mtext> </mtext><mspace width="1em"/><mrow><mo fence="true">[</mo><mtable rowspacing="0.15999999999999992em" columnalign="left" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><msub><mi>ρ</mi><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi></mrow></msub><mo>=</mo><mtext>Pearson Correlation Coefficient</mtext></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><msub><mi>σ</mi><mi>x</mi></msub><mo separator="true">,</mo><msub><mi>σ</mi><mi>y</mi></msub><mo>=</mo><mtext>Standard Deviations</mtext></mrow></mstyle></mtd></mtr></mtable><mo fence="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">b_{1}=\rho_{x, y} \frac{\sigma_{y}}{\sigma_{x}}~ \quad\left[\begin{array}{l}\rho_{x, y}=\text {Pearson Correlation Coefficient} \\\sigma_{x}, \sigma_{y}=\text {Standard Deviations}\end{array} \right]
@@ -1343,10 +1351,10 @@ Question: Can we check for this? Simples way is to create a new feature that mul
 <p>The features created include:</p>
 <ul>
 <li>the bias (default value 1; indicating the y-intersect term)</li>
-<li>values raised to a power for each degree x**i</li>
+<li>values raised to a power for each degree x^i</li>
 <li>interactions between all pairs of features x_i * x_j</li>
 </ul>
-<p>Example for the features A and B it creates: 1, A, B, A<strong>2, A*B, B</strong>2 &gt; we grab more signal from the data to determine if there are interaction term relationships or higher order relationships</p>
+<p>Example for the features A and B it creates: 1, A, B, A^2, A*B, B^2 &gt; we grab more signal from the data to determine if there are interaction term relationships or higher order relationships</p>
 <h2 id="bias-variance-trade-off-overfitting-versus-underfitting-based-on-mse">Bias Variance Trade-Off: Overfitting versus Underfitting (based on MSE)</h2>
 <p>The higher order polynomial model perform better than a standard linear regression model. How do we choose the optimal degree for the polynomial? What trade-offs are we to consider as we increase model complexity?</p>
 <p>In general, increasing model complexity in search for better performance leads to a <strong>bias-variance trade-off.</strong> We want to have a model that can generalize well to new unseen data, but can also account for variance and patterns in the known data.</p>
@@ -1559,11 +1567,109 @@ Question: Can we check for this? Simples way is to create a new feature that mul
 <p>Note that we still have two hyper-parameters alpha and lambda. We can simplify the notation:</p>
 <p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>β</mi><mo>^</mo></mover><mo>≡</mo><mi><munder><mo><mi mathvariant="normal">argmin</mi><mo>⁡</mo></mo><mi>β</mi></munder></mi><mrow><mo fence="true">(</mo><mi mathvariant="normal">∥</mi><mi>y</mi><mo>−</mo><mi>X</mi><mi>β</mi><msup><mi mathvariant="normal">∥</mi><mn>2</mn></msup><mo>+</mo><msub><mi>λ</mi><mn>2</mn></msub><mi mathvariant="normal">∥</mi><mi>β</mi><msup><mi mathvariant="normal">∥</mi><mn>2</mn></msup><mo>+</mo><msub><mi>λ</mi><mn>1</mn></msub><mi mathvariant="normal">∥</mi><mi>β</mi><msub><mi mathvariant="normal">∥</mi><mn>1</mn></msub><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\hat{\beta} \equiv \underset{\beta}{\operatorname{argmin}}\left(\|y-X \beta\|^{2}+\lambda_{2}\|\beta\|^{2}+\lambda_{1}\|\beta\|_{1}\right)
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1523199999999998em;vertical-align:-0.19444em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9578799999999998em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05278em;">β</span></span></span><span style="top:-3.26344em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.16666em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.9467639999999997em;vertical-align:-1.0826559999999998em;"></span><span class="mord"><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6678600000000001em;"><span style="top:-2.153452em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05278em;">β</span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop"><span class="mop"><span class="mord mathrm">a</span><span class="mord mathrm">r</span><span class="mord mathrm" style="margin-right:0.01389em;">g</span><span class="mord mathrm">m</span><span class="mord mathrm">i</span><span class="mord mathrm">n</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.0826559999999998em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mord">∥</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mord mathdefault" style="margin-right:0.05278em;">β</span><span class="mord"><span class="mord">∥</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault">λ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">∥</span><span class="mord mathdefault" style="margin-right:0.05278em;">β</span><span class="mord"><span class="mord">∥</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault">λ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">∥</span><span class="mord mathdefault" style="margin-right:0.05278em;">β</span><span class="mord"><span class="mord">∥</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">)</span></span></span></span></span></span></span></p>
-<p>The sklearn documentation recommends to put more weight on Lasso and less on Ridge, i.e. l1_ratio should be closer to one &gt; beta coefficient with value zero are more likely to appear. It is recommended to use the list provided in the documentation, i.e. <code>[.1, .5, .7, .9, .95, .99, 1]</code>.</p>
+<p>The sklearn documentation recommends to put more weight on Lasso and less on Ridge, i.e. l1_ratio should be closer to one &gt; beta coefficients with value zero are more likely to appear. It is recommended to use the list provided in the documentation, i.e. <code>[.1, .5, .7, .9, .95, .99, 1]</code>.</p>
 <h2 id="lr-project---data-overview">LR Project - Data Overview</h2>
 <p>Most data sets require cleaning, analysis, and feature engineering before being used for ML. We'll quickly review the data set for the LR Project and in the next section we'll focus on setting up the data for ML (do we need all the features? should be modify features? should be clean features up?). Note that 80% of your time is usually spend cleaning and formatting data.</p>
-<h1 id="-feature-engineering-and-data-preparation">🧼 Feature Engineering and Data Preparation</h1>
+<h1 id="-feature-engineering-and-data-preparation">🧹 Feature Engineering and Data Preparation</h1>
 <p>Realistically not every data set is ML ready, we often need to perform data cleaning or try to produce more usable features. In this section, we'll work on the large LR data set to get it ready for a ML project.</p>
+<p><strong>Feature Engineering</strong> is the process of using <strong>domain knowledge</strong> to extract features from raw data mining techniques. This entails: find out what features are important and what features can be further extracted from, i.e. transform features into a useful numeric feature set or trying to further break down information within a data feature. There are three general approaches:</p>
+<ol>
+<li>Extracting Information</li>
+<li>Combining Information</li>
+<li>Transforming Information</li>
+</ol>
+<h2 id="introduction-to-feature-engineering">Introduction to Feature Engineering</h2>
+<p><strong>Extracting Information</strong></p>
+<p>Example: we have a timestamp for each row, e.g. 1990-12-01 09:26:03. Note that in its current format it's very difficult to pass it in to a ML algorithm. There is no coefficient we can apply for a non-numeric data point. In general for most algorithms we need to make sure features are float or int. We can extract the features year, month, weekday or weekend, or integer encoding the days of the week.</p>
+<p>There are more complex examples. Consider text data for deed of house, we can extract the length of the text or the number of times certain terms are mentioned (natural language processing).</p>
+<p><strong>Combining Information</strong></p>
+<p>We've already done with with Polynomial Regression. Recall that advertising spend could have possible interaction term to consider, so we can multiply them together and feed them to the LR model. We can also combine extracted information and make a new feature, e.g. we make the new feature 'night life' is 1 if it's both the weekend and evening.</p>
+<p><strong>Transforming Information</strong></p>
+<p>Very common for string data as most ML algorithms don't accept string data. Often categorical data is presented as string data. For example, a large data set of social network users could have country of origin as a string feature. We can use two approaches here:</p>
+<p><strong>Integer encoding</strong></p>
+<p>We directly convert categories into integers (we map / make a dictionary with the countries as key as the integers as values). Problem: we're implying ordering and relationship (ordinal variable) &gt; always carefully consider the implication of integer encoding.</p>
+<ul>
+<li>PROS: very easy to do and understand &amp; does not increase number of features</li>
+<li>CONS: implies ordered relationship between categories</li>
+</ul>
+<p><strong>One-hot encoding (dummy variables)</strong></p>
+<p>convert each category into individual features that are either 0 or 1. No ordered relationship is implied between categories. However, we greatly expanded our feature set with many more columns. We can try to reduce this feature column expansion by creating higher level categories, e.g. regions or continents instead of countries</p>
+<p>We can apply this encoding by using pandas .map(), .apply(), or .get_dummies() method. In general, this may require a lot of tuning and domain experience to choose reasonable higher level categories or mappings.</p>
+<p>We must be aware of the &quot;dummy variable trap&quot;, mathematically known as <strong>multicollinearity</strong>. Converting to dummy variables can cause features to be duplicated. Consider a binary category. If we encode it into two dummy variables, the new columns are duplicate information with inverted encoding. Multicollinearity refers to a situation in which more than two explanatory variables in a multiple regression model are highly linearly related. We have perfect multicollinearity if, for example as in the equation above, the correlation between two independent variables is equal to 1 or −1 &gt; we usually drop the last column (or first column); by dropping a column we do not lose any information, since the information for the last column is encoded implicitly in every other column.</p>
+<ul>
+<li>PROS: no ordering implied</li>
+<li>CONS: potential to create many more feature columns and coefficients</li>
+<li>dummy variable trap consideration</li>
+<li>not easy to add new categories (to reduce the number of columns)</li>
+</ul>
+<p>In this section we'll work on addressing the following issues:</p>
+<ul>
+<li>outliers in data</li>
+<li>missing data</li>
+<li>categorical data</li>
+</ul>
+<p>Not every issue here is strictly &quot;feature engineering&quot; but could also be called &quot;data cleaning&quot;. Feature engineering in general will always be data and domain dependent. There is no one size fits all solution.</p>
+<h2 id="dealing-with-outliers">Dealing with Outliers</h2>
+<p>Often a data set will have a few points that are extreme outliers. It's often better to simply remove these few points from the data set in order to have a more generalized model and add a caveat to the model, e.g. this model is not meant for houses that that are likely to cost more than x dollars.</p>
+<p><strong>Outlier Considerations</strong></p>
+<p>Definition of an Outlier (these are both domain and data dependent; there is no 100% correct outlier methodology that will apply to every situation):</p>
+<ul>
+<li>Range and Limits: we need to decide what will constitute an outlier with some methodology:
+<ul>
+<li>InterQuantile Range: outliers are outside 1.5 IQR below below Q1 or above Q3 (75th percentile) by convention</li>
+<li>Standard Deviation: anything below / above three standard deviations from the mean can be considered an outlier</li>
+<li>Visualized or Domain Limit Value</li>
+</ul>
+</li>
+<li>Percentage of Data: Keep in mind if a large percentage of your data is being labeled as an outlier, then you actually just have a wide distribution, not outliers! Limit outliers to a few percentage points at most.</li>
+<li>Utilize visualization plots to be able to see and identify outlier points. Keep in mind, this will create caveats for your future model, e.g. model not suitable for houses priced over $10 Million</li>
+</ul>
+<p><strong>Notes from Course Notebook</strong></p>
+<p>There are many ways to identify and remove outliers:</p>
+<ul>
+<li>Trimming based off a provided value</li>
+<li>Capping based off IQR or STD</li>
+<li><a href="https://towardsdatascience.com/ways-to-detect-and-remove-the-outliers-404d16608dba">Way to Detect and Remove Outliers</a></li>
+<li><a href="https://towardsdatascience.com/5-ways-to-detect-outliers-that-every-data-scientist-should-know-python-code-70a54335a623">5 Ways to Detect Outliers/Anomalies That Every Data Scientist Should Know (Python Code)</a></li>
+</ul>
+<h2 id="dealing-with-missing-data">Dealing with Missing Data</h2>
+<p>First, calculate percentage of data missing per feature column. If we have a very low percentage of information missing (e.g. below a 1% threshold) we consider dropping or adjusting the <strong>row</strong>.</p>
+<p>If the percentage of information missing is too high we consider dropping or adjusting the <strong>column</strong>, i.e. more than 1% of rows are missing some of the features. There are two approaches:</p>
+<ul>
+<li><strong>fill in the missing values</strong> (5% - 10% NaN values):
+<ul>
+<li>potentially changing ground truth in data</li>
+<li>must decide on reasonable estimation to filled value. Note that incoming data set will probably also be missing data in these particular features &gt; we'll have to fill in the data with our transformation if we want to execute the model on it &gt; we save the ML model AND the function that allows us to transform incoming datasets to match up our transformed and filled-in missing feature dataset. (Often we just fill in data with a reasonable assumption)</li>
+<li>must apply transformation to all future data for predictions
+<ul>
+<li><strong>Simples case</strong>: replace all NaN values with a reasonable assumption, e.g. zero if assumed NaN implies zero</li>
+<li><strong>Harder case</strong>: Must use statistical methods based on other columns to fill in NaN values &gt; <strong>Statistical Estimation</strong>. For example: dataset about people with some age data missing &gt; we could use current career / education status to fill in data, e.g. people currently in college fill in with 20 years.
+In this case we usually group by the data and consider an estimator. Afterwards, we use the pandas <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.transform.html">.transform() method</a> (this combines the groupby call with an apply method; works similarly to an aggregation function / apply method)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>drop the feature column:
+<ul>
+<li>very simple to do</li>
+<li>no longer need to worry about that feature in the future. The problem here is if the dropped feature later becomes very important for predictive ability, but it we can not considered it in the model, as the model can only consider features it was trained on.</li>
+<li>potential to lose a feature with possible important signal</li>
+<li>should consider drop feature approach <strong>when many rows are NaN</strong> (e.g. 99% NaN values)</li>
+</ul>
+</li>
+</ul>
+<h1 id="--cross-validation-and-linear-regression-project">🗂  Cross Validation and Linear Regression Project</h1>
+<p>In this section we discuss cross validation in detail before diving into the regression project:</p>
+<ul>
+<li>Train | Test Split</li>
+<li>Train | Validation | Test Split</li>
+<li>sklearn cross_val_score</li>
+<li>sklearn cross_validate</li>
+<li>Grid Search</li>
+<li>LR project</li>
+</ul>
+<p>We've already discussed models with built-in cross validation, e.g. RidgeCV. We will expand on this by exploring sklearn general tools for using cross-validation for any model. This will also allow us to later perform grid searches for the optimal combination fo multiple hyper-parameters.</p>
+<p>We'll begin by reviewing the most basic CV process we know so far (Train | Test Split) and the build up to the full k-fold CV.</p>
 <h1 id="-open-questions-and-tasks">🔧 Open Questions and Tasks</h1>
 <h2 id="open-questions">Open Questions</h2>
 <ul>
@@ -1622,7 +1728,22 @@ Question: Can we check for this? Simples way is to create a new feature that mul
 <li>add and commit to main (T)</li>
 <li>push to repo (T)</li>
 </ul>
-<h1 id="-outline-of-project-wip">📋 Outline of Project (WIP)</h1>
+<h1 id="-moodle-articles">📄 Moodle Articles</h1>
+<h1 id="-project-wip">📋 Project (WIP)</h1>
+<p>Label:</p>
+<ul>
+<li>Throughput</li>
+</ul>
+<p>Features:</p>
+<ul>
+<li>time of day</li>
+<li>time of year</li>
+<li>speed / acceleration</li>
+<li>location</li>
+<li>power / rtt</li>
+<li>payload</li>
+</ul>
+<p>Overview:</p>
 <ul>
 <li>Create DataFrames</li>
 <li>Apply Pandas knowledge to DataFrame
@@ -1665,6 +1786,7 @@ Question: Can we check for this? Simples way is to create a new feature that mul
 <p><a href="https://stackoverflow.com/questions/14532875/creating-for-loop-until-list-length">Creating for loop until list.length</a></p>
 <p><a href="https://stackoverflow.com/questions/34398054/ipython-notebook-cell-multiple-outputs">IPython Notebook cell multiple outputs</a></p>
 <p><a href="https://stackoverflow.com/questions/31290976/sklearn-how-to-get-coefficients-of-polynomial-features">sklearn: how to get coefficients of polynomial features</a></p>
+<p><a href="https://www.tablesgenerator.com/html_tables">HTML Tables generator - TablesGenerator.com</a></p>
 
     </body>
     </html>

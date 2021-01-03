@@ -1,4 +1,4 @@
-Variablenbeschreibung
+== Variablenbeschreibung ==
 
 - timestamp_ms ist ein Unix Timestamp, welcher die Umrechnung in eine konkrete Uhrzeit ermöglicht (siehe https://www.unixtimestamp.com/)
 
@@ -23,3 +23,7 @@ Variablenbeschreibung
 - txPower_dBm entspricht der Sendeleistung des Endgerätes (somit auch nur im Uplink verfügbar, weil das Endgerät im Downlink nur empfängt)
 
 - f_mhz entspricht der Trägerfrequenz der Basisstation, daher ist dies auch in wichtiges Feature, da die Frequenz einen großen Einfluss auf die Funkausbreitungseigenschaften hat 
+
+== Notes ==
+
+The channel context is formed by the passive LTE network quality indicators RSRP, Reference Signal Received Quality (RSRQ), Signal-to-interference-plus- noise Ratio (SINR), Channel Quality Indicator (CQI), Timing Advance (TA) and the carrier frequency of the serving evolved Node B (eNB).

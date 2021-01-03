@@ -111,7 +111,11 @@ In the course, students will learn about the application of statistical methods 
   - [L1 Regularization - Lasso Regression](#l1-regularization---lasso-regression)
   - [L1 and L2 Regularization - Elastic Net](#l1-and-l2-regularization---elastic-net)
   - [LR Project - Data Overview](#lr-project---data-overview)
-- [🧼 Feature Engineering and Data Preparation](#%F0%9F%A7%BC-feature-engineering-and-data-preparation)
+- [🧹 Feature Engineering and Data Preparation](#%F0%9F%A7%B9-feature-engineering-and-data-preparation)
+  - [Introduction to Feature Engineering](#introduction-to-feature-engineering)
+  - [Dealing with Outliers](#dealing-with-outliers)
+  - [Dealing with Missing Data](#dealing-with-missing-data)
+- [🗂  Cross Validation and Linear Regression Project](#%F0%9F%97%82--cross-validation-and-linear-regression-project)
 - [🔧 Open Questions and Tasks](#-open-questions-and-tasks)
   - [Open Questions](#open-questions)
   - [Backlog](#backlog)
@@ -119,7 +123,8 @@ In the course, students will learn about the application of statistical methods 
   - [Resolved (Preparation)](#resolved-preparation)
   - [Resolved (Project)](#resolved-project)
   - [Workflow](#workflow)
-- [📋 Outline of Project (WIP)](#-outline-of-project-wip)
+- [📄 Moodle Articles](#-moodle-articles)
+- [📋 Project (WIP)](#-project-wip)
 - [💡 Misc](#-misc)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -1198,7 +1203,7 @@ Having a squared error simplifies out calculation later on when setting up a der
 
 Linear Regression allows us to build a relationship between multiple **features** to estimate a **target output** The linear function `y=mx+b` only has room for a possible feature `x`. OLS allows us to solve for the slope `m` and the intercept `b`. Later, we'll need tools like gradient descent to scale this to multiple features. We can translate this data into generalized mathematical notation: X is the matrix that contains multiple features and y is the vector that contains the label we're trying to predict. We build the linear relationship between the features X and label Y. Note that we're looking for a linear combination to computer an estimate. Also note that in the linear combination we don't have an intercept `b`. 
 
-We consider the 1st degree polynomial for our estimator (see REnADME preamble if LaTeX equation is not rendering): 
+We consider the 1st degree polynomial for our estimator (see preamble if TeX equation is not rendering): 
 
 $$\hat{y}=b_{0}+b_{1} x$$
 
@@ -1477,10 +1482,10 @@ sklearn's pre-processing library contains many useful tools to apply to the orig
 The features created include: 
 
 - the bias (default value 1; indicating the y-intersect term)
-- values raised to a power for each degree x**i
+- values raised to a power for each degree x^i
 - interactions between all pairs of features x_i * x_j
 
-Example for the features A and B it creates: 1, A, B, A**2, A*B, B**2 > we grab more signal from the data to determine if there are interaction term relationships or higher order relationships
+Example for the features A and B it creates: 1, A, B, A^2, A*B, B^2 > we grab more signal from the data to determine if there are interaction term relationships or higher order relationships
 
 ## Bias Variance Trade-Off: Overfitting versus Underfitting (based on MSE)
 
@@ -1757,15 +1762,123 @@ Note that we still have two hyper-parameters alpha and lambda. We can simplify t
 
 $$\hat{\beta} \equiv \underset{\beta}{\operatorname{argmin}}\left(\|y-X \beta\|^{2}+\lambda_{2}\|\beta\|^{2}+\lambda_{1}\|\beta\|_{1}\right)$$
 
-The sklearn documentation recommends to put more weight on Lasso and less on Ridge, i.e. l1_ratio should be closer to one > beta coefficient with value zero are more likely to appear. It is recommended to use the list provided in the documentation, i.e. `[.1, .5, .7, .9, .95, .99, 1]`. 
+The sklearn documentation recommends to put more weight on Lasso and less on Ridge, i.e. l1_ratio should be closer to one > beta coefficients with value zero are more likely to appear. It is recommended to use the list provided in the documentation, i.e. `[.1, .5, .7, .9, .95, .99, 1]`. 
 
 ## LR Project - Data Overview
 
 Most data sets require cleaning, analysis, and feature engineering before being used for ML. We'll quickly review the data set for the LR Project and in the next section we'll focus on setting up the data for ML (do we need all the features? should be modify features? should be clean features up?). Note that 80% of your time is usually spend cleaning and formatting data. 
 
-# 🧼 Feature Engineering and Data Preparation
+# 🧹 Feature Engineering and Data Preparation
 
 Realistically not every data set is ML ready, we often need to perform data cleaning or try to produce more usable features. In this section, we'll work on the large LR data set to get it ready for a ML project. 
+
+**Feature Engineering** is the process of using **domain knowledge** to extract features from raw data mining techniques. This entails: find out what features are important and what features can be further extracted from, i.e. transform features into a useful numeric feature set or trying to further break down information within a data feature. There are three general approaches: 
+
+1. Extracting Information
+2. Combining Information
+3. Transforming Information
+
+## Introduction to Feature Engineering
+
+**Extracting Information**
+
+Example: we have a timestamp for each row, e.g. 1990-12-01 09:26:03. Note that in its current format it's very difficult to pass it in to a ML algorithm. There is no coefficient we can apply for a non-numeric data point. In general for most algorithms we need to make sure features are float or int. We can extract the features year, month, weekday or weekend, or integer encoding the days of the week. 
+
+There are more complex examples. Consider text data for deed of house, we can extract the length of the text or the number of times certain terms are mentioned (natural language processing). 
+
+**Combining Information**
+
+We've already done with with Polynomial Regression. Recall that advertising spend could have possible interaction term to consider, so we can multiply them together and feed them to the LR model. We can also combine extracted information and make a new feature, e.g. we make the new feature 'night life' is 1 if it's both the weekend and evening. 
+
+**Transforming Information**
+
+Very common for string data as most ML algorithms don't accept string data. Often categorical data is presented as string data. For example, a large data set of social network users could have country of origin as a string feature. We can use two approaches here: 
+
+**Integer encoding**
+
+We directly convert categories into integers (we map / make a dictionary with the countries as key as the integers as values). Problem: we're implying ordering and relationship (ordinal variable) > always carefully consider the implication of integer encoding. 
+
+- PROS: very easy to do and understand & does not increase number of features
+- CONS: implies ordered relationship between categories
+
+**One-hot encoding (dummy variables)**
+
+convert each category into individual features that are either 0 or 1. No ordered relationship is implied between categories. However, we greatly expanded our feature set with many more columns. We can try to reduce this feature column expansion by creating higher level categories, e.g. regions or continents instead of countries
+
+We can apply this encoding by using pandas .map(), .apply(), or .get_dummies() method. In general, this may require a lot of tuning and domain experience to choose reasonable higher level categories or mappings. 
+
+We must be aware of the "dummy variable trap", mathematically known as **multicollinearity**. Converting to dummy variables can cause features to be duplicated. Consider a binary category. If we encode it into two dummy variables, the new columns are duplicate information with inverted encoding. Multicollinearity refers to a situation in which more than two explanatory variables in a multiple regression model are highly linearly related. We have perfect multicollinearity if, for example as in the equation above, the correlation between two independent variables is equal to 1 or −1 > we usually drop the last column (or first column); by dropping a column we do not lose any information, since the information for the last column is encoded implicitly in every other column. 
+
+- PROS: no ordering implied
+- CONS: potential to create many more feature columns and coefficients
+- dummy variable trap consideration
+- not easy to add new categories (to reduce the number of columns)
+
+In this section we'll work on addressing the following issues: 
+
+- outliers in data
+- missing data
+- categorical data
+
+Not every issue here is strictly "feature engineering" but could also be called "data cleaning". Feature engineering in general will always be data and domain dependent. There is no one size fits all solution. 
+
+## Dealing with Outliers
+
+Often a data set will have a few points that are extreme outliers. It's often better to simply remove these few points from the data set in order to have a more generalized model and add a caveat to the model, e.g. this model is not meant for houses that that are likely to cost more than x dollars. 
+
+**Outlier Considerations**
+
+Definition of an Outlier (these are both domain and data dependent; there is no 100% correct outlier methodology that will apply to every situation): 
+
+- Range and Limits: we need to decide what will constitute an outlier with some methodology:
+    - InterQuantile Range: outliers are outside 1.5 IQR below below Q1 or above Q3 (75th percentile) by convention
+    - Standard Deviation: anything below / above three standard deviations from the mean can be considered an outlier
+    - Visualized or Domain Limit Value
+- Percentage of Data: Keep in mind if a large percentage of your data is being labeled as an outlier, then you actually just have a wide distribution, not outliers! Limit outliers to a few percentage points at most.
+- Utilize visualization plots to be able to see and identify outlier points. Keep in mind, this will create caveats for your future model, e.g. model not suitable for houses priced over $10 Million
+
+**Notes from Course Notebook**
+
+There are many ways to identify and remove outliers:
+
+- Trimming based off a provided value
+- Capping based off IQR or STD
+- [Way to Detect and Remove Outliers](https://towardsdatascience.com/ways-to-detect-and-remove-the-outliers-404d16608dba)
+- [5 Ways to Detect Outliers/Anomalies That Every Data Scientist Should Know (Python Code)](https://towardsdatascience.com/5-ways-to-detect-outliers-that-every-data-scientist-should-know-python-code-70a54335a623)
+
+## Dealing with Missing Data
+
+First, calculate percentage of data missing per feature column. If we have a very low percentage of information missing (e.g. below a 1% threshold) we consider dropping or adjusting the **row**. 
+
+If the percentage of information missing is too high we consider dropping or adjusting the **column**, i.e. more than 1% of rows are missing some of the features. There are two approaches: 
+
+- **fill in the missing values** (5% - 10% NaN values):
+    - potentially changing ground truth in data
+    - must decide on reasonable estimation to filled value. Note that incoming data set will probably also be missing data in these particular features > we'll have to fill in the data with our transformation if we want to execute the model on it > we save the ML model AND the function that allows us to transform incoming datasets to match up our transformed and filled-in missing feature dataset. (Often we just fill in data with a reasonable assumption)
+    - must apply transformation to all future data for predictions
+        - **Simples case**: replace all NaN values with a reasonable assumption, e.g. zero if assumed NaN implies zero
+        - **Harder case**: Must use statistical methods based on other columns to fill in NaN values > **Statistical Estimation**. For example: dataset about people with some age data missing > we could use current career / education status to fill in data, e.g. people currently in college fill in with 20 years. 
+        In this case we usually group by the data and consider an estimator. Afterwards, we use the pandas [.transform() method](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.transform.html) (this combines the groupby call with an apply method; works similarly to an aggregation function / apply method)
+- drop the feature column:
+    - very simple to do
+    - no longer need to worry about that feature in the future. The problem here is if the dropped feature later becomes very important for predictive ability, but it we can not considered it in the model, as the model can only consider features it was trained on.
+    - potential to lose a feature with possible important signal
+    - should consider drop feature approach **when many rows are NaN** (e.g. 99% NaN values)
+
+# 🗂  Cross Validation and Linear Regression Project
+
+In this section we discuss cross validation in detail before diving into the regression project: 
+
+- Train | Test Split
+- Train | Validation | Test Split
+- sklearn cross_val_score
+- sklearn cross_validate
+- Grid Search
+- LR project
+
+We've already discussed models with built-in cross validation, e.g. RidgeCV. We will expand on this by exploring sklearn general tools for using cross-validation for any model. This will also allow us to later perform grid searches for the optimal combination fo multiple hyper-parameters.  
+
+We'll begin by reviewing the most basic CV process we know so far (Train | Test Split) and the build up to the full k-fold CV. 
 
 # 🔧 Open Questions and Tasks
 
@@ -1823,7 +1936,24 @@ Realistically not every data set is ML ready, we often need to perform data clea
 - add and commit to main (T)
 - push to repo (T)
 
-# 📋 Outline of Project (WIP)
+# 📄 Moodle Articles
+
+# 📋 Project (WIP)
+
+Label: 
+
+- Throughput
+
+Features: 
+
+- time of day
+- time of year
+- speed / acceleration
+- location
+- power / rtt
+- payload
+
+Overview: 
 
 - Create DataFrames
 - Apply Pandas knowledge to DataFrame
@@ -1894,3 +2024,5 @@ Can we model the process in the project as a Poisson process?
 [IPython Notebook cell multiple outputs](https://stackoverflow.com/questions/34398054/ipython-notebook-cell-multiple-outputs)
 
 [sklearn: how to get coefficients of polynomial features](https://stackoverflow.com/questions/31290976/sklearn-how-to-get-coefficients-of-polynomial-features)
+
+[HTML Tables generator - TablesGenerator.com](https://www.tablesgenerator.com/html_tables)
