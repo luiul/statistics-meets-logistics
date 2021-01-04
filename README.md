@@ -119,6 +119,11 @@ In the course, students will learn about the application of statistical methods 
   - [15.3. k-fold Cross Validation & Built-In Function](#153-k-fold-cross-validation--built-in-function)
   - [15.4. Grid Search](#154-grid-search)
 - [16. Support Vector Machines 🏹](#16-support-vector-machines-)
+  - [16.1. History](#161-history)
+  - [16.2. Theory and Intuition](#162-theory-and-intuition)
+    - [16.2.1. Hyperplanes and Margins](#1621-hyperplanes-and-margins)
+    - [16.2.2. Kernels](#1622-kernels)
+    - [16.2.3. Kernel Trick and sklearn](#1623-kernel-trick-and-sklearn)
 - [17. Open Questions and Tasks 🔧](#17-open-questions-and-tasks-)
   - [17.1. Open Questions](#171-open-questions)
   - [17.2. Backlog](#172-backlog)
@@ -1972,7 +1977,101 @@ sklearn includes a **GridSearchCV** class capable of testing a dictionary of mul
 
 # 16. Support Vector Machines 🏹
 
-Start here! 
+Chapter 9 ISLR cover SVM Classification. 
+
+Overview: 
+
+- History
+- Intuition and Theory
+- SVM Classification Example
+- SVM Regression Example
+- SVM Project Exercise and Solutions
+
+We'll see the theory advance as we move from Maximum Margin Classifiers, to SV Classifiers, and finally SV Machines. 
+
+## 16.1. History
+
+In 1964 researches introduce the idea that the geometrical interpretation of the kernels as inner products in a feature space. In 1992 researches suggest a way to create nonlinear classifiers by applying the kernel trick to maximum-margin hyperplanes. In 1995 researches publish the SVM incarnation using a soft margin. In 1996 researches publish Support Vector Regression Machines, expanding SVM beyond classification tasks.  
+
+## 16.2. Theory and Intuition
+
+In this section we discuss the relevant theory and intuition behind SVM. 
+
+### 16.2.1. Hyperplanes and Margins
+
+In an N-dimensional space, a **hyperplane** is a flat affine subspace of hyperplane dimension N-1, e.g. 1D hyperplane is a point, 2D hyperplane is a line and 3D hyperplane is a flat plane. 
+
+The main idea behind SVM is that we can use hyperplanes to create a separation between classes. The points will fall on one side of this separating hyperplane, which we can then use to assign a class. 
+
+Imagine a data set with one feature and one binary target label, e.g. a weight feature for chicks and classified by male or female. The idea behind SVM is to create a separating hyperplane between the classes. A new point would be be classified based on what side of the hyperplane they land on. Question: how do we choose where to put this separating hyperplane? Which is the best separator between the classes? 
+
+We could use the separator that **maximizes** the **margins** between the classes > this is knows as a **Maximal Margin Classifier**. This idea applies to N-dimensions. 
+
+Note that in 2D the hyperplane is a line partitioning the plane and each data point is a 2D vector. The data points at margin "support" separator. 
+
+If the data is not perfectly separable, we're not able to separate without allowing for misclassification. We will have a bias-variance trade-off depending where we place this separator. We allow more bias to lead to better long term results on future data. 
+
+The distance between threshold and the observation is a **soft margin**; this allow for misclassification inside the margin. There are many possible threshold splits if we allow for soft margins. We can use cross validation to determine the optimal size of the margins. **A Support Vector Classifier allows for Soft Margins.** 
+
+In cases where the classes are easily separated by the hyperplane in the original feature space, allowing for some misclassification still results in reasonable results. Question: What would happen in a case where a hyperplane perform poorly, even when allowing for misclassifications? 
+
+For example a class of the data set is grouped together in an island surrounded by the other class. To solve these cases, we move on from Support Vector Classifiers, to SVM. SVMs use **kernels** to project the data to a higher dimension, in order to use a hyperplane in this higher dimension to separate the data. 
+
+### 16.2.2. Kernels
+
+Kernels allow us to move beyond a SV Classifier to use SV Machines. There are a variety of kernels we can use to "project" the features to a higher dimension. For example, use a polynomial kernel to expand onto an X^2 dimension. We use the kernel projection to evaluate new points. 
+
+Until now we've visualize transforming data points form one dimension into a higher dimension. Mathematically, the **kernel trick** actually avoids recomputing the points in a higher dimensional space. It uses **doc product** to avoid expensive computations associated with having to transform everything with a kernel. We take advantage of dot products of the transpositions of the data. 
+
+### 16.2.3. Kernel Trick and sklearn
+
+We begin this section with a brief review of using margin based classifiers, an how they can be described with equations. Background can be found in Chapter 9 ISLR. A comprehensive overview of the topics discussed can be found in *Support-vector networks* by Cortes and Vapnik. 
+
+A hyperplane in the plane can be defined as a line, i.e. an equation solved by a linear combination second order. The linear combination is equal to zero along the line, and it partitions the plane into two regions. In one region the equation is bigger than zero and in the other one less than zero. 
+
+**Max Margin Classifier**: 
+
+$$x_{1}=\left(\begin{array}{c}x_{11} \\ \vdots \\ x_{1 p}\end{array}\right), \ldots, x_{n}=\left(\begin{array}{c}x_{n 1} \\ \vdots \\ x_{n p}\end{array}\right)$$
+
+$$\underset{\beta_{0}, \beta_{1}, \ldots, \beta_{p}, M}{\operatorname{maximize}} M \text
+{  subject to  } \sum_{j=1}^{p} \beta_{j}^{2}=1, $$
+
+$$y_{i}\left(\beta_{0}+\beta_{1} x_{i 1}+\beta_{2} x_{i 2}+\ldots+\beta_{p} x_{i p}\right) \geq M ~~ {\forall i=1, \ldots, n .}$$
+
+**Support Vector Classifier**:
+
+$$\begin{array}{l}\underset{\beta_{0}, \beta_{1}, \ldots, \beta_{p}, \epsilon_{1}, \ldots, \epsilon_{n}, M}{\operatorname{maximize}} M \\\text { subject to } \sum_{j=1}^{p} \beta_{j}^{2}=1 \\\qquad \begin{array}{ll}\epsilon_{i} \geq 0, \sum_{i=1}^{n} \epsilon_{i} \leq C \\y_{i}\left(\beta_{0}+\beta_{1} x_{i 1}+\beta_{2} x_{i 2}+\ldots+\beta_{p} x_{i p}\right) \geq M\left(1-\epsilon_{i}\right)\end{array}\end{array}$$
+
+**Support Vector Machines** (not generalized, it only applies to a two dimensional kernel): 
+
+$$\begin{array}{c}X_{1}, X_{1}^{2}, X_{2}, X_{2}^{2}, \ldots, X_{p}, X_{p}^{2} \\\qquad \begin{array}{c}\operatorname{maximize}_{\beta_{0}, \beta_{11}, \beta_{12} \ldots, \beta_{p 1}, \beta_{p 2}, \epsilon_{1}, \ldots, \epsilon_{n}, M} M \\\text { subject to } y_{i}\left(\beta_{0}+\sum_{j=1}^{p} \beta_{j 1} x_{i j}+\sum_{j=1}^{p} \beta_{j 2} x_{i j}^{2}\right) \geq M\left(1-\epsilon_{i}\right)\end{array} \\\sum_{i=1}^{n} \epsilon_{i} \leq C, \epsilon_{i} \geq 0, \sum_{j=1}^{p} \sum_{k=1}^{2} \beta_{j k}^{2}=1\end{array}$$
+
+As polynomial order grows larger, the number of computations necessary to solve for margins also grows. The answer lies in the **kernel trick** which makes use of the **inner product** of vectors, also known as the **dot product**. The dot product can be thought of as a **similarity** between the vectors. 
+
+We can rewrite the **SV Classifier**: 
+
+$$\begin{array}{l}
+f(x)=\beta_{0} {\sum_{i=1}^{n} \alpha_{i}\left\langle x, x_{i}\right\rangle} \leftrightarrow \\
+f(x)=\beta_{0}+\sum_{i \in \mathcal{S}} \alpha_{i}\left\langle x, x_{i}\right\rangle
+\end{array}$$
+
+We define a linear kernel function that quantifies the similarity of two observations: 
+
+$$K\left(x_{i}, x_{i^{\prime}}\right)=\sum_{j=1}^{p} x_{i j} x_{i^{\prime} j}$$
+
+We can also use a polynomial kernel: 
+
+$$K\left(x_{i}, x_{i^{\prime}}\right)=\left(1+\sum_{j=1}^{p} x_{i j} x_{i^{\prime} j}\right)^d$$
+
+Or the Radial Basis Kernel: 
+
+$$K\left(x_{i}, x_{i^{\prime}}\right)=\exp \left(-\gamma \sum_{j=1}^{p}\left(x_{i j}-x_{i^{\prime} j}\right)^{2}\right)$$
+
+The use of **kernels** as a replacement is knows as the **kernel trick**. Kernels allow us to avoid computations in the enlarged feature space, by only needing to perform computations for each distinct pair of training points (details in 9.3.2 ISLR). 
+
+Intuitively the inner products acts as a measurement of similarity between  vectors. The use of kernels can be thought of as a measure of similarity between the original feature space and the enlarged feature space. 
+
+In the sklearn class SVC we find the regularization parameter C to allow for misclassifications (inversely proportional to the C in the formula above), kernel , degree, gamma, etc. Note that we can also perform regression with the SVM. 
 
 # 17. Open Questions and Tasks 🔧
 
