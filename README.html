@@ -38,6 +38,7 @@
 <p>In the course, students will learn about the application of statistical methods and basic machine learning procedures for the analysis of complex data in the field of logistics. This includes methods of descriptive statistics as well as various regression and classification procedures including neural networks. After the introduction of the methods, the students apply the acquired knowledge independently to work on logistical problems in various practical exercises. The software Python and relevant packages are used.</p>
 <!-- omit in toc -->
 <h1 id="table-of-contents-">Table of Contents 📑</h1>
+<!-- toc here -->
 <ul>
 <li><a href="#1-background-">1. Background 🌅</a>
 <ul>
@@ -291,16 +292,20 @@
 <li>Import <code>requirements.txt</code> as Conda explicit specification file in the Anaconda Navigator</li>
 <li>Run the following command in the command prompt interface (Anaconda prompt or directly in the terminal):</li>
 </ol>
-<pre><code class="language-python"><div>conda create --name &lt;envName&gt; jupyter==<span class="hljs-number">1.0</span><span class="hljs-number">.0</span> lxml==<span class="hljs-number">4.5</span><span class="hljs-number">.1</span> MarkupSafe==<span class="hljs-number">1.1</span><span class="hljs-number">.1</span> 
-matplotlib==<span class="hljs-number">3.3</span><span class="hljs-number">.2</span> notebook==<span class="hljs-number">6.0</span><span class="hljs-number">.3</span> numpy==<span class="hljs-number">1.18</span><span class="hljs-number">.1</span> openpyxl==<span class="hljs-number">3.0</span><span class="hljs-number">.4</span> pandas==<span class="hljs-number">1.1</span><span class="hljs-number">.2</span> 
-Pillow==<span class="hljs-number">7.2</span><span class="hljs-number">.0</span> scikit-learn==<span class="hljs-number">0.23</span><span class="hljs-number">.2</span> scipy==<span class="hljs-number">1.4</span><span class="hljs-number">.1</span> seaborn==<span class="hljs-number">0.11</span><span class="hljs-number">.0</span> SQLAlchemy==<span class="hljs-number">1.3</span><span class="hljs-number">.18</span> 
-xlrd==<span class="hljs-number">1.2</span><span class="hljs-number">.0</span>
+<pre><code class="language-python"><div>conda create --name &lt;envName&gt; 
+jupyter==<span class="hljs-number">1.0</span><span class="hljs-number">.0</span> lxml==<span class="hljs-number">4.5</span><span class="hljs-number">.1</span> MarkupSafe==<span class="hljs-number">1.1</span><span class="hljs-number">.1</span> 
+matplotlib==<span class="hljs-number">3.3</span><span class="hljs-number">.2</span> notebook==<span class="hljs-number">6.1</span><span class="hljs-number">.6</span> numpy==<span class="hljs-number">1.18</span><span class="hljs-number">.1</span> 
+openpyxl==<span class="hljs-number">3.0</span><span class="hljs-number">.4</span> pandas==<span class="hljs-number">1.1</span><span class="hljs-number">.2</span> Pillow==<span class="hljs-number">7.2</span><span class="hljs-number">.0</span> 
+scikit-learn==<span class="hljs-number">0.23</span><span class="hljs-number">.2</span> scipy==<span class="hljs-number">1.4</span><span class="hljs-number">.1</span> seaborn==<span class="hljs-number">0.11</span><span class="hljs-number">.0</span> 
+SQLAlchemy==<span class="hljs-number">1.3</span><span class="hljs-number">.18</span> xlrd==<span class="hljs-number">1.2</span><span class="hljs-number">.0</span>
 </div></code></pre>
 <p>or</p>
-<pre><code class="language-python"><div>conda create --prefix ~/opt/anaconda3 jupyter==<span class="hljs-number">1.0</span><span class="hljs-number">.0</span> lxml==<span class="hljs-number">4.5</span><span class="hljs-number">.1</span> MarkupSafe==<span class="hljs-number">1.1</span><span class="hljs-number">.1</span> 
-matplotlib==<span class="hljs-number">3.3</span><span class="hljs-number">.2</span> notebook==<span class="hljs-number">6.0</span><span class="hljs-number">.3</span> numpy==<span class="hljs-number">1.18</span><span class="hljs-number">.1</span> openpyxl==<span class="hljs-number">3.0</span><span class="hljs-number">.4</span> pandas==<span class="hljs-number">1.1</span><span class="hljs-number">.2</span> 
-Pillow==<span class="hljs-number">7.2</span><span class="hljs-number">.0</span> scikit-learn==<span class="hljs-number">0.23</span><span class="hljs-number">.2</span> scipy==<span class="hljs-number">1.4</span><span class="hljs-number">.1</span> seaborn==<span class="hljs-number">0.11</span><span class="hljs-number">.0</span> SQLAlchemy==<span class="hljs-number">1.3</span><span class="hljs-number">.18</span> 
-xlrd==<span class="hljs-number">1.2</span><span class="hljs-number">.0</span>
+<pre><code class="language-python"><div>conda create --prefix ~/opt/anaconda3 
+jupyter==<span class="hljs-number">1.0</span><span class="hljs-number">.0</span> lxml==<span class="hljs-number">4.5</span><span class="hljs-number">.1</span> MarkupSafe==<span class="hljs-number">1.1</span><span class="hljs-number">.1</span> 
+matplotlib==<span class="hljs-number">3.3</span><span class="hljs-number">.2</span> notebook==<span class="hljs-number">6.1</span><span class="hljs-number">.6</span> numpy==<span class="hljs-number">1.18</span><span class="hljs-number">.1</span> 
+openpyxl==<span class="hljs-number">3.0</span><span class="hljs-number">.4</span> pandas==<span class="hljs-number">1.1</span><span class="hljs-number">.2</span> Pillow==<span class="hljs-number">7.2</span><span class="hljs-number">.0</span> 
+scikit-learn==<span class="hljs-number">0.23</span><span class="hljs-number">.2</span> scipy==<span class="hljs-number">1.4</span><span class="hljs-number">.1</span> seaborn==<span class="hljs-number">0.11</span><span class="hljs-number">.0</span> 
+SQLAlchemy==<span class="hljs-number">1.3</span><span class="hljs-number">.18</span> xlrd==<span class="hljs-number">1.2</span><span class="hljs-number">.0</span>
 </div></code></pre>
 <h2 id="18-activate-the-virtual-environment">1.8. Activate the virtual environment</h2>
 <p>There are two options:</p>
@@ -1817,19 +1822,45 @@ f(x)=\beta_{0}+\sum_{i \in \mathcal{S}} \alpha_{i}\left\langle x, x_{i}\right\ra
 <li>Revise the lecture before the presentation!</li>
 <li>Read about <a href="https://realpython.com/pandas-settingwithcopywarning/">copy warning</a></li>
 <li>Read Wiki on <a href="https://en.wikipedia.org/wiki/Regression_analysis">Regression Analysis</a></li>
+<li>Make a <a href="https://www.notion.so/ac02bfefe61246918aabf0e6094f18c9">data column reference</a> in HTML (see <a href="https://en.wikipedia.org/wiki/Data_type">data type</a>, <a href="https://towardsdatascience.com/7-data-types-a-better-way-to-think-about-data-types-for-machine-learning-939fae99a689">7 data types</a>; use Notion or <a href="https://www.tablesgenerator.com/html_tables">Tables Generator</a>)</li>
 </ul>
 <h2 id="173-in-progress">17.3. In Progress</h2>
 <ul>
-<li>Make new workflow</li>
-<li>Convert <a href="https://stackoverflow.com/questions/19231871/convert-unix-time-to-readable-date-in-pandas-dataframe">rawTimesamp</a> feature into a datetime object &gt; useful later for feature engineering (see <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.to_datetime.html">documentation</a>)</li>
-<li>Make an outline of the project</li>
 <li>Decide what are the relevant categorial columns for the project</li>
-<li>Make a <a href="https://www.notion.so/ac02bfefe61246918aabf0e6094f18c9">data column reference</a> in HTML (see <a href="https://en.wikipedia.org/wiki/Data_type">data type</a>, <a href="https://towardsdatascience.com/7-data-types-a-better-way-to-think-about-data-types-for-machine-learning-939fae99a689">7 data types</a>; use Notion or <a href="https://www.tablesgenerator.com/html_tables">Tables Generator</a>)</li>
-<li>Strip project data</li>
-<li>Determine an average payload</li>
+<li>Go through features:
+<ul class="contains-task-list">
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  connected</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  id</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  measurement</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  pci</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  ss</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  timestamp</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  rawTimesamp</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  distance</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  lat</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  lon</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  alt</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  speed</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  acc</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  dir</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox">  rsrp</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox">  rsrq</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox">  sinr</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox">  cqi</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox">  ta</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox">  ci</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox">  payload</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox">  rtt</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox">  location</li>
+</ul>
+</li>
 </ul>
 <h2 id="174-resolved-preparation">17.4. Resolved (Preparation)</h2>
 <ul>
+<li>Strip project data</li>
+<li>Make an outline of the project</li>
+<li>Convert <a href="https://stackoverflow.com/questions/19231871/convert-unix-time-to-readable-date-in-pandas-dataframe">rawTimesamp</a> feature into a datetime object &gt; useful later for feature engineering (see <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.to_datetime.html">documentation</a>)</li>
+<li>Make new workflow</li>
 <li>Linear Regression</li>
 <li>Crapstone Project (Numpy, Pandas, Matplotlib, and Seaborn)</li>
 <li>Seaborn</li>

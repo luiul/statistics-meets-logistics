@@ -17,6 +17,8 @@ In the course, students will learn about the application of statistical methods 
 <!-- omit in toc -->
 # Table of Contents 📑
 
+<!-- toc here -->
+
 - [1. Background 🌅](#1-background-)
   - [1.1. Getting Started with Anaconda](#11-getting-started-with-anaconda)
   - [1.2. Jupyter Notebook](#12-jupyter-notebook)
@@ -216,19 +218,23 @@ There are two options:
 2. Run the following command in the command prompt interface (Anaconda prompt or directly in the terminal):
 
 ```python
-conda create --name <envName> jupyter==1.0.0 lxml==4.5.1 MarkupSafe==1.1.1 
-matplotlib==3.3.2 notebook==6.0.3 numpy==1.18.1 openpyxl==3.0.4 pandas==1.1.2 
-Pillow==7.2.0 scikit-learn==0.23.2 scipy==1.4.1 seaborn==0.11.0 SQLAlchemy==1.3.18 
-xlrd==1.2.0
+conda create --name <envName> 
+jupyter==1.0.0 lxml==4.5.1 MarkupSafe==1.1.1 
+matplotlib==3.3.2 notebook==6.1.6 numpy==1.18.1 
+openpyxl==3.0.4 pandas==1.1.2 Pillow==7.2.0 
+scikit-learn==0.23.2 scipy==1.4.1 seaborn==0.11.0 
+SQLAlchemy==1.3.18 xlrd==1.2.0
 ```
 
 or
 
 ```python
-conda create --prefix ~/opt/anaconda3 jupyter==1.0.0 lxml==4.5.1 MarkupSafe==1.1.1 
-matplotlib==3.3.2 notebook==6.0.3 numpy==1.18.1 openpyxl==3.0.4 pandas==1.1.2 
-Pillow==7.2.0 scikit-learn==0.23.2 scipy==1.4.1 seaborn==0.11.0 SQLAlchemy==1.3.18 
-xlrd==1.2.0
+conda create --prefix ~/opt/anaconda3 
+jupyter==1.0.0 lxml==4.5.1 MarkupSafe==1.1.1 
+matplotlib==3.3.2 notebook==6.1.6 numpy==1.18.1 
+openpyxl==3.0.4 pandas==1.1.2 Pillow==7.2.0 
+scikit-learn==0.23.2 scipy==1.4.1 seaborn==0.11.0 
+SQLAlchemy==1.3.18 xlrd==1.2.0
 ```
 
 ## 1.8. Activate the virtual environment
@@ -2089,19 +2095,42 @@ In the sklearn class SVC we find the regularization parameter C to allow for mis
 - Revise the lecture before the presentation!
 - Read about [copy warning](https://realpython.com/pandas-settingwithcopywarning/)
 - Read Wiki on [Regression Analysis](https://en.wikipedia.org/wiki/Regression_analysis)
+- Make a [data column reference](https://www.notion.so/ac02bfefe61246918aabf0e6094f18c9) in HTML (see [data type](https://en.wikipedia.org/wiki/Data_type), [7 data types](https://towardsdatascience.com/7-data-types-a-better-way-to-think-about-data-types-for-machine-learning-939fae99a689); use Notion or [Tables Generator](https://www.tablesgenerator.com/html_tables))
 
 ## 17.3. In Progress
 
-- Make new workflow
-- Convert [rawTimesamp](https://stackoverflow.com/questions/19231871/convert-unix-time-to-readable-date-in-pandas-dataframe) feature into a datetime object > useful later for feature engineering (see [documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.to_datetime.html))
-- Make an outline of the project
 - Decide what are the relevant categorial columns for the project
-- Make a [data column reference](https://www.notion.so/ac02bfefe61246918aabf0e6094f18c9) in HTML (see [data type](https://en.wikipedia.org/wiki/Data_type), [7 data types](https://towardsdatascience.com/7-data-types-a-better-way-to-think-about-data-types-for-machine-learning-939fae99a689); use Notion or [Tables Generator](https://www.tablesgenerator.com/html_tables))
-- Strip project data
-- Determine an average payload
+- Go through features:
+    - [x]  connected
+    - [x]  id
+    - [x]  measurement
+    - [x]  pci
+    - [x]  ss
+    - [x]  timestamp
+    - [x]  rawTimesamp
+    - [x]  distance
+    - [x]  lat
+    - [x]  lon
+    - [x]  alt
+    - [x]  speed
+    - [x]  acc
+    - [x]  dir
+    - [ ]  rsrp
+    - [ ]  rsrq
+    - [ ]  sinr
+    - [ ]  cqi
+    - [ ]  ta
+    - [ ]  ci
+    - [ ]  payload
+    - [ ]  rtt
+    - [ ]  location
 
 ## 17.4. Resolved (Preparation)
 
+- Strip project data
+- Make an outline of the project
+- Convert [rawTimesamp](https://stackoverflow.com/questions/19231871/convert-unix-time-to-readable-date-in-pandas-dataframe) feature into a datetime object > useful later for feature engineering (see [documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.to_datetime.html))
+- Make new workflow
 - Linear Regression
 - Crapstone Project (Numpy, Pandas, Matplotlib, and Seaborn)
 - Seaborn
