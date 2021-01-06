@@ -27,3 +27,4 @@
 == Notes ==
 
 The channel context is formed by the passive LTE network quality indicators RSRP, Reference Signal Received Quality (RSRQ), Signal-to-interference-plus- noise Ratio (SINR), Channel Quality Indicator (CQI), Timing Advance (TA) and the carrier frequency of the serving evolved Node B (eNB).
+
