@@ -30,7 +30,7 @@
 <p>To view TeX equations found in <em>Introduction to Linear Regression</em> and subsequent Sections, consider the following options:</p>
 <ul>
 <li>Open the <a href="https://htmlpreview.github.io/?https://github.com/luiul/statistics-meets-logistics/blob/main/README.html">.HTML version of the README</a></li>
-<li>Preview directly on Github using a browser <a href="https://github.com/AaronCQL/katex-github-chrome-extension">extension</a> (Chromium based)</li>
+<li>Preview directly on Github using a browser <a href="https://github.com/nschloe/green-pi">extension</a> (Chromium and Firefox)</li>
 <li>Copy the equation block directly from the <a href="https://raw.githubusercontent.com/luiul/statistics-meets-logistics/main/README.html">raw README</a> and use a TeX <a href="https://quicklatex.com/">renderer</a> or <a href="https://github.com/masakiaota/tex_image_link_generator">image generator</a></li>
 </ul>
 <!-- omit in toc -->
@@ -224,15 +224,19 @@
 <li><a href="#171-open-questions">17.1. Open Questions</a></li>
 <li><a href="#172-backlog">17.2. Backlog</a></li>
 <li><a href="#173-in-progress">17.3. In Progress</a></li>
-<li><a href="#174-resolved-preparation">17.4. Resolved (Preparation)</a></li>
-<li><a href="#175-resolved-project">17.5. Resolved (Project)</a></li>
-<li><a href="#176-workflow">17.6. Workflow</a></li>
+<li><a href="#174-resolved">17.4. Resolved</a></li>
+<li><a href="#175-workflow">17.5. Workflow</a></li>
 </ul>
 </li>
 <li><a href="#18-notes-">18. Notes 📝</a>
 <ul>
 <li><a href="#181-on-the-articles">18.1. On the Articles</a></li>
-<li><a href="#182-on-the-project">18.2. On the Project</a></li>
+<li><a href="#182-on-the-project">18.2. On the Project</a>
+<ul>
+<li><a href="#1821-suggestions-for-improvement">18.2.1. Suggestions for Improvement</a></li>
+<li><a href="#1822-scaling-features">18.2.2. Scaling Features</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#19-misc-">19. Misc 💡</a></li>
@@ -1815,17 +1819,14 @@ f(x)=\beta_{0}+\sum_{i \in \mathcal{S}} \alpha_{i}\left\langle x, x_{i}\right\ra
 </ul>
 <h2 id="172-backlog">17.2. Backlog</h2>
 <ul>
-<li>Feature Engineering</li>
 <li>Cross Validation II &amp; Grid Search</li>
 <li>Linear Regression Project (?)</li>
-<li>Machine Learning</li>
 <li>Revise the lecture before the presentation!</li>
-<li>Read about <a href="https://realpython.com/pandas-settingwithcopywarning/">copy warning</a></li>
 <li>Read Wiki on <a href="https://en.wikipedia.org/wiki/Regression_analysis">Regression Analysis</a></li>
-<li>Make a <a href="https://www.notion.so/ac02bfefe61246918aabf0e6094f18c9">data column reference</a> in HTML (see <a href="https://en.wikipedia.org/wiki/Data_type">data type</a>, <a href="https://towardsdatascience.com/7-data-types-a-better-way-to-think-about-data-types-for-machine-learning-939fae99a689">7 data types</a>; use Notion or <a href="https://www.tablesgenerator.com/html_tables">Tables Generator</a>)</li>
 </ul>
 <h2 id="173-in-progress">17.3. In Progress</h2>
 <ul>
+<li>Feature Engineering</li>
 <li>Decide what are the relevant categorial columns for the project</li>
 <li>Go through features:
 <ul class="contains-task-list">
@@ -1843,20 +1844,22 @@ f(x)=\beta_{0}+\sum_{i \in \mathcal{S}} \alpha_{i}\left\langle x, x_{i}\right\ra
 <li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  speed</li>
 <li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  acc</li>
 <li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  dir</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox">  rsrp</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox">  rsrq</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox">  sinr</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox">  cqi</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox">  ta</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox">  ci</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox">  payload</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox">  rtt</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox">  location</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  rsrp</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  rsrq</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  sinr</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  cqi</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  ta</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  ci</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  payload</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  rtt</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  location</li>
 </ul>
 </li>
 </ul>
-<h2 id="174-resolved-preparation">17.4. Resolved (Preparation)</h2>
+<h2 id="174-resolved">17.4. Resolved</h2>
 <ul>
+<li>Make a <a href="https://www.notion.so/ac02bfefe61246918aabf0e6094f18c9">data column reference</a> in HTML (see <a href="https://en.wikipedia.org/wiki/Data_type">data type</a>, <a href="https://towardsdatascience.com/7-data-types-a-better-way-to-think-about-data-types-for-machine-learning-939fae99a689">7 data types</a>; use Notion or <a href="https://www.tablesgenerator.com/html_tables">Tables Generator</a>)</li>
+<li>Read about <a href="https://realpython.com/pandas-settingwithcopywarning/">copy warning</a></li>
 <li>Strip project data</li>
 <li>Make an outline of the project</li>
 <li>Convert <a href="https://stackoverflow.com/questions/19231871/convert-unix-time-to-readable-date-in-pandas-dataframe">rawTimesamp</a> feature into a datetime object &gt; useful later for feature engineering (see <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.to_datetime.html">documentation</a>)</li>
@@ -1871,12 +1874,9 @@ f(x)=\beta_{0}+\sum_{i \in \mathcal{S}} \alpha_{i}\left\langle x, x_{i}\right\ra
 <li>Python Crash Course</li>
 <li>Upload files to Github</li>
 <li>Do crash course on Git</li>
-</ul>
-<h2 id="175-resolved-project">17.5. Resolved (Project)</h2>
-<ul>
 <li>Make sure there is no missing data in the project</li>
 </ul>
-<h2 id="176-workflow">17.6. Workflow</h2>
+<h2 id="175-workflow">17.5. Workflow</h2>
 <ol>
 <li>pull repo &amp; work on project</li>
 <li>export readme</li>
@@ -1895,32 +1895,57 @@ f(x)=\beta_{0}+\sum_{i \in \mathcal{S}} \alpha_{i}\left\langle x, x_{i}\right\ra
 </ol>
 <h1 id="18-notes-">18. Notes 📝</h1>
 <h2 id="181-on-the-articles">18.1. On the Articles</h2>
-<p>Start here!</p>
+<p>We could improve our model by considering trajectory instead of just mapping on the plane.</p>
 <h2 id="182-on-the-project">18.2. On the Project</h2>
-<p>Label:</p>
+<h3 id="1821-suggestions-for-improvement">18.2.1. Suggestions for Improvement</h3>
 <ul>
-<li>Throughput</li>
-</ul>
-<p>Features:</p>
+<li>Automate data engineering section</li>
+<li>use geopandas</li>
+<li>use kaggle to get more resrouces and acceleration</li>
+<li>Investigate more combinations of
 <ul>
-<li>time of day</li>
-<li>time of year</li>
-<li>speed / acceleration</li>
-<li>location</li>
-<li>power / rtt</li>
-<li>payload</li>
-</ul>
-<p>Overview:</p>
-<ul>
-<li>Create DataFrames</li>
-<li>Apply Pandas knowledge to DataFrame
-<ul>
-<li>Conditional filtering</li>
-<li>Useful Methods</li>
-<li>Check for missing data</li>
+<li>scalers</li>
 </ul>
 </li>
 </ul>
+<h3 id="1822-scaling-features">18.2.2. Scaling Features</h3>
+<p><a href="https://towardsdatascience.com/scale-standardize-or-normalize-with-scikit-learn-6ccc7d176a02">Scale, Standardize, or Normalize with Scikit-Learn</a></p>
+<p>Scalers in sklearn:</p>
+<ul>
+<li>MinMaxScaler</li>
+<li>RobustScaler</li>
+<li>StandardScaler</li>
+<li>Normalizer</li>
+</ul>
+<p>Many machine learning algorithms work better when features are on a relatively similar scale and close to normally distributed.</p>
+<p>Terminology:</p>
+<ul>
+<li><strong>Scale</strong> generally means to change the range of the values. The shape of the distribution doesn’t change. The range is often set at 0 to 1.</li>
+<li><strong>Standardize</strong> generally means changing the values so that the distribution standard deviation from the mean equals one. It outputs something very close to a normal distribution.</li>
+</ul>
+<p>Motivation:</p>
+<p>Many machine learning algorithms perform better or converge faster when features are on a relatively similar scale and/or close to normally distributed.</p>
+<p>MinMaxScaler:</p>
+<p>For each value in a feature, MinMaxScaler subtracts the minimum value in the feature and then divides by the range. The range is the difference between the original maximum and original minimum.</p>
+<p>The features are all on the same relative scale. The relative spaces between each feature’s values have been maintained. MinMaxScaler is a good place to start unless you know you want your feature to have a normal distribution or want outliers to have reduced influence</p>
+<p>RobustScaler:</p>
+<p>RobustScaler transforms the feature vector by subtracting the median and then dividing by the interquartile range. Like MinMaxScaler, our feature with large values is now of similar scale to the other features. Note that RobustScaler does not scale the data into a predetermined interval like MinMaxScaler. It does not meet the strict definition of scale I introduced earlier. Use RobustScaler if you want to reduce the effects of outliers, relative to MinMaxScaler (a more conservative denominator).</p>
+<p>StandardScaler:</p>
+<p>StandardScaler standardizes a feature by subtracting the mean and then scaling to unit variance. Unit variance means dividing all the values by the standard deviation. StandardScaler does not meet the strict definition of scale I introduced earlier (the shape of the distribution changes). StandardScaler makes the mean of the distribution 0. About 68% of the values will lie be between -1 and 1.</p>
+<p>Deep learning algorithms often call for zero mean and unit variance. Regression-type algorithms also benefit from normally distributed data with small sample sizes. StandardScaler does distort the relative distances between the feature values, so it’s generally my second choice in this family of transformations.</p>
+<p>Summary:</p>
+<ul>
+<li>Use MinMaxScaler as your default</li>
+<li>Use RobustScaler if you have outliers and can handle a larger range</li>
+<li>Use StandardScaler if you need normalized features</li>
+<li>Use Normalizer sparingly - it normalizes rows, not columns</li>
+</ul>
+<p><a href="https://docs.google.com/spreadsheets/d/1woVi7wq13628HJ-tN6ApaRGVZ85OdmHsDBKLAf5ylaQ/edit#gid=0"></a></p>
+<p><a href="https://plotly.com/python/line-and-scatter/">Scatter Plots</a></p>
+<p><a href="https://www.researchgate.net/post/How_to_generate_trajectory_dataset"></a></p>
+<p><a href="https://www.google.com/maps/d/edit?hl=en&amp;mid=16uGNwcuE2fgafLTK6ZG4MUEpYxuT1L7w&amp;ll=51.47743099355503%2C7.44238676500002&amp;z=13">statistics-meets-logistics - Google My Maps</a></p>
+<p><a href="https://gis.stackexchange.com/questions/152571/export-google-maps-route-to-kml-gpx">Export Google Maps Route to KML/GPX</a></p>
+<p><a href="https://www.gpsvisualizer.com/convert_input">GPS Visualizer: Convert GPS files to plain text or GPX</a></p>
 <h1 id="19-misc-">19. Misc 💡</h1>
 <p>$PATH is stored in /etc/paths; open with sudo nano to modify</p>
 <p>Can we model the process in the project as a Poisson process?</p>
@@ -1954,6 +1979,8 @@ f(x)=\beta_{0}+\sum_{i \in \mathcal{S}} \alpha_{i}\left\langle x, x_{i}\right\ra
 <p><a href="https://stackoverflow.com/questions/34398054/ipython-notebook-cell-multiple-outputs">IPython Notebook cell multiple outputs</a></p>
 <p><a href="https://stackoverflow.com/questions/31290976/sklearn-how-to-get-coefficients-of-polynomial-features">sklearn: how to get coefficients of polynomial features</a></p>
 <p><a href="https://www.tablesgenerator.com/html_tables">HTML Tables generator - TablesGenerator.com</a></p>
+<p><a href="https://stackoverflow.com/questions/743164/how-to-emulate-a-do-while-loop-in-python">How to emulate a do-while loop in Python?</a></p>
+<p><a href="https://stackoverflow.com/questions/6181935/how-do-you-create-different-variable-names-while-in-a-loop">How do you create different variable names while in a loop?</a></p>
 
     </body>
     </html>

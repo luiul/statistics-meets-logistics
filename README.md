@@ -6,7 +6,7 @@ The [course](https://www.statistik.tu-dortmund.de/2791.html) and the [material](
 To view TeX equations found in *Introduction to Linear Regression* and subsequent Sections, consider the following options: 
 
 - Open the [.HTML version of the README](https://htmlpreview.github.io/?https://github.com/luiul/statistics-meets-logistics/blob/main/README.html)
-- Preview directly on Github using a browser [extension](https://github.com/AaronCQL/katex-github-chrome-extension) (Chromium based)
+- Preview directly on Github using a browser [extension](https://github.com/nschloe/green-pi) (Chromium and Firefox)
 - Copy the equation block directly from the [raw README](https://raw.githubusercontent.com/luiul/statistics-meets-logistics/main/README.md) and use a TeX [renderer](https://quicklatex.com/) or [image generator](https://github.com/masakiaota/tex_image_link_generator)
 
 <!-- omit in toc -->
@@ -18,7 +18,6 @@ In the course, students will learn about the application of statistical methods 
 # Table of Contents 📑
 
 <!-- toc here -->
-
 - [1. Background 🌅](#1-background-)
   - [1.1. Getting Started with Anaconda](#11-getting-started-with-anaconda)
   - [1.2. Jupyter Notebook](#12-jupyter-notebook)
@@ -130,12 +129,13 @@ In the course, students will learn about the application of statistical methods 
   - [17.1. Open Questions](#171-open-questions)
   - [17.2. Backlog](#172-backlog)
   - [17.3. In Progress](#173-in-progress)
-  - [17.4. Resolved (Preparation)](#174-resolved-preparation)
-  - [17.5. Resolved (Project)](#175-resolved-project)
-  - [17.6. Workflow](#176-workflow)
+  - [17.4. Resolved](#174-resolved)
+  - [17.5. Workflow](#175-workflow)
 - [18. Notes 📝](#18-notes-)
   - [18.1. On the Articles](#181-on-the-articles)
   - [18.2. On the Project](#182-on-the-project)
+    - [18.2.1. Suggestions for Improvement](#1821-suggestions-for-improvement)
+    - [18.2.2. Scaling Features](#1822-scaling-features)
 - [19. Misc 💡](#19-misc-)
 
 # 1. Background 🌅
@@ -2088,17 +2088,14 @@ In the sklearn class SVC we find the regularization parameter C to allow for mis
 
 ## 17.2. Backlog
 
-- Feature Engineering
 - Cross Validation II & Grid Search
 - Linear Regression Project (?)
-- Machine Learning
 - Revise the lecture before the presentation!
-- Read about [copy warning](https://realpython.com/pandas-settingwithcopywarning/)
 - Read Wiki on [Regression Analysis](https://en.wikipedia.org/wiki/Regression_analysis)
-- Make a [data column reference](https://www.notion.so/ac02bfefe61246918aabf0e6094f18c9) in HTML (see [data type](https://en.wikipedia.org/wiki/Data_type), [7 data types](https://towardsdatascience.com/7-data-types-a-better-way-to-think-about-data-types-for-machine-learning-939fae99a689); use Notion or [Tables Generator](https://www.tablesgenerator.com/html_tables))
 
 ## 17.3. In Progress
 
+- Feature Engineering
 - Decide what are the relevant categorial columns for the project
 - Go through features:
     - [x]  connected
@@ -2115,18 +2112,20 @@ In the sklearn class SVC we find the regularization parameter C to allow for mis
     - [x]  speed
     - [x]  acc
     - [x]  dir
-    - [ ]  rsrp
-    - [ ]  rsrq
-    - [ ]  sinr
-    - [ ]  cqi
-    - [ ]  ta
-    - [ ]  ci
-    - [ ]  payload
-    - [ ]  rtt
-    - [ ]  location
+    - [x]  rsrp
+    - [x]  rsrq
+    - [x]  sinr
+    - [x]  cqi
+    - [x]  ta
+    - [x]  ci
+    - [x]  payload
+    - [x]  rtt
+    - [x]  location
 
-## 17.4. Resolved (Preparation)
+## 17.4. Resolved
 
+- Make a [data column reference](https://www.notion.so/ac02bfefe61246918aabf0e6094f18c9) in HTML (see [data type](https://en.wikipedia.org/wiki/Data_type), [7 data types](https://towardsdatascience.com/7-data-types-a-better-way-to-think-about-data-types-for-machine-learning-939fae99a689); use Notion or [Tables Generator](https://www.tablesgenerator.com/html_tables))
+- Read about [copy warning](https://realpython.com/pandas-settingwithcopywarning/)
 - Strip project data
 - Make an outline of the project
 - Convert [rawTimesamp](https://stackoverflow.com/questions/19231871/convert-unix-time-to-readable-date-in-pandas-dataframe) feature into a datetime object > useful later for feature engineering (see [documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.to_datetime.html))
@@ -2141,12 +2140,9 @@ In the sklearn class SVC we find the regularization parameter C to allow for mis
 - Python Crash Course
 - Upload files to Github
 - Do crash course on Git
-
-## 17.5. Resolved (Project)
-
 - Make sure there is no missing data in the project
 
-## 17.6. Workflow
+## 17.5. Workflow
 
 1. pull repo & work on project
 2. export readme
@@ -2164,30 +2160,76 @@ In the sklearn class SVC we find the regularization parameter C to allow for mis
 
 ## 18.1. On the Articles
 
-Start here!
+We could improve our model by considering trajectory instead of just mapping on the plane. 
 
 ## 18.2. On the Project
 
-Label: 
+### 18.2.1. Suggestions for Improvement
 
-- Throughput
+- Automate data engineering section
+- use geopandas
+- use kaggle to get more resrouces and acceleration
+- Investigate more combinations of
+    - scalers
 
-Features: 
+### 18.2.2. Scaling Features
 
-- time of day
-- time of year
-- speed / acceleration
-- location
-- power / rtt
-- payload
+[Scale, Standardize, or Normalize with Scikit-Learn](https://towardsdatascience.com/scale-standardize-or-normalize-with-scikit-learn-6ccc7d176a02)
 
-Overview: 
+Scalers in sklearn: 
 
-- Create DataFrames
-- Apply Pandas knowledge to DataFrame
-    - Conditional filtering
-    - Useful Methods
-    - Check for missing data
+- MinMaxScaler
+- RobustScaler
+- StandardScaler
+- Normalizer
+
+Many machine learning algorithms work better when features are on a relatively similar scale and close to normally distributed.
+
+Terminology: 
+
+- **Scale** generally means to change the range of the values. The shape of the distribution doesn’t change. The range is often set at 0 to 1.
+- **Standardize** generally means changing the values so that the distribution standard deviation from the mean equals one. It outputs something very close to a normal distribution.
+
+Motivation: 
+
+Many machine learning algorithms perform better or converge faster when features are on a relatively similar scale and/or close to normally distributed.
+
+MinMaxScaler: 
+
+For each value in a feature, MinMaxScaler subtracts the minimum value in the feature and then divides by the range. The range is the difference between the original maximum and original minimum.
+
+The features are all on the same relative scale. The relative spaces between each feature’s values have been maintained. MinMaxScaler is a good place to start unless you know you want your feature to have a normal distribution or want outliers to have reduced influence
+
+RobustScaler: 
+
+RobustScaler transforms the feature vector by subtracting the median and then dividing by the interquartile range. Like MinMaxScaler, our feature with large values is now of similar scale to the other features. Note that RobustScaler does not scale the data into a predetermined interval like MinMaxScaler. It does not meet the strict definition of scale I introduced earlier. Use RobustScaler if you want to reduce the effects of outliers, relative to MinMaxScaler (a more conservative denominator).
+
+StandardScaler: 
+
+StandardScaler standardizes a feature by subtracting the mean and then scaling to unit variance. Unit variance means dividing all the values by the standard deviation. StandardScaler does not meet the strict definition of scale I introduced earlier (the shape of the distribution changes). StandardScaler makes the mean of the distribution 0. About 68% of the values will lie be between -1 and 1.
+
+Deep learning algorithms often call for zero mean and unit variance. Regression-type algorithms also benefit from normally distributed data with small sample sizes. StandardScaler does distort the relative distances between the feature values, so it’s generally my second choice in this family of transformations.
+
+Summary: 
+
+- Use MinMaxScaler as your default
+- Use RobustScaler if you have outliers and can handle a larger range
+- Use StandardScaler if you need normalized features
+- Use Normalizer sparingly - it normalizes rows, not columns
+
+[](https://docs.google.com/spreadsheets/d/1woVi7wq13628HJ-tN6ApaRGVZ85OdmHsDBKLAf5ylaQ/edit#gid=0)
+
+ 
+
+[Scatter Plots](https://plotly.com/python/line-and-scatter/)
+
+[](https://www.researchgate.net/post/How_to_generate_trajectory_dataset)
+
+[statistics-meets-logistics - Google My Maps](https://www.google.com/maps/d/edit?hl=en&mid=16uGNwcuE2fgafLTK6ZG4MUEpYxuT1L7w&ll=51.47743099355503%2C7.44238676500002&z=13)
+
+[Export Google Maps Route to KML/GPX](https://gis.stackexchange.com/questions/152571/export-google-maps-route-to-kml-gpx)
+
+[GPS Visualizer: Convert GPS files to plain text or GPX](https://www.gpsvisualizer.com/convert_input)
 
 # 19. Misc 💡
 
@@ -2254,3 +2296,7 @@ Can we model the process in the project as a Poisson process?
 [sklearn: how to get coefficients of polynomial features](https://stackoverflow.com/questions/31290976/sklearn-how-to-get-coefficients-of-polynomial-features)
 
 [HTML Tables generator - TablesGenerator.com](https://www.tablesgenerator.com/html_tables)
+
+[How to emulate a do-while loop in Python?](https://stackoverflow.com/questions/743164/how-to-emulate-a-do-while-loop-in-python)
+
+[How do you create different variable names while in a loop?](https://stackoverflow.com/questions/6181935/how-do-you-create-different-variable-names-while-in-a-loop)
