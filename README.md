@@ -1218,9 +1218,9 @@ We consider the 1st degree polynomial for our estimator (see preamble if TeX equ
 
 $$\hat{y}=b_{0}+b_{1} x$$
 
-$$b_{1}=\rho_{x, y} \frac{\sigma_{y}}{\sigma_{x}}~ \quad\left[\begin{array}{l}\rho_{x, y}=\text {Pearson Correlation Coefficient} \\\sigma_{x}, \sigma_{y}=\text {Standard Deviations}\end{array} \right]$$
-
 $$b_{0}=\bar{y}-b_{1} \bar{x}$$
+
+$$b_{1}=\rho_{x, y} \frac{\sigma_{y}}{\sigma_{x}}~ \quad\left[\begin{array}{l}\rho_{x, y}=\text {Pearson Correlation Coefficient} \\\sigma_{x}, \sigma_{y}=\text {Standard Deviations}\end{array} \right]$$
 
 Limitation of Linear Regression: Anscombe's Quartet illustrates the pitfalls of relying on pure calculation. Each graph results in the same calculated regression line > plot the distribution of residuals to see if linear regression makes sense or not. 
 
@@ -2171,6 +2171,7 @@ We could improve our model by considering trajectory instead of just mapping on 
 - use kaggle to get more resrouces and acceleration
 - Investigate more combinations of
     - scalers
+- dropping less points!
 
 ### 18.2.2. Scaling Features
 
@@ -2300,3 +2301,5 @@ Can we model the process in the project as a Poisson process?
 [How to emulate a do-while loop in Python?](https://stackoverflow.com/questions/743164/how-to-emulate-a-do-while-loop-in-python)
 
 [How do you create different variable names while in a loop?](https://stackoverflow.com/questions/6181935/how-do-you-create-different-variable-names-while-in-a-loop)
+
+[List of probability distributions](https://en.wikipedia.org/wiki/List_of_probability_distributions)

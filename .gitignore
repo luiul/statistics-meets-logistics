@@ -24,4 +24,5 @@ ipython_config.py
 
 ISLR Seventh Printing.pdf
 .jupyter_symlinks
+.jupyter_symlinks/*
 */.jupyter_symlinks/*
