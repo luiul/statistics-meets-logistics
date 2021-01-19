@@ -1,0 +1,6 @@
+,SVR HP
+C,0.5
+degree,2
+epsilon,1
+gamma,scale
+kernel,linear
