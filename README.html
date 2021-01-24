@@ -37,6 +37,18 @@
 <h1 id="description-">Description 📖</h1>
 <p>In the course, students will learn about the application of statistical methods and basic machine learning procedures for the analysis of complex data in the field of logistics. This includes methods of descriptive statistics as well as various regression and classification procedures including neural networks. After the introduction of the methods, the students apply the acquired knowledge independently to work on logistical problems in various practical exercises. The software Python and relevant packages are used.</p>
 <!-- omit in toc -->
+<h1 id="project-results-">Project Results 💡</h1>
+<p>We recommend an Elastic Net model with Robust Scaler and outlier removal for Download Data; model has little complexity and marginal performance loss versus a Random Forrest model (0.2% - 2%). Performance is based on RMSE.</p>
+<p>We recommend a Random Forest Regressor for Upload Data (outlier removal increases performance marginally (0.3% - 0.8%)); model has a 40% performance difference versus second-best  model. Performance is based on RMSE.</p>
+<!-- omit in toc -->
+<h2 id="download-data-rate">Download Data Rate</h2>
+<img src="file:////Users/aceituno/Documents/data-science/labor/readme-figures/dl-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
+<img src="file:////Users/aceituno/Documents/data-science/labor/readme-figures/dl-holdout-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
+<!-- omit in toc -->
+<h2 id="upload-data-rate">Upload Data Rate</h2>
+<img src="file:////Users/aceituno/Documents/data-science/labor/readme-figures/ul-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
+<img src="file:////Users/aceituno/Documents/data-science/labor/readme-figures/ul-holdout-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
+<!-- omit in toc -->
 <h1 id="table-of-contents-">Table of Contents 📑</h1>
 <!-- toc here -->
 <ul>
@@ -239,7 +251,7 @@
 </li>
 </ul>
 </li>
-<li><a href="#19-misc-">19. Misc 💡</a></li>
+<li><a href="#19-misc-">19. Misc 🌪</a></li>
 </ul>
 <h1 id="1-background-">1. Background 🌅</h1>
 <p>In this section we setup the relevant systems for the project and provide additional material not directly tied to the project.</p>
@@ -268,6 +280,8 @@
 <p><a href="https://docs.anaconda.com/">Anaconda Documentation - Anaconda documentation</a></p>
 <p><a href="https://www.anaconda.com/events?utm_medium=webinar&amp;utm_source=anaconda&amp;utm_campaign=intro-to-individual">Anaconda | Events</a></p>
 <p><a href="https://jakevdp.github.io/blog/2017/12/05/installing-python-packages-from-jupyter/">Installing Python Packages from a Jupyter Notebook</a></p>
+<p><a href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-pkgs.html">Managing packages - conda 4.9.2.post24+e37cf84a documentation</a></p>
+<p><a href="https://docs.conda.io/projects/conda/en/latest/commands/install.html">conda install - conda 4.9.2.post24+e37cf84a documentation</a></p>
 <h2 id="12-jupyter-notebook">1.2. Jupyter Notebook</h2>
 <p>See <a href="https://stackoverflow.com/questions/46510192/change-the-theme-in-jupyter-notebook">themes</a>. See <a href="https://github.com/ipython-contrib/jupyter_contrib_nbextensions">extensions</a>, e.g. <a href="https://stackoverflow.com/questions/37718907/variable-explorer-in-jupyter-notebook">variable explorer</a>. Version control with Git:</p>
 <p><a href="https://www.youtube.com/watch?v=J45NJ0pJXWQ">Reproducible Data Analysis in Jupyter, Part 3/10: Version Control with Git &amp; GitHub</a></p>
@@ -297,20 +311,19 @@
 <li>Run the following command in the command prompt interface (Anaconda prompt or directly in the terminal):</li>
 </ol>
 <pre><code class="language-python"><div>conda create --name &lt;envName&gt; 
-jupyter==<span class="hljs-number">1.0</span><span class="hljs-number">.0</span> lxml==<span class="hljs-number">4.5</span><span class="hljs-number">.1</span> MarkupSafe==<span class="hljs-number">1.1</span><span class="hljs-number">.1</span> 
-matplotlib==<span class="hljs-number">3.3</span><span class="hljs-number">.2</span> notebook==<span class="hljs-number">6.1</span><span class="hljs-number">.6</span> numpy==<span class="hljs-number">1.18</span><span class="hljs-number">.1</span> 
-openpyxl==<span class="hljs-number">3.0</span><span class="hljs-number">.4</span> pandas==<span class="hljs-number">1.1</span><span class="hljs-number">.2</span> Pillow==<span class="hljs-number">7.2</span><span class="hljs-number">.0</span> 
-scikit-learn==<span class="hljs-number">0.23</span><span class="hljs-number">.2</span> scipy==<span class="hljs-number">1.4</span><span class="hljs-number">.1</span> seaborn==<span class="hljs-number">0.11</span><span class="hljs-number">.0</span> 
+jupyter==<span class="hljs-number">1.0</span><span class="hljs-number">.0</span> lxml==<span class="hljs-number">4.5</span><span class="hljs-number">.1</span> MarkupSafe==<span class="hljs-number">1.1</span><span class="hljs-number">.1</span> matplotlib==<span class="hljs-number">3.3</span><span class="hljs-number">.2</span> 
+notebook==<span class="hljs-number">6.1</span><span class="hljs-number">.6</span> numpy==<span class="hljs-number">1.18</span><span class="hljs-number">.1</span> openpyxl==<span class="hljs-number">3.0</span><span class="hljs-number">.4</span> pandas==<span class="hljs-number">1.1</span><span class="hljs-number">.2</span> 
+Pillow==<span class="hljs-number">7.2</span><span class="hljs-number">.0</span> scikit-learn==<span class="hljs-number">0.23</span><span class="hljs-number">.2</span> scipy==<span class="hljs-number">1.4</span><span class="hljs-number">.1</span> seaborn==<span class="hljs-number">0.11</span><span class="hljs-number">.0</span> 
 SQLAlchemy==<span class="hljs-number">1.3</span><span class="hljs-number">.18</span> xlrd==<span class="hljs-number">1.2</span><span class="hljs-number">.0</span>
 </div></code></pre>
 <p>or</p>
 <pre><code class="language-python"><div>conda create --prefix ~/opt/anaconda3 
-jupyter==<span class="hljs-number">1.0</span><span class="hljs-number">.0</span> lxml==<span class="hljs-number">4.5</span><span class="hljs-number">.1</span> MarkupSafe==<span class="hljs-number">1.1</span><span class="hljs-number">.1</span> 
-matplotlib==<span class="hljs-number">3.3</span><span class="hljs-number">.2</span> notebook==<span class="hljs-number">6.1</span><span class="hljs-number">.6</span> numpy==<span class="hljs-number">1.18</span><span class="hljs-number">.1</span> 
-openpyxl==<span class="hljs-number">3.0</span><span class="hljs-number">.4</span> pandas==<span class="hljs-number">1.1</span><span class="hljs-number">.2</span> Pillow==<span class="hljs-number">7.2</span><span class="hljs-number">.0</span> 
-scikit-learn==<span class="hljs-number">0.23</span><span class="hljs-number">.2</span> scipy==<span class="hljs-number">1.4</span><span class="hljs-number">.1</span> seaborn==<span class="hljs-number">0.11</span><span class="hljs-number">.0</span> 
+jupyter==<span class="hljs-number">1.0</span><span class="hljs-number">.0</span> lxml==<span class="hljs-number">4.5</span><span class="hljs-number">.1</span> MarkupSafe==<span class="hljs-number">1.1</span><span class="hljs-number">.1</span> matplotlib==<span class="hljs-number">3.3</span><span class="hljs-number">.2</span> 
+notebook==<span class="hljs-number">6.1</span><span class="hljs-number">.6</span> numpy==<span class="hljs-number">1.18</span><span class="hljs-number">.1</span> openpyxl==<span class="hljs-number">3.0</span><span class="hljs-number">.4</span> pandas==<span class="hljs-number">1.1</span><span class="hljs-number">.2</span> 
+Pillow==<span class="hljs-number">7.2</span><span class="hljs-number">.0</span> scikit-learn==<span class="hljs-number">0.23</span><span class="hljs-number">.2</span> scipy==<span class="hljs-number">1.4</span><span class="hljs-number">.1</span> seaborn==<span class="hljs-number">0.11</span><span class="hljs-number">.0</span> 
 SQLAlchemy==<span class="hljs-number">1.3</span><span class="hljs-number">.18</span> xlrd==<span class="hljs-number">1.2</span><span class="hljs-number">.0</span>
 </div></code></pre>
+<p><a href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#updating-an-environment">Managing environments - conda 4.9.2.post24+e37cf84a documentation</a></p>
 <h2 id="18-activate-the-virtual-environment">1.8. Activate the virtual environment</h2>
 <p>There are two options:</p>
 <ol>
@@ -1930,7 +1943,7 @@ f(x)=\beta_{0}+\sum_{i \in \mathcal{S}} \alpha_{i}\left\langle x, x_{i}\right\ra
 <p>For each value in a feature, MinMaxScaler subtracts the minimum value in the feature and then divides by the range. The range is the difference between the original maximum and original minimum.</p>
 <p>The features are all on the same relative scale. The relative spaces between each feature’s values have been maintained. MinMaxScaler is a good place to start unless you know you want your feature to have a normal distribution or want outliers to have reduced influence</p>
 <p>RobustScaler:</p>
-<p>RobustScaler transforms the feature vector by subtracting the median and then dividing by the interquartile range. Like MinMaxScaler, our feature with large values is now of similar scale to the other features. Note that RobustScaler does not scale the data into a predetermined interval like MinMaxScaler. It does not meet the strict definition of scale I introduced earlier. Use RobustScaler if you want to reduce the effects of outliers, relative to MinMaxScaler (a more conservative denominator).</p>
+<p>RobustScaler transforms the feature vector by subtracting the median and then dividing by the interquartile range. Like MinMaxScaler, our feature with large values is now of similar scale to the other features. Note that RobustScaler does not scale the data into a predetermined interval like MinMaxScaler. It does not meet the strict definition of scale I introduced earlier. Use RobustScaler if you want to reduce the effects of outliers, rhoelative to MinMaxScaler (a more conservative denominator).</p>
 <p>StandardScaler:</p>
 <p>StandardScaler standardizes a feature by subtracting the mean and then scaling to unit variance. Unit variance means dividing all the values by the standard deviation. StandardScaler does not meet the strict definition of scale I introduced earlier (the shape of the distribution changes). StandardScaler makes the mean of the distribution 0. About 68% of the values will lie be between -1 and 1.</p>
 <p>Deep learning algorithms often call for zero mean and unit variance. Regression-type algorithms also benefit from normally distributed data with small sample sizes. StandardScaler does distort the relative distances between the feature values, so it’s generally my second choice in this family of transformations.</p>
@@ -1947,7 +1960,7 @@ f(x)=\beta_{0}+\sum_{i \in \mathcal{S}} \alpha_{i}\left\langle x, x_{i}\right\ra
 <p><a href="https://www.google.com/maps/d/edit?hl=en&amp;mid=16uGNwcuE2fgafLTK6ZG4MUEpYxuT1L7w&amp;ll=51.47743099355503%2C7.44238676500002&amp;z=13">statistics-meets-logistics - Google My Maps</a></p>
 <p><a href="https://gis.stackexchange.com/questions/152571/export-google-maps-route-to-kml-gpx">Export Google Maps Route to KML/GPX</a></p>
 <p><a href="https://www.gpsvisualizer.com/convert_input">GPS Visualizer: Convert GPS files to plain text or GPX</a></p>
-<h1 id="19-misc-">19. Misc 💡</h1>
+<h1 id="19-misc-">19. Misc 🌪</h1>
 <p>$PATH is stored in /etc/paths; open with sudo nano to modify</p>
 <p>Can we model the process in the project as a Poisson process?</p>
 <p><code>pd.options.display.float_format = &quot;{:,.2f}&quot;.format</code> &gt; <code>pd.set_option('float_format', '{:f}'.format)</code></p>
@@ -1983,6 +1996,17 @@ f(x)=\beta_{0}+\sum_{i \in \mathcal{S}} \alpha_{i}\left\langle x, x_{i}\right\ra
 <p><a href="https://stackoverflow.com/questions/743164/how-to-emulate-a-do-while-loop-in-python">How to emulate a do-while loop in Python?</a></p>
 <p><a href="https://stackoverflow.com/questions/6181935/how-do-you-create-different-variable-names-while-in-a-loop">How do you create different variable names while in a loop?</a></p>
 <p><a href="https://en.wikipedia.org/wiki/List_of_probability_distributions">List of probability distributions</a></p>
+<p><a href="https://www.kdnuggets.com/2017/08/dataiku-predictive-model-holdout-cross-validation.html">Making Predictive Models Robust: Holdout vs Cross-Validation - KDnuggets</a></p>
+<p><a href="https://scikit-learn.org/stable/modules/cross_validation.html">3.1. Cross-validation: evaluating estimator performance - scikit-learn 0.24.1 documentation</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Cross-validation_(statistics)">Cross-validation (statistics)</a></p>
+<p><a href="https://algotrading101.com/learn/train-test-split/">Train/Test Split and Cross Validation - A Python Tutorial - AlgoTrading101 Blog</a></p>
+<p><a href="https://www.datarobot.com/wiki/training-validation-holdout/">Training, Validation, and Holdout | DataRobot Artificial Intelligence Wiki</a></p>
+<p><a href="https://towardsdatascience.com/6-important-steps-to-build-a-machine-learning-system-d75e3b83686">6 Important Steps to build a Machine Learning System</a></p>
+<p><a href="https://www.kdnuggets.com/2019/10/5-classification-evaluation-metrics-every-data-scientist-must-know.html">The 5 Classification Evaluation Metrics Every Data Scientist Must Know - KDnuggets</a></p>
+<p><a href="https://github.com/ipython/ipython/issues/12740">Last jedi release (0.18.0) is incompatible with ipython (7.19 and 7.18 tested); reason - column arg was deprecated, and now removed · Issue #12740 · ipython/ipython</a></p>
+<p><a href="https://github.com/kiteco/jupyterlab-kite">kiteco/jupyterlab-kite</a></p>
+<p><a href="https://github.com/ipython-contrib/jupyter_contrib_nbextensions/issues/1115">ImportError: No module named 'jupyter_nbextensions_configurator' · Issue #1115 · ipython-contrib/jupyter_contrib_nbextensions</a></p>
+<p><a href="https://github.com/Jupyter-contrib/jupyter_nbextensions_configurator/issues/90">jupyter_nbextensions_configurator server extension not visible · Issue #90 · Jupyter-contrib/jupyter_nbextensions_configurator</a></p>
 
     </body>
     </html>

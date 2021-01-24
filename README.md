@@ -15,6 +15,27 @@ To view TeX equations found in *Introduction to Linear Regression* and subsequen
 In the course, students will learn about the application of statistical methods and basic machine learning procedures for the analysis of complex data in the field of logistics. This includes methods of descriptive statistics as well as various regression and classification procedures including neural networks. After the introduction of the methods, the students apply the acquired knowledge independently to work on logistical problems in various practical exercises. The software Python and relevant packages are used.
 
 <!-- omit in toc -->
+# Project Results 💡
+
+We recommend an Elastic Net model with Robust Scaler and outlier removal for Download Data; model has little complexity and marginal performance loss versus a Random Forrest model (0.2% - 2%). Performance is based on RMSE. 
+
+We recommend a Random Forest Regressor for Upload Data (outlier removal increases performance marginally (0.3% - 0.8%)); model has a 40% performance difference versus second-best  model. Performance is based on RMSE. 
+
+<!-- omit in toc -->
+## Download Data Rate
+
+<img src="readme-figures/dl-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
+
+<img src="readme-figures/dl-holdout-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
+
+<!-- omit in toc -->
+## Upload Data Rate
+
+<img src="readme-figures/ul-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
+
+<img src="readme-figures/ul-holdout-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
+
+<!-- omit in toc -->
 # Table of Contents 📑
 
 <!-- toc here -->
@@ -136,7 +157,7 @@ In the course, students will learn about the application of statistical methods 
   - [18.2. On the Project](#182-on-the-project)
     - [18.2.1. Suggestions for Improvement](#1821-suggestions-for-improvement)
     - [18.2.2. Scaling Features](#1822-scaling-features)
-- [19. Misc 💡](#19-misc-)
+- [19. Misc 🌪](#19-misc-)
 
 # 1. Background 🌅
 
@@ -165,6 +186,10 @@ Community, documenation and events:
 [Anaconda | Events](https://www.anaconda.com/events?utm_medium=webinar&utm_source=anaconda&utm_campaign=intro-to-individual)
 
 [Installing Python Packages from a Jupyter Notebook](https://jakevdp.github.io/blog/2017/12/05/installing-python-packages-from-jupyter/)
+
+[Managing packages - conda 4.9.2.post24+e37cf84a documentation](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-pkgs.html)
+
+[conda install - conda 4.9.2.post24+e37cf84a documentation](https://docs.conda.io/projects/conda/en/latest/commands/install.html)
 
 ## 1.2. Jupyter Notebook
 
@@ -219,10 +244,9 @@ There are two options:
 
 ```python
 conda create --name <envName> 
-jupyter==1.0.0 lxml==4.5.1 MarkupSafe==1.1.1 
-matplotlib==3.3.2 notebook==6.1.6 numpy==1.18.1 
-openpyxl==3.0.4 pandas==1.1.2 Pillow==7.2.0 
-scikit-learn==0.23.2 scipy==1.4.1 seaborn==0.11.0 
+jupyter==1.0.0 lxml==4.5.1 MarkupSafe==1.1.1 matplotlib==3.3.2 
+notebook==6.1.6 numpy==1.18.1 openpyxl==3.0.4 pandas==1.1.2 
+Pillow==7.2.0 scikit-learn==0.23.2 scipy==1.4.1 seaborn==0.11.0 
 SQLAlchemy==1.3.18 xlrd==1.2.0
 ```
 
@@ -230,12 +254,13 @@ or
 
 ```python
 conda create --prefix ~/opt/anaconda3 
-jupyter==1.0.0 lxml==4.5.1 MarkupSafe==1.1.1 
-matplotlib==3.3.2 notebook==6.1.6 numpy==1.18.1 
-openpyxl==3.0.4 pandas==1.1.2 Pillow==7.2.0 
-scikit-learn==0.23.2 scipy==1.4.1 seaborn==0.11.0 
+jupyter==1.0.0 lxml==4.5.1 MarkupSafe==1.1.1 matplotlib==3.3.2 
+notebook==6.1.6 numpy==1.18.1 openpyxl==3.0.4 pandas==1.1.2 
+Pillow==7.2.0 scikit-learn==0.23.2 scipy==1.4.1 seaborn==0.11.0 
 SQLAlchemy==1.3.18 xlrd==1.2.0
 ```
+
+[Managing environments - conda 4.9.2.post24+e37cf84a documentation](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#updating-an-environment)
 
 ## 1.8. Activate the virtual environment
 
@@ -2203,7 +2228,7 @@ The features are all on the same relative scale. The relative spaces between eac
 
 RobustScaler: 
 
-RobustScaler transforms the feature vector by subtracting the median and then dividing by the interquartile range. Like MinMaxScaler, our feature with large values is now of similar scale to the other features. Note that RobustScaler does not scale the data into a predetermined interval like MinMaxScaler. It does not meet the strict definition of scale I introduced earlier. Use RobustScaler if you want to reduce the effects of outliers, relative to MinMaxScaler (a more conservative denominator).
+RobustScaler transforms the feature vector by subtracting the median and then dividing by the interquartile range. Like MinMaxScaler, our feature with large values is now of similar scale to the other features. Note that RobustScaler does not scale the data into a predetermined interval like MinMaxScaler. It does not meet the strict definition of scale I introduced earlier. Use RobustScaler if you want to reduce the effects of outliers, rhoelative to MinMaxScaler (a more conservative denominator).
 
 StandardScaler: 
 
@@ -2232,7 +2257,7 @@ Summary:
 
 [GPS Visualizer: Convert GPS files to plain text or GPX](https://www.gpsvisualizer.com/convert_input)
 
-# 19. Misc 💡
+# 19. Misc 🌪
 
 $PATH is stored in /etc/paths; open with sudo nano to modify 
 
@@ -2303,3 +2328,25 @@ Can we model the process in the project as a Poisson process?
 [How do you create different variable names while in a loop?](https://stackoverflow.com/questions/6181935/how-do-you-create-different-variable-names-while-in-a-loop)
 
 [List of probability distributions](https://en.wikipedia.org/wiki/List_of_probability_distributions)
+
+[Making Predictive Models Robust: Holdout vs Cross-Validation - KDnuggets](https://www.kdnuggets.com/2017/08/dataiku-predictive-model-holdout-cross-validation.html)
+
+[3.1. Cross-validation: evaluating estimator performance - scikit-learn 0.24.1 documentation](https://scikit-learn.org/stable/modules/cross_validation.html)
+
+[Cross-validation (statistics)](https://en.wikipedia.org/wiki/Cross-validation_(statistics))
+
+[Train/Test Split and Cross Validation - A Python Tutorial - AlgoTrading101 Blog](https://algotrading101.com/learn/train-test-split/)
+
+[Training, Validation, and Holdout | DataRobot Artificial Intelligence Wiki](https://www.datarobot.com/wiki/training-validation-holdout/)
+
+[6 Important Steps to build a Machine Learning System](https://towardsdatascience.com/6-important-steps-to-build-a-machine-learning-system-d75e3b83686)
+
+[The 5 Classification Evaluation Metrics Every Data Scientist Must Know - KDnuggets](https://www.kdnuggets.com/2019/10/5-classification-evaluation-metrics-every-data-scientist-must-know.html)
+
+[Last jedi release (0.18.0) is incompatible with ipython (7.19 and 7.18 tested); reason - column arg was deprecated, and now removed · Issue #12740 · ipython/ipython](https://github.com/ipython/ipython/issues/12740)
+
+[kiteco/jupyterlab-kite](https://github.com/kiteco/jupyterlab-kite)
+
+[ImportError: No module named 'jupyter_nbextensions_configurator' · Issue #1115 · ipython-contrib/jupyter_contrib_nbextensions](https://github.com/ipython-contrib/jupyter_contrib_nbextensions/issues/1115)
+
+[jupyter_nbextensions_configurator server extension not visible · Issue #90 · Jupyter-contrib/jupyter_nbextensions_configurator](https://github.com/Jupyter-contrib/jupyter_nbextensions_configurator/issues/90)
