@@ -15,7 +15,7 @@ To view TeX equations found in *Introduction to Linear Regression* and subsequen
 In the course, students will learn about the application of statistical methods and basic machine learning procedures for the analysis of complex data in the field of logistics. This includes methods of descriptive statistics as well as various regression and classification procedures including neural networks. After the introduction of the methods, the students apply the acquired knowledge independently to work on logistical problems in various practical exercises. The software Python and relevant packages are used.
 
 <!-- omit in toc -->
-# Project Results Overview 💡
+# Project Results 💡
 
 In the project we predict download and upload data rates of a communication system with ML models. Our goal is to predict the download and upload rates (label) in an *accurate* and *efficient* manner, given the features of the data set. In the project we answer the following questions: 
 
@@ -39,7 +39,7 @@ Outliers constitute around 7% of the data set.
 <!-- omit in toc -->
 ## Conclusion
 
-We recommend an **[Elastic Net model with Robust Scaler and outlier removal](https://github.com/luiul/statistics-meets-logistics/blob/main/1-dl-project/opt-models/ela-net-rb-no.joblib)** for Download Data; model has little complexity and marginal performance loss versus a [Random Forrest Regressor](https://github.com/luiul/statistics-meets-logistics/blob/main/1-dl-project/opt-models/rf-no.joblib) model (0.2% - 2%). Performance is based on RMSE; complexity in Fit and Score Time. 
+We recommend an **[Elastic Net model with Robust Scaler and outlier removal](https://github.com/luiul/statistics-meets-logistics/blob/main/1-dl-project/opt-models/ela-net-rb-no.joblib)** for the download data set; model has little complexity and marginal performance loss versus a [Random Forrest Regressor](https://github.com/luiul/statistics-meets-logistics/blob/main/1-dl-project/opt-models/rf-no.joblib) model (0.2% - 2%). Performance is based on RMSE; complexity in Fit and Score Time. 
 
 We recommend a **Random Forest Regressor** ([RF no outliers](https://github.com/luiul/statistics-meets-logistics/blob/main/2-ul-project/opt-models/rf-no.joblib) and [RF with outliers](https://github.com/luiul/statistics-meets-logistics/blob/main/2-ul-project/opt-models/rf-wo.joblib)) for Upload Data (outlier removal increases performance marginally (0.3% - 0.8%)); model has a 40% performance difference versus second-best-performing model. Performance is based on RMSE; complexity in Fit and Score Time.  
 
@@ -57,11 +57,12 @@ We recommend a **Random Forest Regressor** ([RF no outliers](https://github.com/
 
 <img src="readme-figures/ul-holdout-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
 
+# Preparation
+
 <!-- omit in toc -->
-# Table of Contents 📑
+## Table of Contents 📑
 
 <!-- toc here -->
-
 - [1. Background 🌅](#1-background-)
   - [1.1. Getting Started with Anaconda](#11-getting-started-with-anaconda)
   - [1.2. Jupyter Notebook](#12-jupyter-notebook)
