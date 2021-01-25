@@ -58,15 +58,16 @@ Criteria: RMSE, fit time and score time of a 10-fold cross validation with holdo
 <p>We recommend a <strong>Random Forest Regressor</strong> (<a href="https://github.com/luiul/statistics-meets-logistics/blob/main/2-ul-project/opt-models/rf-no.joblib">RF no outliers</a> and <a href="https://github.com/luiul/statistics-meets-logistics/blob/main/2-ul-project/opt-models/rf-wo.joblib">RF with outliers</a>) for Upload Data (outlier removal increases performance marginally (0.3% - 0.8%)); model has a 40% performance difference versus second-best-performing model. Performance is based on RMSE; complexity in Fit and Score Time.</p>
 <!-- omit in toc -->
 <h3 id="download-data-rate">Download Data Rate</h3>
+<img src="file:////Users/aceituno/Documents/data-science/labor/readme-figures/dl-abs-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
 <img src="file:////Users/aceituno/Documents/data-science/labor/readme-figures/dl-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
 <img src="file:////Users/aceituno/Documents/data-science/labor/readme-figures/dl-holdout-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
 <!-- omit in toc -->
 <h3 id="upload-data-rate">Upload Data Rate</h3>
+<img src="file:////Users/aceituno/Documents/data-science/labor/readme-figures/ul-abs-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
 <img src="file:////Users/aceituno/Documents/data-science/labor/readme-figures/ul-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
 <img src="file:////Users/aceituno/Documents/data-science/labor/readme-figures/ul-holdout-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
-<h1 id="preparation">Preparation</h1>
 <!-- omit in toc -->
-<h2 id="table-of-contents-">Table of Contents 📑</h2>
+<h1 id="table-of-contents-">Table of Contents 📑</h1>
 <!-- toc here -->
 <ul>
 <li><a href="#1-background-">1. Background 🌅</a>
@@ -331,14 +332,14 @@ Criteria: RMSE, fit time and score time of a 10-fold cross validation with holdo
 jupyter==<span class="hljs-number">1.0</span><span class="hljs-number">.0</span> lxml==<span class="hljs-number">4.5</span><span class="hljs-number">.1</span> MarkupSafe==<span class="hljs-number">1.1</span><span class="hljs-number">.1</span> matplotlib==<span class="hljs-number">3.3</span><span class="hljs-number">.2</span> 
 notebook==<span class="hljs-number">6.1</span><span class="hljs-number">.6</span> numpy==<span class="hljs-number">1.18</span><span class="hljs-number">.1</span> openpyxl==<span class="hljs-number">3.0</span><span class="hljs-number">.4</span> pandas==<span class="hljs-number">1.1</span><span class="hljs-number">.2</span> 
 Pillow==<span class="hljs-number">7.2</span><span class="hljs-number">.0</span> scikit-learn==<span class="hljs-number">0.23</span><span class="hljs-number">.2</span> scipy==<span class="hljs-number">1.4</span><span class="hljs-number">.1</span> seaborn==<span class="hljs-number">0.11</span><span class="hljs-number">.0</span> 
-SQLAlchemy==<span class="hljs-number">1.3</span><span class="hljs-number">.18</span> xlrd==<span class="hljs-number">1.2</span><span class="hljs-number">.0</span>
+SQLAlchemy==<span class="hljs-number">1.3</span><span class="hljs-number">.18</span> plotly xlrd==<span class="hljs-number">1.2</span><span class="hljs-number">.0</span>
 </div></code></pre>
 <p>or</p>
 <pre><code class="language-python"><div>conda create --prefix ~/opt/anaconda3 
 jupyter==<span class="hljs-number">1.0</span><span class="hljs-number">.0</span> lxml==<span class="hljs-number">4.5</span><span class="hljs-number">.1</span> MarkupSafe==<span class="hljs-number">1.1</span><span class="hljs-number">.1</span> matplotlib==<span class="hljs-number">3.3</span><span class="hljs-number">.2</span> 
 notebook==<span class="hljs-number">6.1</span><span class="hljs-number">.6</span> numpy==<span class="hljs-number">1.18</span><span class="hljs-number">.1</span> openpyxl==<span class="hljs-number">3.0</span><span class="hljs-number">.4</span> pandas==<span class="hljs-number">1.1</span><span class="hljs-number">.2</span> 
 Pillow==<span class="hljs-number">7.2</span><span class="hljs-number">.0</span> scikit-learn==<span class="hljs-number">0.23</span><span class="hljs-number">.2</span> scipy==<span class="hljs-number">1.4</span><span class="hljs-number">.1</span> seaborn==<span class="hljs-number">0.11</span><span class="hljs-number">.0</span> 
-SQLAlchemy==<span class="hljs-number">1.3</span><span class="hljs-number">.18</span> xlrd==<span class="hljs-number">1.2</span><span class="hljs-number">.0</span>
+SQLAlchemy==<span class="hljs-number">1.3</span><span class="hljs-number">.18</span> plotly xlrd==<span class="hljs-number">1.2</span><span class="hljs-number">.0</span>
 </div></code></pre>
 <p><a href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#updating-an-environment">Managing environments - conda 4.9.2.post24+e37cf84a documentation</a></p>
 <h2 id="18-activate-the-virtual-environment">1.8. Activate the virtual environment</h2>

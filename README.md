@@ -46,6 +46,8 @@ We recommend a **Random Forest Regressor** ([RF no outliers](https://github.com/
 <!-- omit in toc -->
 ### Download Data Rate
 
+<img src="readme-figures/dl-abs-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
+
 <img src="readme-figures/dl-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
 
 <img src="readme-figures/dl-holdout-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
@@ -53,14 +55,14 @@ We recommend a **Random Forest Regressor** ([RF no outliers](https://github.com/
 <!-- omit in toc -->
 ### Upload Data Rate
 
+<img src="readme-figures/ul-abs-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
+
 <img src="readme-figures/ul-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
 
 <img src="readme-figures/ul-holdout-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
 
-# Preparation
-
 <!-- omit in toc -->
-## Table of Contents 📑
+# Table of Contents 📑
 
 <!-- toc here -->
 - [1. Background 🌅](#1-background-)
@@ -271,7 +273,7 @@ conda create --name <envName>
 jupyter==1.0.0 lxml==4.5.1 MarkupSafe==1.1.1 matplotlib==3.3.2 
 notebook==6.1.6 numpy==1.18.1 openpyxl==3.0.4 pandas==1.1.2 
 Pillow==7.2.0 scikit-learn==0.23.2 scipy==1.4.1 seaborn==0.11.0 
-SQLAlchemy==1.3.18 xlrd==1.2.0
+SQLAlchemy==1.3.18 plotly xlrd==1.2.0
 ```
 
 or
@@ -281,7 +283,7 @@ conda create --prefix ~/opt/anaconda3
 jupyter==1.0.0 lxml==4.5.1 MarkupSafe==1.1.1 matplotlib==3.3.2 
 notebook==6.1.6 numpy==1.18.1 openpyxl==3.0.4 pandas==1.1.2 
 Pillow==7.2.0 scikit-learn==0.23.2 scipy==1.4.1 seaborn==0.11.0 
-SQLAlchemy==1.3.18 xlrd==1.2.0
+SQLAlchemy==1.3.18 plotly xlrd==1.2.0
 ```
 
 [Managing environments - conda 4.9.2.post24+e37cf84a documentation](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#updating-an-environment)
