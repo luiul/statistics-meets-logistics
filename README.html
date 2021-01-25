@@ -37,15 +37,31 @@
 <h1 id="description-">Description 📖</h1>
 <p>In the course, students will learn about the application of statistical methods and basic machine learning procedures for the analysis of complex data in the field of logistics. This includes methods of descriptive statistics as well as various regression and classification procedures including neural networks. After the introduction of the methods, the students apply the acquired knowledge independently to work on logistical problems in various practical exercises. The software Python and relevant packages are used.</p>
 <!-- omit in toc -->
-<h1 id="project-results-">Project Results 💡</h1>
-<p>We recommend an Elastic Net model with Robust Scaler and outlier removal for Download Data; model has little complexity and marginal performance loss versus a Random Forrest model (0.2% - 2%). Performance is based on RMSE.</p>
-<p>We recommend a Random Forest Regressor for Upload Data (outlier removal increases performance marginally (0.3% - 0.8%)); model has a 40% performance difference versus second-best  model. Performance is based on RMSE.</p>
+<h1 id="project-results-overview-">Project Results Overview 💡</h1>
+<p>In the project we predict download and upload data rates of a communication system with ML models. Our goal is to predict the download and upload rates (label) in an <em>accurate</em> and <em>efficient</em> manner, given the features of the data set. In the project we answer the following questions:</p>
+<ol>
+<li>What is the best model to achieve our goal?
+Criteria: RMSE, fit time and score time of a 10-fold cross validation with holdout test</li>
+<li>Is outlier removal necessary for good model performance?
+Criteria: RMSE, fit time and score time of a 10-fold cross validation with holdout test. We compare models with versus without outliers in the data set.</li>
+</ol>
 <!-- omit in toc -->
-<h2 id="download-data-rate">Download Data Rate</h2>
+<h2 id="project-overview">Project Overview</h2>
+<img src="file:////Users/aceituno/Documents/data-science/labor/readme-figures/project.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
+<!-- omit in toc -->
+<h2 id="feature-engineering-and-selection">Feature Engineering and Selection</h2>
+<p>Outliers constitute around 7% of the data set.</p>
+<img src="file:////Users/aceituno/Documents/data-science/labor/readme-figures/fe.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
+<!-- omit in toc -->
+<h2 id="conclusion">Conclusion</h2>
+<p>We recommend an <strong><a href="https://github.com/luiul/statistics-meets-logistics/blob/main/1-dl-project/opt-models/ela-net-rb-no.joblib">Elastic Net model with Robust Scaler and outlier removal</a></strong> for Download Data; model has little complexity and marginal performance loss versus a <a href="https://github.com/luiul/statistics-meets-logistics/blob/main/1-dl-project/opt-models/rf-no.joblib">Random Forrest Regressor</a> model (0.2% - 2%). Performance is based on RMSE; complexity in Fit and Score Time.</p>
+<p>We recommend a <strong>Random Forest Regressor</strong> (<a href="https://github.com/luiul/statistics-meets-logistics/blob/main/2-ul-project/opt-models/rf-no.joblib">RF no outliers</a> and <a href="https://github.com/luiul/statistics-meets-logistics/blob/main/2-ul-project/opt-models/rf-wo.joblib">RF with outliers</a>) for Upload Data (outlier removal increases performance marginally (0.3% - 0.8%)); model has a 40% performance difference versus second-best-performing model. Performance is based on RMSE; complexity in Fit and Score Time.</p>
+<!-- omit in toc -->
+<h3 id="download-data-rate">Download Data Rate</h3>
 <img src="file:////Users/aceituno/Documents/data-science/labor/readme-figures/dl-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
 <img src="file:////Users/aceituno/Documents/data-science/labor/readme-figures/dl-holdout-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
 <!-- omit in toc -->
-<h2 id="upload-data-rate">Upload Data Rate</h2>
+<h3 id="upload-data-rate">Upload Data Rate</h3>
 <img src="file:////Users/aceituno/Documents/data-science/labor/readme-figures/ul-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
 <img src="file:////Users/aceituno/Documents/data-science/labor/readme-figures/ul-holdout-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
 <!-- omit in toc -->
