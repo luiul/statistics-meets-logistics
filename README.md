@@ -44,20 +44,33 @@ We recommend an **[Elastic Net model with Robust Scaler and outlier removal](htt
 We recommend a **Random Forest Regressor** ([RF no outliers](https://github.com/luiul/statistics-meets-logistics/blob/main/2-ul-project/opt-models/rf-no.joblib) and [RF with outliers](https://github.com/luiul/statistics-meets-logistics/blob/main/2-ul-project/opt-models/rf-wo.joblib)) for Upload Data (outlier removal increases performance marginally (0.3% - 0.8%)); model has a 40% performance difference versus second-best-performing model. Performance is based on RMSE; complexity in Fit and Score Time.  
 
 <!-- omit in toc -->
-### Download Data Rate
+### Download Data Rate Scores
 
 <img src="readme-figures/dl-abs-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
 
 <img src="readme-figures/dl-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
 
+<!-- omit in toc -->
+### Download Data Rate Holdout Test
+
+<img src="readme-figures/dl-holdout-abs.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
+
 <img src="readme-figures/dl-holdout-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
 
+
+---
+
 <!-- omit in toc -->
-### Upload Data Rate
+### Upload Data Rate Scores
 
 <img src="readme-figures/ul-abs-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
 
 <img src="readme-figures/ul-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
+
+<!-- omit in toc -->
+### Upload Data Rate Holdout Test
+
+<img src="readme-figures/ul-holdout-abs.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
 
 <img src="readme-figures/ul-holdout-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
 
@@ -2146,7 +2159,8 @@ In the sklearn class SVC we find the regularization parameter C to allow for mis
 
 ## 17.3. In Progress
 
-- Feature Engineering
+## 17.4. Resolved
+
 - Decide what are the relevant categorial columns for the project
 - Go through features:
     - [x]  connected
@@ -2172,9 +2186,7 @@ In the sklearn class SVC we find the regularization parameter C to allow for mis
     - [x]  payload
     - [x]  rtt
     - [x]  location
-
-## 17.4. Resolved
-
+- Feature Engineering
 - Make a [data column reference](https://www.notion.so/ac02bfefe61246918aabf0e6094f18c9) in HTML (see [data type](https://en.wikipedia.org/wiki/Data_type), [7 data types](https://towardsdatascience.com/7-data-types-a-better-way-to-think-about-data-types-for-machine-learning-939fae99a689); use Notion or [Tables Generator](https://www.tablesgenerator.com/html_tables))
 - Read about [copy warning](https://realpython.com/pandas-settingwithcopywarning/)
 - Strip project data

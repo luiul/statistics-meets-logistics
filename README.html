@@ -57,14 +57,21 @@ Criteria: RMSE, fit time and score time of a 10-fold cross validation with holdo
 <p>We recommend an <strong><a href="https://github.com/luiul/statistics-meets-logistics/blob/main/1-dl-project/opt-models/ela-net-rb-no.joblib">Elastic Net model with Robust Scaler and outlier removal</a></strong> for the download data set; model has little complexity and marginal performance loss versus a <a href="https://github.com/luiul/statistics-meets-logistics/blob/main/1-dl-project/opt-models/rf-no.joblib">Random Forrest Regressor</a> model (0.2% - 2%). Performance is based on RMSE; complexity in Fit and Score Time.</p>
 <p>We recommend a <strong>Random Forest Regressor</strong> (<a href="https://github.com/luiul/statistics-meets-logistics/blob/main/2-ul-project/opt-models/rf-no.joblib">RF no outliers</a> and <a href="https://github.com/luiul/statistics-meets-logistics/blob/main/2-ul-project/opt-models/rf-wo.joblib">RF with outliers</a>) for Upload Data (outlier removal increases performance marginally (0.3% - 0.8%)); model has a 40% performance difference versus second-best-performing model. Performance is based on RMSE; complexity in Fit and Score Time.</p>
 <!-- omit in toc -->
-<h3 id="download-data-rate">Download Data Rate</h3>
+<h3 id="download-data-rate-scores">Download Data Rate Scores</h3>
 <img src="file:////Users/aceituno/Documents/data-science/labor/readme-figures/dl-abs-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
 <img src="file:////Users/aceituno/Documents/data-science/labor/readme-figures/dl-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
-<img src="file:////Users/aceituno/Documents/data-science/labor/readme-figures/dl-holdout-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
 <!-- omit in toc -->
-<h3 id="upload-data-rate">Upload Data Rate</h3>
+<h3 id="download-data-rate-holdout-test">Download Data Rate Holdout Test</h3>
+<img src="file:////Users/aceituno/Documents/data-science/labor/readme-figures/dl-holdout-abs.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
+<img src="file:////Users/aceituno/Documents/data-science/labor/readme-figures/dl-holdout-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
+<hr>
+<!-- omit in toc -->
+<h3 id="upload-data-rate-scores">Upload Data Rate Scores</h3>
 <img src="file:////Users/aceituno/Documents/data-science/labor/readme-figures/ul-abs-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
 <img src="file:////Users/aceituno/Documents/data-science/labor/readme-figures/ul-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
+<!-- omit in toc -->
+<h3 id="upload-data-rate-holdout-test">Upload Data Rate Holdout Test</h3>
+<img src="file:////Users/aceituno/Documents/data-science/labor/readme-figures/ul-holdout-abs.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
 <img src="file:////Users/aceituno/Documents/data-science/labor/readme-figures/ul-holdout-result.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
 <!-- omit in toc -->
 <h1 id="table-of-contents-">Table of Contents 📑</h1>
@@ -1856,8 +1863,8 @@ f(x)=\beta_{0}+\sum_{i \in \mathcal{S}} \alpha_{i}\left\langle x, x_{i}\right\ra
 <li>Read Wiki on <a href="https://en.wikipedia.org/wiki/Regression_analysis">Regression Analysis</a></li>
 </ul>
 <h2 id="173-in-progress">17.3. In Progress</h2>
+<h2 id="174-resolved">17.4. Resolved</h2>
 <ul>
-<li>Feature Engineering</li>
 <li>Decide what are the relevant categorial columns for the project</li>
 <li>Go through features:
 <ul class="contains-task-list">
@@ -1886,9 +1893,7 @@ f(x)=\beta_{0}+\sum_{i \in \mathcal{S}} \alpha_{i}\left\langle x, x_{i}\right\ra
 <li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  location</li>
 </ul>
 </li>
-</ul>
-<h2 id="174-resolved">17.4. Resolved</h2>
-<ul>
+<li>Feature Engineering</li>
 <li>Make a <a href="https://www.notion.so/ac02bfefe61246918aabf0e6094f18c9">data column reference</a> in HTML (see <a href="https://en.wikipedia.org/wiki/Data_type">data type</a>, <a href="https://towardsdatascience.com/7-data-types-a-better-way-to-think-about-data-types-for-machine-learning-939fae99a689">7 data types</a>; use Notion or <a href="https://www.tablesgenerator.com/html_tables">Tables Generator</a>)</li>
 <li>Read about <a href="https://realpython.com/pandas-settingwithcopywarning/">copy warning</a></li>
 <li>Strip project data</li>
