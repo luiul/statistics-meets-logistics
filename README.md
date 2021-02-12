@@ -1,5 +1,3 @@
-**This repository will be split into two sub-repositories: (1) preparation and (2) project repository** 
-
 <!-- omit in toc -->
 # Statistics Meets Logistics
 
