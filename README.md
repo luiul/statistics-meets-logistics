@@ -25,7 +25,7 @@ Criteria: RMSE, fit time and score time of a 10-fold cross validation with holdo
 Criteria: RMSE, fit time and score time of a 10-fold cross validation with holdout test. We compare models with versus without outliers in the data set. 
 
 <!-- omit in toc -->
-## Project Overview
+## Model Overview
 
 <img src="readme-figures/project.png" width="800" alt="Simplified diagram of web application architecture with central web server" class="center">
 
